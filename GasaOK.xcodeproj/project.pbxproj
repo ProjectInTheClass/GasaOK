@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6802ABBF27BB85BD00BC6243 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802ABBE27BB85BD00BC6243 /* SearchVC.swift */; };
 		68CCCF4A27B79FD1005E073E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCCF4927B79FD1005E073E /* AppDelegate.swift */; };
 		68CCCF4C27B79FD1005E073E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCCF4B27B79FD1005E073E /* SceneDelegate.swift */; };
 		68CCCF4E27B79FD1005E073E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCCF4D27B79FD1005E073E /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6802ABBE27BB85BD00BC6243 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		68CCCF4627B79FD1005E073E /* GasaOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasaOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CCCF4927B79FD1005E073E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68CCCF4B27B79FD1005E073E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				68CCCF5227B79FD2005E073E /* Assets.xcassets */,
 				68CCCF5427B79FD2005E073E /* LaunchScreen.storyboard */,
 				68CCCF5727B79FD2005E073E /* Info.plist */,
+				6802ABBE27BB85BD00BC6243 /* SearchVC.swift */,
 			);
 			path = GasaOK;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6802ABBF27BB85BD00BC6243 /* SearchVC.swift in Sources */,
 				68CCCF4E27B79FD1005E073E /* ViewController.swift in Sources */,
 				68CCCF4A27B79FD1005E073E /* AppDelegate.swift in Sources */,
 				68CCCF4C27B79FD1005E073E /* SceneDelegate.swift in Sources */,

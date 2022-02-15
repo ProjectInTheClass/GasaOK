@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DnH-ap-v5k">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,7 +14,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DnH-ap-v5k" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jwt-39-DcM">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -29,9 +29,9 @@
         <!--Home View Contoller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Home View Contoller" id="BYZ-38-t0r" customClass="ViewController" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeVC" title="Home View Contoller" id="BYZ-38-t0r" customClass="ViewController" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -47,7 +47,7 @@
             <objects>
                 <viewController title="Change Folder Floating VC" id="khy-Uk-KxI" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h5u-17-lR7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="qCp-g9-qtW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -60,24 +60,34 @@
         <!--Search View Controller-->
         <scene sceneID="goh-OK-kGm">
             <objects>
-                <viewController title="Search View Controller" id="HiZ-Tf-KUE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchVC" title="Search View Controller" id="HiZ-Tf-KUE" customClass="SearchVC" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pB3-su-BLG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FBP-uR-mwq">
+                                <rect key="frame" x="0.0" y="96" width="390" height="748"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Obj-RH-9U9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="resultVC" destination="FBP-uR-mwq" id="rZD-I6-5mn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52I-Uy-g7Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2504" y="84"/>
+            <point key="canvasLocation" x="2501.5384615384614" y="83.175355450236964"/>
         </scene>
         <!--Song Info Detail VC-->
         <scene sceneID="GkW-xO-BQG">
             <objects>
                 <viewController title="Song Info Detail VC" id="hOl-jS-CoC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Ar-jT-bHp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="iqR-HG-2vn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -92,7 +102,7 @@
             <objects>
                 <viewController title="Settings View Controller" id="cEN-m0-sXn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h57-68-4q4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Ct6-I2-3ig"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -107,7 +117,7 @@
             <objects>
                 <viewController title="Add Folder VC" id="aZq-Bh-IYF" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Igp-9V-4Li">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="v5I-RS-bq1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -122,7 +132,7 @@
             <objects>
                 <viewController title="Rename Folder VC" id="ST7-dS-6wK" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HLd-8r-CJP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="WOs-Bw-lGC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
