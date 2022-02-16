@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     ///네비게이션 아이템 (통계, 설정 버튼) 생성
     func setNavigationItems() {
-        let settings = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(didTapSettingsButton))
+        let settings = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingsButtonDidTap))
         self.navigationItem.rightBarButtonItem = settings
         settings.tintColor = UIColor.init(red: 255/255, green: 51/255, blue: 102/255, alpha: 1)
         let statistics = UIBarButtonItem(image: UIImage(systemName: "chart.bar.fill"), style: .plain, target: self, action: nil)
@@ -48,7 +48,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     ///설정버튼 액션
-    @objc func didTapSettingsButton() {
+    @objc func settingsButtonDidTap() {
         let changeVC = self.storyboard?.instantiateViewController(withIdentifier: "SettingsViewController")
         self.navigationController?.pushViewController(changeVC!, animated: true)
     }
