@@ -7,47 +7,39 @@
 
 import UIKit
 
-class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    var searchController: UISearchController = UISearchController()
+class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate {
 
+    var searchController: UISearchController = UISearchController()
     @IBOutlet weak var searchTableView: UITableView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.\
         tableViewDelegate()
         tableViewDataSource()
         searchControllerSetting()
         hotSongScopeBarSetting()
-//        searchResultScopeBarSetting()
+
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
     }
     
     func searchControllerSetting() {
         searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "노래 제목이나 가수를 입력해주세요"
         searchController.searchBar.searchBarStyle = .minimal
-        searchTableView.tableHeaderView = searchController.searchBar
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
     }
     
     func hotSongScopeBarSetting() {
-        segmentedControl.removeAllSegments()
-        segmentedControl.insertSegment(withTitle: "TJ인기차트", at: 2, animated: false)
-        segmentedControl.insertSegment(withTitle: "KY인기차트", at: 2, animated: false)
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.setWidth(100.0, forSegmentAt: 0)
-        segmentedControl.setWidth(100.0, forSegmentAt: 1)
-        
+        searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.scopeButtonTitles = ["TJ인기차트", "KY인기차트"]
     }
     
     func searchResultScopeBarSetting() {
-        segmentedControl.removeAllSegments()
-        segmentedControl.insertSegment(withTitle: "TJ", at: 2, animated: false)
-        segmentedControl.insertSegment(withTitle: "KY", at: 2, animated: false)
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.setWidth(60.0, forSegmentAt: 0)
-        segmentedControl.setWidth(60.0, forSegmentAt: 1)
+        searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.scopeButtonTitles = ["TJ", "KY"]
     }
     
     func tableViewDelegate() {
@@ -58,7 +50,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if segmentedControl.selectedSegmentIndex == 0 {
+        if searchController.searchBar.selectedScopeButtonIndex == 0 {
             return hotSongDummyTJ.count
         } else {
             return hotSongDummyKY.count
@@ -67,8 +59,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SearchTableViewCell = self.searchTableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
-        
-        if segmentedControl.selectedSegmentIndex == 0 {
+        if searchController.searchBar.selectedScopeButtonIndex == 0 {
             cell.songNameLabel.text = hotSongDummyTJ[indexPath.row].songName
             cell.singerNameLabel.text = hotSongDummyTJ[indexPath.row].singerName
             cell.karaokeNumber.text = hotSongDummyTJ[indexPath.row].karaokeNumber
@@ -80,19 +71,10 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
-
-    @IBAction func segmentedControlDidTapped(_ sender: Any) {
+    
+    func searchBar(_ searchBar: UISearchBar,
+                   selectedScopeButtonIndexDidChange selectedScope: Int) {
         searchTableView.reloadData()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
