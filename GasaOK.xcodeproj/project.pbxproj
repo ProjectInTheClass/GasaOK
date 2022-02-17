@@ -15,6 +15,7 @@
 		686D808527BCEE7A005975F7 /* AddFolderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D808427BCEE7A005975F7 /* AddFolderVC.swift */; };
 		686D808727BCEE8C005975F7 /* SongInfoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D808627BCEE8C005975F7 /* SongInfoDetailVC.swift */; };
 		686D808927BCEEA0005975F7 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D808827BCEEA0005975F7 /* SettingsVC.swift */; };
+		689B67C327BDF6F50062D0F8 /* StatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689B67C227BDF6F50062D0F8 /* StatisticVC.swift */; };
 		68CCCF4A27B79FD1005E073E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCCF4927B79FD1005E073E /* AppDelegate.swift */; };
 		68CCCF4C27B79FD1005E073E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCCF4B27B79FD1005E073E /* SceneDelegate.swift */; };
 		68CCCF4E27B79FD1005E073E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCCF4D27B79FD1005E073E /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 		686D808427BCEE7A005975F7 /* AddFolderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderVC.swift; sourceTree = "<group>"; };
 		686D808627BCEE8C005975F7 /* SongInfoDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfoDetailVC.swift; sourceTree = "<group>"; };
 		686D808827BCEEA0005975F7 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		689B67C227BDF6F50062D0F8 /* StatisticVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticVC.swift; sourceTree = "<group>"; };
 		68CCCF4627B79FD1005E073E /* GasaOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasaOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CCCF4927B79FD1005E073E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68CCCF4B27B79FD1005E073E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,15 +103,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		686D808127BCEE01005975F7 /* View */ = {
+		689B67C427BDFC740062D0F8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				68CCCF4D27B79FD1005E073E /* ViewController.swift */,
 				686D808227BCEE51005975F7 /* ChangeFolderFloatingVC.swift */,
 				686D808427BCEE7A005975F7 /* AddFolderVC.swift */,
 				686D808627BCEE8C005975F7 /* SongInfoDetailVC.swift */,
+				689B67C227BDF6F50062D0F8 /* StatisticVC.swift */,
 				686D808827BCEEA0005975F7 /* SettingsVC.swift */,
+				6802ABBE27BB85BD00BC6243 /* SearchVC.swift */,
+				6802ABC527BBCEE500BC6243 /* SearchTableViewCell.swift */,
 			);
-			path = View;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		68CCCF3D27B79FD1005E073E = {
@@ -135,17 +141,14 @@
 		68CCCF4827B79FD1005E073E /* GasaOK */ = {
 			isa = PBXGroup;
 			children = (
+				689B67C427BDFC740062D0F8 /* Controller */,
 				6802ABC027BBC28400BC6243 /* Model */,
-				686D808127BCEE01005975F7 /* View */,
 				68CCCF4927B79FD1005E073E /* AppDelegate.swift */,
 				68CCCF4B27B79FD1005E073E /* SceneDelegate.swift */,
-				68CCCF4D27B79FD1005E073E /* ViewController.swift */,
 				68CCCF4F27B79FD1005E073E /* Main.storyboard */,
 				68CCCF5227B79FD2005E073E /* Assets.xcassets */,
 				68CCCF5427B79FD2005E073E /* LaunchScreen.storyboard */,
 				68CCCF5727B79FD2005E073E /* Info.plist */,
-				6802ABBE27BB85BD00BC6243 /* SearchVC.swift */,
-				6802ABC527BBCEE500BC6243 /* SearchTableViewCell.swift */,
 			);
 			path = GasaOK;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				68CCCF4E27B79FD1005E073E /* ViewController.swift in Sources */,
 				68CCCF4A27B79FD1005E073E /* AppDelegate.swift in Sources */,
 				68CCCF4C27B79FD1005E073E /* SceneDelegate.swift in Sources */,
+				689B67C327BDF6F50062D0F8 /* StatisticVC.swift in Sources */,
 				686D808327BCEE51005975F7 /* ChangeFolderFloatingVC.swift in Sources */,
 				6802ABC627BBCEE500BC6243 /* SearchTableViewCell.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DnH-ap-v5k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TlX-OQ-W2a">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -8,24 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="YDe-0H-ljm">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DnH-ap-v5k" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jwt-39-DcM">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="CMQ-R7-GU4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kCg-HS-MRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8.6956521739130448" y="83.705357142857139"/>
-        </scene>
         <!--Home View Contoller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -56,7 +38,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="858.46153846153845" y="83.886255924170612"/>
+            <point key="canvasLocation" x="2460" y="461"/>
+        </scene>
+        <!--Statistics View Controller-->
+        <scene sceneID="hPd-ZE-eT2">
+            <objects>
+                <viewController title="Statistics View Controller" id="HnJ-Yw-nR1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IyQ-0b-C4A">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="L38-Rg-hW3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My통계" image="chart.pie.fill" catalog="system" id="jY6-Mh-FMM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EWY-oa-ox9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1568" y="1189"/>
         </scene>
         <!--Change Folder Floating VC-->
         <scene sceneID="o8Y-JF-o1q">
@@ -71,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="03s-tj-ARm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1695" y="-428"/>
+            <point key="canvasLocation" x="3828" y="-248"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="goh-OK-kGm">
@@ -147,6 +145,7 @@
                         <viewLayoutGuide key="safeArea" id="Obj-RH-9U9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="slI-LR-9ql"/>
                     <navigationItem key="navigationItem" id="e3P-sF-5eG"/>
                     <connections>
                         <outlet property="searchTableView" destination="FBP-uR-mwq" id="Sl9-R7-WDa"/>
@@ -155,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52I-Uy-g7Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2501.5384615384614" y="83.175355450236964"/>
+            <point key="canvasLocation" x="1568" y="-248"/>
         </scene>
         <!--Song Info Detail VC-->
         <scene sceneID="GkW-xO-BQG">
@@ -170,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ojO-pP-8B0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3330" y="84"/>
+            <point key="canvasLocation" x="4586" y="-248"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="YBC-73-Xm3">
@@ -182,10 +181,11 @@
                         <viewLayoutGuide key="safeArea" id="Ct6-I2-3ig"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="설정" image="gearshape.fill" catalog="system" id="gRv-jO-OKo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVX-fM-83a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="858" y="871"/>
+            <point key="canvasLocation" x="1568" y="1918"/>
         </scene>
         <!--Add Folder VC-->
         <scene sceneID="eKX-0w-XZH">
@@ -200,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PS2-CC-ekj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696" y="871"/>
+            <point key="canvasLocation" x="2945" y="1737"/>
         </scene>
         <!--Rename Folder VC-->
         <scene sceneID="uUc-qg-eKu">
@@ -215,10 +215,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yxj-SG-P1D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2503" y="871"/>
+            <point key="canvasLocation" x="3829" y="1738"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hJR-sl-E0A">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TlX-OQ-W2a" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="105-ea-UQI"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uxb-8Z-QIw">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="sK0-uD-q66" kind="relationship" relationship="viewControllers" id="FEh-b9-D3M"/>
+                        <segue destination="HiZ-Tf-KUE" kind="relationship" relationship="viewControllers" id="mz5-64-aUc"/>
+                        <segue destination="HnJ-Yw-nR1" kind="relationship" relationship="viewControllers" id="sdC-DR-4He"/>
+                        <segue destination="cEN-m0-sXn" kind="relationship" relationship="viewControllers" id="nHY-oc-Mfv"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7P7-rX-cGV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1158" y="1464"/>
+        </scene>
+        <!--보관함-->
+        <scene sceneID="b83-kj-K0z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sK0-uD-q66" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="보관함" image="folder.fill" catalog="system" id="GaA-co-QII"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Swy-YB-iTE">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zKL-Cv-7TT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xL5-JY-ytv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1568" y="461"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chart.pie.fill" catalog="system" width="128" height="121"/>
+        <image name="folder.fill" catalog="system" width="128" height="97"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setNavigationItems()
         searchBar.delegate = self
     }
+    
 
     ///검색창 설정
     func setSearchBar() {
