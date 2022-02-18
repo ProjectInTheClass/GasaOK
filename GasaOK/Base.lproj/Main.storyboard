@@ -91,36 +91,54 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SingerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-F8-VL9">
-                                                    <rect key="frame" x="20" y="33" width="194" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SingerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-F8-VL9">
+                                                    <rect key="frame" x="20" y="33" width="245" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="245" id="Nqe-VJ-C45"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGray2Color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qD6-WC-7E4">
-                                                    <rect key="frame" x="354" y="17" width="16" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qD6-WC-7E4">
+                                                    <rect key="frame" x="363" y="16" width="16" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="16" id="bJu-An-7Az"/>
+                                                    </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
                                                         <color key="baseForegroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </buttonConfiguration>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOq-s7-F6e">
-                                                    <rect key="frame" x="20" y="11" width="194" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOq-s7-F6e">
+                                                    <rect key="frame" x="20" y="11" width="245" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEk-lk-WA4">
-                                                    <rect key="frame" x="248" y="22" width="98" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEk-lk-WA4">
+                                                    <rect key="frame" x="273" y="21" width="75.666666666666686" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75.666666666666686" id="mD1-Xs-gns"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iOq-s7-F6e" firstAttribute="leading" secondItem="Bhg-F8-VL9" secondAttribute="leading" id="3aM-zO-mRo"/>
+                                                <constraint firstItem="iOq-s7-F6e" firstAttribute="top" secondItem="ZAf-1f-grD" secondAttribute="topMargin" id="3ov-t4-y9C"/>
+                                                <constraint firstItem="NEk-lk-WA4" firstAttribute="leading" secondItem="Bhg-F8-VL9" secondAttribute="trailing" constant="8" symbolic="YES" id="E1v-fx-M2p"/>
+                                                <constraint firstItem="NEk-lk-WA4" firstAttribute="leading" secondItem="iOq-s7-F6e" secondAttribute="trailing" constant="8" symbolic="YES" id="Hlo-b6-G0c"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qD6-WC-7E4" secondAttribute="trailing" constant="-9" id="IbX-Gz-ou2"/>
+                                                <constraint firstItem="NEk-lk-WA4" firstAttribute="top" secondItem="ZAf-1f-grD" secondAttribute="topMargin" constant="10" id="M3U-3P-nc7"/>
+                                                <constraint firstItem="qD6-WC-7E4" firstAttribute="centerY" secondItem="NEk-lk-WA4" secondAttribute="centerY" id="NFj-nf-8ZX"/>
+                                                <constraint firstAttribute="trailing" secondItem="NEk-lk-WA4" secondAttribute="trailing" constant="41.333333333333314" id="R4J-a9-fgU"/>
+                                                <constraint firstItem="Bhg-F8-VL9" firstAttribute="leading" secondItem="ZAf-1f-grD" secondAttribute="leadingMargin" id="cbQ-hB-COk"/>
+                                                <constraint firstItem="qD6-WC-7E4" firstAttribute="leading" secondItem="NEk-lk-WA4" secondAttribute="trailing" constant="14.333333333333314" id="dTa-f5-9nM"/>
+                                                <constraint firstItem="Bhg-F8-VL9" firstAttribute="bottom" secondItem="ZAf-1f-grD" secondAttribute="bottomMargin" id="mOJ-nu-0gK"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="karaokeNumber" destination="NEk-lk-WA4" id="sNh-6U-h0r"/>
