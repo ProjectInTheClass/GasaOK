@@ -18,23 +18,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="it8-JA-HBr">
-                        <nil key="title"/>
-                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="노래 제목이나 가수를 입력하세요" minimumFontSize="17" id="6fT-G4-s2O">
-                            <rect key="frame" x="69.666666666666686" y="5" width="251" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <action selector="searchBarDidTapped:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="wgi-8w-N6O"/>
-                                <action selector="searchBardidTapped:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="BKN-ZD-Usr"/>
-                            </connections>
-                        </textField>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="searchBar" destination="6fT-G4-s2O" id="h27-8E-9R6"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="it8-JA-HBr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
