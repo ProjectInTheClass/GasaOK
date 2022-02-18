@@ -12,4 +12,10 @@ struct SongInfo {
     let singerName:String
     let karaokeNumber:String
     let lryics:String?
+    let karaokeType:KaraokeType?
+}
+
+enum KaraokeType: String {
+    case TJ = "TJ"
+    case KY = "KY"
 }
