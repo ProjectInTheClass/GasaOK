@@ -137,14 +137,14 @@
                         <viewLayoutGuide key="safeArea" id="Obj-RH-9U9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="e3P-sF-5eG"/>
+                    <navigationItem key="navigationItem" title="검색" id="e3P-sF-5eG"/>
                     <connections>
                         <outlet property="searchTableView" destination="FBP-uR-mwq" id="Sl9-R7-WDa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52I-Uy-g7Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2496.9230769230767" y="-248.10426540284359"/>
+            <point key="canvasLocation" x="2460" y="-248"/>
         </scene>
         <!--가사 정보-->
         <scene sceneID="KdN-Al-XsU">
@@ -300,7 +300,6 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-
                         <segue destination="HiZ-Tf-KUE" kind="relationship" relationship="rootViewController" id="6C7-31-Aiw"/>
                     </connections>
                 </navigationController>
