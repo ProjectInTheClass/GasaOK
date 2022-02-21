@@ -200,5 +200,5 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         searchTableView.dataSource = self
     }
 
-    
+   
 }

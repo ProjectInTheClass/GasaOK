@@ -12,7 +12,7 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var singerNameLabel: UILabel!
     @IBOutlet weak var karaokeNumber: UILabel!
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +23,6 @@ class SearchTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
 
 }
