@@ -9,6 +9,12 @@ import UIKit
 
 class SongInfoDetailVC: UIViewController {
     
+    var songDetailData : SongInfo!
+    
+    @IBOutlet weak var songNameLabel: UILabel!
+    @IBOutlet weak var singerNameLabel: UILabel!
+    @IBOutlet weak var karaokaNumberLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,6 +23,10 @@ class SongInfoDetailVC: UIViewController {
         // 가사 상세 보기화면에서 탭 숨기기
         self.tabBarController?.tabBar.isHidden = true
         // Do any additional setup after loading the view.
+        songNameLabel.text = songDetailData.songName
+        singerNameLabel.text = songDetailData.singerName
+        karaokaNumberLabel.text = songDetailData.karaokeNumber
+        
     }
     
 
