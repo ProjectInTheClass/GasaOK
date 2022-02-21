@@ -17,7 +17,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         tableViewDataSource()
 //        folderSettingTableView.reloadSections(IndexSet(1...1), with: .right)
 //        AddFolderVC.transitioningDelegate = self
-//        folderSettingTableView.dragDelegate = self
+//        folderSettingTableView.dragDelega석te = self
     }
     
     func songWillDelete(deleteIndex: IndexPath) {
