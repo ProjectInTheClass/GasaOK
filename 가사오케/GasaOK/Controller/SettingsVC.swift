@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, UITableViewDragDelegate {
+class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate/*, UITableViewDragDelegate */{
 
     @IBOutlet weak var folderSettingTableView: UITableView!
     
@@ -17,7 +17,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         tableViewDataSource()
 //        folderSettingTableView.reloadSections(IndexSet(1...1), with: .right)
 //        AddFolderVC.transitioningDelegate = self
-        folderSettingTableView.dragDelegate = self
+//        folderSettingTableView.dragDelegate = self
     }
     
     func songWillDelete(deleteIndex: IndexPath) {
@@ -88,9 +88,9 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         return UISwipeActionsConfiguration(actions: [delete, modify])
     }
     
-    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        <#code#>
-    }
+//    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+//        <#code#>
+//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3

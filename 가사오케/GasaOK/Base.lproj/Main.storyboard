@@ -224,7 +224,6 @@
         <!--가사 정보-->
         <scene sceneID="KdN-Al-XsU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ynh-Ta-1ZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="0Ij-zj-KDV" customClass="SongInfoDetailVC" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7UF-xQ-Q2M">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
@@ -259,7 +258,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nO-iM-JmV">
                                                 <rect key="frame" x="5" y="5" width="335" height="682.66666666666663"/>
-                                                <mutableString key="text">나의 두 눈에 제일 먼저 그대를 담고
+                                                <string key="text">나의 두 눈에 제일 먼저 그대를 담고
 가장 예쁜 말들로 그댈 미소 짓게 하고
 바람이 차가운 오늘 밤 집에 돌아가는 길
 또 그대 생각이 나요
@@ -284,7 +283,7 @@
 잠시 나와줄래요
 이 밤을 보내기엔 아쉽잖아요
 잠시라도 그댈 보고 싶은 내 맘을
-이 밤을 빌려 말해요</mutableString>
+이 밤을 빌려 말해요</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -331,6 +330,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="가사 정보" id="jUu-D2-pL3"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ynh-Ta-1ZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3061.5384615384614" y="-248.10426540284359"/>
         </scene>
@@ -602,6 +602,7 @@
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="music.mic.circle" catalog="system" width="128" height="121"/>
+        <image name="music.note" catalog="system" width="97" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
