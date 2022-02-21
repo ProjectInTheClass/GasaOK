@@ -15,14 +15,89 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sn0-VT-suQ">
+                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MySongTableViewCell" id="evJ-ch-xR7" customClass="MySongTableViewCell" customModule="GasaOK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="evJ-ch-xR7" id="8xp-Fb-gic">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SingerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czt-xo-xnp">
+                                                    <rect key="frame" x="57" y="36" width="229" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" systemColor="systemGray2Color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzv-UZ-cL1">
+                                                    <rect key="frame" x="57" y="11" width="229" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vte-oF-HGe">
+                                                    <rect key="frame" x="20" y="22" width="20" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Vz7-97-Ak0"/>
+                                                        <constraint firstAttribute="width" constant="20" id="aze-Dn-rx5"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="music.mic.circle" catalog="system"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fJ-JI-G4d">
+                                                    <rect key="frame" x="294" y="22" width="76" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="76" id="fON-rU-3uz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7fJ-JI-G4d" firstAttribute="trailing" secondItem="8xp-Fb-gic" secondAttribute="trailingMargin" id="6Pm-CF-L7X"/>
+                                                <constraint firstItem="Czt-xo-xnp" firstAttribute="leading" secondItem="nzv-UZ-cL1" secondAttribute="leading" id="AeR-9F-RZn"/>
+                                                <constraint firstItem="vte-oF-HGe" firstAttribute="top" secondItem="7fJ-JI-G4d" secondAttribute="top" id="BhH-mw-lSJ"/>
+                                                <constraint firstItem="Czt-xo-xnp" firstAttribute="leading" secondItem="vte-oF-HGe" secondAttribute="trailing" constant="17" id="IZM-wk-ekW"/>
+                                                <constraint firstItem="nzv-UZ-cL1" firstAttribute="top" secondItem="8xp-Fb-gic" secondAttribute="topMargin" id="WNN-wz-o5B"/>
+                                                <constraint firstItem="vte-oF-HGe" firstAttribute="leading" secondItem="8xp-Fb-gic" secondAttribute="leadingMargin" id="bl9-eB-sW1"/>
+                                                <constraint firstItem="vte-oF-HGe" firstAttribute="centerY" secondItem="8xp-Fb-gic" secondAttribute="centerY" id="f9w-Es-rxL"/>
+                                                <constraint firstItem="Czt-xo-xnp" firstAttribute="bottom" secondItem="8xp-Fb-gic" secondAttribute="bottomMargin" id="g26-n3-peN"/>
+                                                <constraint firstItem="7fJ-JI-G4d" firstAttribute="leading" secondItem="Czt-xo-xnp" secondAttribute="trailing" constant="8" symbolic="YES" id="niM-yP-deO"/>
+                                                <constraint firstItem="7fJ-JI-G4d" firstAttribute="leading" secondItem="nzv-UZ-cL1" secondAttribute="trailing" constant="8" symbolic="YES" id="puS-Yf-CE5"/>
+                                                <constraint firstItem="vte-oF-HGe" firstAttribute="top" secondItem="8xp-Fb-gic" secondAttribute="topMargin" constant="11" id="vac-iC-Jbn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="karaokeNumber" destination="7fJ-JI-G4d" id="fmF-eu-fN5"/>
+                                            <outlet property="singerNameLabel" destination="Czt-xo-xnp" id="01v-of-GtO"/>
+                                            <outlet property="songNameLabel" destination="nzv-UZ-cL1" id="fwB-rh-TVq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Sn0-VT-suQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="axG-GW-ehm"/>
+                            <constraint firstItem="Sn0-VT-suQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eqj-Xd-aYC"/>
+                            <constraint firstItem="Sn0-VT-suQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mly-I1-9M9"/>
+                            <constraint firstAttribute="trailing" secondItem="Sn0-VT-suQ" secondAttribute="trailing" id="pJx-5c-rUh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="it8-JA-HBr"/>
+                    <connections>
+                        <outlet property="mySongTableView" destination="Sn0-VT-suQ" id="Bpz-Yh-Vbb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2460" y="461"/>
+            <point key="canvasLocation" x="2460" y="460.66350710900474"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="hPd-ZE-eT2">
@@ -154,16 +229,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이 밤을 빌려 말해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6T-an-dRq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 밤을 빌려 말해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6T-an-dRq">
                                 <rect key="frame" x="32" y="123" width="167" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10cm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8W-L5-WaG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10cm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8W-L5-WaG">
                                 <rect key="frame" x="32" y="162" width="44" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -178,6 +251,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="X9P-g6-SnY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="X9P-g6-SnY" firstAttribute="bottom" secondItem="L8W-L5-WaG" secondAttribute="bottom" constant="577" id="0Qy-lc-fcj"/>
+                            <constraint firstItem="L8W-L5-WaG" firstAttribute="leading" secondItem="X9P-g6-SnY" secondAttribute="leading" constant="32" id="0SV-OH-6fY"/>
+                            <constraint firstItem="L8W-L5-WaG" firstAttribute="top" secondItem="t6T-an-dRq" secondAttribute="bottom" constant="12" id="CUk-lC-haE"/>
+                            <constraint firstItem="L8W-L5-WaG" firstAttribute="leading" secondItem="t6T-an-dRq" secondAttribute="leading" id="Mmp-jy-bAl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="가사 정보" id="jUu-D2-pL3"/>
                 </viewController>
@@ -300,7 +379,6 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-
                         <segue destination="HiZ-Tf-KUE" kind="relationship" relationship="rootViewController" id="6C7-31-Aiw"/>
                     </connections>
                 </navigationController>
@@ -315,6 +393,7 @@
         <image name="folder.fill" catalog="system" width="128" height="97"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="music.mic.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
