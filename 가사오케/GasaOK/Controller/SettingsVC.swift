@@ -7,15 +7,29 @@
 
 import UIKit
 
-class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, UITableViewDragDelegate {
 
     @IBOutlet weak var folderSettingTableView: UITableView!
-    let folderName: [String] = ["보관함1", "힙합", "R&B"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewDelegate()
         tableViewDataSource()
+//        folderSettingTableView.reloadSections(IndexSet(1...1), with: .right)
+//        AddFolderVC.transitioningDelegate = self
+        folderSettingTableView.dragDelegate = self
+    }
+    
+    func songWillDelete(deleteIndex: IndexPath) {
+        let alert = UIAlertController(title: nil, message: "보관함에서 이 노래를 삭제하시겠습니까?", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "노래 삭제", style: .destructive) { (_) in
+            folderName.remove(at: deleteIndex.row)
+            self.folderSettingTableView.deleteRows(at: [deleteIndex], with: .fade)
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - tableView Delegate, DataSource func
@@ -58,6 +72,26 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let modify = UIContextualAction(style: .normal, title: "수정", handler: {(action, view, completionHandler) in
+            print("folder name modify")
+            completionHandler(true)
+        })
+        modify.backgroundColor = .systemBlue
+        let delete = UIContextualAction(style: .normal, title: "삭제", handler: {(action, view, completionHandler) in
+            print("folder delete")
+            self.songWillDelete(deleteIndex: indexPath)
+            completionHandler(true)
+        })
+        delete.backgroundColor = .systemRed
+        
+        return UISwipeActionsConfiguration(actions: [delete, modify])
+    }
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        <#code#>
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -73,3 +107,14 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
 }
+
+//extension SettingsVC: UIAdaptivePresentationControllerDelegate {
+//    func presentationController
+//}
+
+//extension SettingsVC: UIViewControllerTransitioningDelegate {
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        print("dismiss!!!")
+//        return nil
+//    }
+//}
