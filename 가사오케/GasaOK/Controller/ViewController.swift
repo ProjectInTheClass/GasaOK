@@ -7,28 +7,94 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController {
 
-
+    @IBOutlet weak var mySongTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        setNavigationItems()
+        setFolderChangeButton()
+        tableViewDelegate()
+        tableViewDataSource()
     }
-    ///네비게이션 아이템 (largeTitle, 보관함 변경 버튼) 생성
-    func setNavigationItems() {
-        let folderChangeButton = UIButton(type: .system)
-        folderChangeButton.setTitle("💡 보관함1", for: .normal)
-        folderChangeButton.setImage(UIImage(systemName: "arrowtriangle.down.circle"), for: .normal)
-        folderChangeButton.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
+    // MARK: - 네비게이션 아이템 (보관함 변경 버튼) 생성
+    /*iOS15부터 사용 가능한 configuration으로 하니 버튼 이미지나 타이틀 위치 조정이 쉬웠다*/
+    func setFolderChangeButton() {
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 10)
+        let title = "💡 보관함1"
+        let attribute = [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 20)]
+        let attributedTitle = NSAttributedString(string: title, attributes: attribute)
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "chevron.down")
+        configuration.preferredSymbolConfigurationForImage = imageConfig
+        configuration.imagePlacement = .trailing
+        configuration.imagePadding = 9
+        let folderChangeButton = UIButton(configuration: configuration, primaryAction: nil)
+        folderChangeButton.setAttributedTitle(attributedTitle, for: .normal)
         folderChangeButton.tintColor = .black
-        folderChangeButton.semanticContentAttribute = .forceRightToLeft
-        ///폰트사이즈 조정, 오류남 고쳐야함
-        //folderChangeButton.titleLabel?.font = UIFont(name: , size: 20)
+        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: folderChangeButton)
     }
     
+    // MARK: - 보관함 내 노래 삭제 시 뜨는 알림창
+    func songWillDelete(deleteIndex:IndexPath) {
+        let alert = UIAlertController(title: nil, message: "보관함에서 이 노래를 삭제하시겠습니까?", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "노래 삭제", style: .destructive) { (_) in
+            //self.mySongTableView.beginUpdates()
+            mySongDummyFolder1.remove(at: deleteIndex.row)
+            self.mySongTableView.deleteRows(at: [deleteIndex], with: .fade)
+            //self.mySongTableView.endUpdates()
+            
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
 
+    }
     
+}
+
+// MARK: - 보관함별 노래 목록 tableView
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return mySongDummyFolder1.count
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: MySongTableViewCell = self.mySongTableView.dequeueReusableCell(withIdentifier: "MySongTableViewCell", for:indexPath) as! MySongTableViewCell
+        cell.songNameLabel.text = mySongDummyFolder1[indexPath.row].songName
+        cell.singerNameLabel.text = mySongDummyFolder1[indexPath.row].singerName
+        cell.karaokeNumber.text = mySongDummyFolder1[indexPath.row].karaokeNumber
+        
+        return cell
+    }
+    ///스와이프 메뉴
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let move = UIContextualAction(style: .normal, title: "이동", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                print("move!!")
+                success(true)
+            })
+            
+            let delete = UIContextualAction(style: .normal, title: "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                print("delete!!")
+                self.songWillDelete(deleteIndex: indexPath)
+                success(true)
+            })
+        
+        move.backgroundColor = .systemBlue
+        delete.backgroundColor = .systemRed
+        
+        return UISwipeActionsConfiguration(actions: [delete, move])
+    }
+    
+    func tableViewDelegate() {
+        mySongTableView.delegate = self
+    }
+    
+    func tableViewDataSource() {
+        mySongTableView.dataSource = self
+    }
 }
