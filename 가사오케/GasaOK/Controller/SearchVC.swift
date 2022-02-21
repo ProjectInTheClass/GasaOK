@@ -11,10 +11,10 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 
     @IBOutlet weak var searchTableView: UITableView!
     
-    private let isSearchBarButtonClicked: Bool = false
-    private let isSearchBarCancelButtonClicked: Bool = false
     var searchController: UISearchController = UISearchController()
-    var fileterdSong: [SongInfo] = []
+    var filteredSong: [SongInfo] = []
+    var filteredSongOfTJ: [SongInfo] = []
+    var filteredSongOfKY: [SongInfo] = []
 //    var isSearchBarEmpty: Bool {
 //        return searchController.searchBar.text?.isEmpty ?? true
 //    }
@@ -23,13 +23,14 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         super.viewDidLoad()
         tableViewDelegate()
         tableViewDataSource()
-        searchControllerSetting()
-        hotSongScopeBarSetting()
+        searchControllerSetUp()
+        hotSongScopeBarSetUp()
 
         searchControllerDelegate()
     }
     
-    func searchControllerSetting() {
+    // MARK: - set up
+    func searchControllerSetUp() {
         searchController = UISearchController(searchResultsController: nil)
 //        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -39,15 +40,16 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         definesPresentationContext = false
     }
     
-    func hotSongScopeBarSetting() {
+    func hotSongScopeBarSetUp() {
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.scopeButtonTitles = ["TJ인기차트", "KY인기차트"]
     }
-    func searchResultScopeBarSetting() {
+    func searchResultScopeBarSetUp() {
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.scopeButtonTitles = ["TJ", "KY"]
     }
     
+    // MARK: - show up
     func hotSongShowUp() {
         
     }
@@ -55,38 +57,63 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         
     }
     
-    func searchBar(_ searchBar: UISearchBar,
-                   selectedScopeButtonIndexDidChange selectedScope: Int) {
-        searchTableView.reloadData()
+    // MARK: - filtering
+    func songFilteredByTitle() -> [SongInfo] {
+        let filteredSongByTitle = searchResultDummy.filter({ (song:SongInfo) -> Bool in
+            let noBlankTitle = song.songName.lowercased().split(separator: " ")
+            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
+            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
+        })
+        return filteredSongByTitle
     }
+    
+    func songFilteredBySinger() -> [SongInfo] {
+        let filteredSongBySinger = searchResultDummy.filter({ (song:SongInfo) -> Bool in
+            let noBlankTitle = song.singerName.lowercased().split(separator: " ")
+            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
+            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
+        })
+        return filteredSongBySinger
+    }
+    
+    func songSeperatedByKaraokeType() {
+        filteredSongOfTJ = filteredSong.filter({ (song:SongInfo) -> Bool in
+            return song.karaokeType == KaraokeType.TJ
+        })
+        filteredSongOfKY = filteredSong.filter({ (song:SongInfo) -> Bool in
+            return song.karaokeType == KaraokeType.KY
+        })
+    }
+    
+    // MARK: - searchController Delegate func
     func updateSearchResults(for searchController: UISearchController) {
-        fileterdSong = searchResultDummy.filter({ (song:SongInfo) -> Bool in
+        filteredSong = searchResultDummy.filter({ (song:SongInfo) -> Bool in
             return song.songName.lowercased().contains(searchController.searchBar.text!.lowercased())
         })
         print("update Search Result")
         searchTableView.reloadData()
     }
     
-    // MARK: searchBar Delegate func
+    // MARK: - searchBar Delegate func
+    func searchBar(_ searchBar: UISearchBar,
+                   selectedScopeButtonIndexDidChange selectedScope: Int) {
+        searchTableView.reloadData()
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        let isSearchBarButtonClicked: Bool = true
-        fileterdSong = searchResultDummy.filter({ (song:SongInfo) -> Bool in
-            let noBlankTitle = song.songName.lowercased().split(separator: " ")
-            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
-            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
-        })
+        filteredSong = songFilteredByTitle() + songFilteredBySinger()
         print("search Bar Search Button Clicked")
-        print(fileterdSong)
-
-        searchResultScopeBarSetting()
+        print(filteredSong)
+//        print( songSeperatedByKaraokeType() )
+        songSeperatedByKaraokeType()
+        searchResultScopeBarSetUp()
         searchTableView.reloadData()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        let isSearchBarCancelButtonClicked: Bool = true
         print("search Bar Cancel Button Clicked")
-        fileterdSong = []
-        print(fileterdSong.isEmpty)
-        hotSongScopeBarSetting()
+        filteredSong = []
+        print(filteredSong.isEmpty)
+        hotSongScopeBarSetUp()
         searchTableView.reloadData()
     }
     
@@ -107,19 +134,19 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 //        return 0
 //    }
 
-    // MARK: tableView Delegate func
+    // MARK: - tableView Delegate func
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.searchBar.selectedScopeButtonIndex == 0 {
-            if fileterdSong.isEmpty {
+            if filteredSong.isEmpty {
                 return hotSongDummyTJ.count
             } else {
-                return 0
+                return filteredSongOfTJ.count
             }
         } else {
-            if fileterdSong.isEmpty {
+            if filteredSong.isEmpty {
                 return hotSongDummyKY.count
             } else {
-                return 0
+                return filteredSongOfKY.count
             }
         }
     }
@@ -127,7 +154,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SearchTableViewCell = self.searchTableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
         
-        if fileterdSong.isEmpty {
+        if filteredSong.isEmpty {
             if searchController.searchBar.selectedScopeButtonIndex == 0 {
                 cell.songNameLabel.text = hotSongDummyTJ[indexPath.row].songName
                 cell.songNameLabel.sizeToFit()
@@ -146,29 +173,29 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
                 return cell
             }
         } else {
-            if searchController.searchBar.selectedScopeButtonIndex == 0 && fileterdSong[indexPath.row].karaokeType == .TJ {
-                cell.songNameLabel.text = fileterdSong[indexPath.row].songName
-                cell.singerNameLabel.text = fileterdSong[indexPath.row].singerName
-                cell.karaokeNumber.text = fileterdSong[indexPath.row].karaokeNumber
+            if searchController.searchBar.selectedScopeButtonIndex == 0 {
+                cell.songNameLabel.text = filteredSongOfTJ[indexPath.row].songName
+                cell.singerNameLabel.text = filteredSongOfTJ[indexPath.row].singerName
+                cell.karaokeNumber.text = filteredSongOfTJ[indexPath.row].karaokeNumber
                 return cell
-            } else if searchController.searchBar.selectedScopeButtonIndex == 0 && fileterdSong[indexPath.row].karaokeType == .KY {
-                cell.songNameLabel.text = fileterdSong[indexPath.row].songName
-                cell.singerNameLabel.text = fileterdSong[indexPath.row].singerName
-                cell.karaokeNumber.text = fileterdSong[indexPath.row].karaokeNumber
+            } else {
+                cell.songNameLabel.text = filteredSongOfKY[indexPath.row].songName
+                cell.singerNameLabel.text = filteredSongOfKY[indexPath.row].singerName
+                cell.karaokeNumber.text = filteredSongOfKY[indexPath.row].karaokeNumber
                 return cell
             }
         }
-        return cell
     }
     
-    // MARK: Delegate
+    // MARK: - Delegate
     func tableViewDelegate() {
         searchTableView.delegate = self
     }
     func searchControllerDelegate() {
         searchController.searchBar.delegate = self
     }
-    // MARK: DataSource
+    
+    // MARK: - DataSource
     func tableViewDataSource() {
         searchTableView.dataSource = self
     }

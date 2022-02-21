@@ -15,14 +15,89 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sn0-VT-suQ">
+                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MySongTableViewCell" id="evJ-ch-xR7" customClass="MySongTableViewCell" customModule="GasaOK" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="evJ-ch-xR7" id="8xp-Fb-gic">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SingerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czt-xo-xnp">
+                                                    <rect key="frame" x="57" y="36" width="229" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" systemColor="systemGray2Color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzv-UZ-cL1">
+                                                    <rect key="frame" x="57" y="11" width="229" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vte-oF-HGe">
+                                                    <rect key="frame" x="20" y="22" width="20" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Vz7-97-Ak0"/>
+                                                        <constraint firstAttribute="width" constant="20" id="aze-Dn-rx5"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="music.mic.circle" catalog="system"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fJ-JI-G4d">
+                                                    <rect key="frame" x="294" y="22" width="76" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="76" id="fON-rU-3uz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7fJ-JI-G4d" firstAttribute="trailing" secondItem="8xp-Fb-gic" secondAttribute="trailingMargin" id="6Pm-CF-L7X"/>
+                                                <constraint firstItem="Czt-xo-xnp" firstAttribute="leading" secondItem="nzv-UZ-cL1" secondAttribute="leading" id="AeR-9F-RZn"/>
+                                                <constraint firstItem="vte-oF-HGe" firstAttribute="top" secondItem="7fJ-JI-G4d" secondAttribute="top" id="BhH-mw-lSJ"/>
+                                                <constraint firstItem="Czt-xo-xnp" firstAttribute="leading" secondItem="vte-oF-HGe" secondAttribute="trailing" constant="17" id="IZM-wk-ekW"/>
+                                                <constraint firstItem="nzv-UZ-cL1" firstAttribute="top" secondItem="8xp-Fb-gic" secondAttribute="topMargin" id="WNN-wz-o5B"/>
+                                                <constraint firstItem="vte-oF-HGe" firstAttribute="leading" secondItem="8xp-Fb-gic" secondAttribute="leadingMargin" id="bl9-eB-sW1"/>
+                                                <constraint firstItem="vte-oF-HGe" firstAttribute="centerY" secondItem="8xp-Fb-gic" secondAttribute="centerY" id="f9w-Es-rxL"/>
+                                                <constraint firstItem="Czt-xo-xnp" firstAttribute="bottom" secondItem="8xp-Fb-gic" secondAttribute="bottomMargin" id="g26-n3-peN"/>
+                                                <constraint firstItem="7fJ-JI-G4d" firstAttribute="leading" secondItem="Czt-xo-xnp" secondAttribute="trailing" constant="8" symbolic="YES" id="niM-yP-deO"/>
+                                                <constraint firstItem="7fJ-JI-G4d" firstAttribute="leading" secondItem="nzv-UZ-cL1" secondAttribute="trailing" constant="8" symbolic="YES" id="puS-Yf-CE5"/>
+                                                <constraint firstItem="vte-oF-HGe" firstAttribute="top" secondItem="8xp-Fb-gic" secondAttribute="topMargin" constant="11" id="vac-iC-Jbn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="karaokeNumber" destination="7fJ-JI-G4d" id="fmF-eu-fN5"/>
+                                            <outlet property="singerNameLabel" destination="Czt-xo-xnp" id="01v-of-GtO"/>
+                                            <outlet property="songNameLabel" destination="nzv-UZ-cL1" id="fwB-rh-TVq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Sn0-VT-suQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="axG-GW-ehm"/>
+                            <constraint firstItem="Sn0-VT-suQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eqj-Xd-aYC"/>
+                            <constraint firstItem="Sn0-VT-suQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mly-I1-9M9"/>
+                            <constraint firstAttribute="trailing" secondItem="Sn0-VT-suQ" secondAttribute="trailing" id="pJx-5c-rUh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="it8-JA-HBr"/>
+                    <connections>
+                        <outlet property="mySongTableView" destination="Sn0-VT-suQ" id="Bpz-Yh-Vbb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2460" y="461"/>
+            <point key="canvasLocation" x="2460" y="460.66350710900474"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="hPd-ZE-eT2">
@@ -137,19 +212,18 @@
                         <viewLayoutGuide key="safeArea" id="Obj-RH-9U9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="e3P-sF-5eG"/>
+                    <navigationItem key="navigationItem" title="검색" id="e3P-sF-5eG"/>
                     <connections>
                         <outlet property="searchTableView" destination="FBP-uR-mwq" id="Sl9-R7-WDa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52I-Uy-g7Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2372" y="-248"/>
+            <point key="canvasLocation" x="2460" y="-248"/>
         </scene>
         <!--가사 정보-->
         <scene sceneID="KdN-Al-XsU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ynh-Ta-1ZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="0Ij-zj-KDV" customClass="SongInfoDetailVC" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7UF-xQ-Q2M">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
@@ -184,7 +258,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nO-iM-JmV">
                                                 <rect key="frame" x="5" y="5" width="335" height="682.66666666666663"/>
-                                                <mutableString key="text">나의 두 눈에 제일 먼저 그대를 담고
+                                                <string key="text">나의 두 눈에 제일 먼저 그대를 담고
 가장 예쁜 말들로 그댈 미소 짓게 하고
 바람이 차가운 오늘 밤 집에 돌아가는 길
 또 그대 생각이 나요
@@ -209,7 +283,7 @@
 잠시 나와줄래요
 이 밤을 보내기엔 아쉽잖아요
 잠시라도 그댈 보고 싶은 내 맘을
-이 밤을 빌려 말해요</mutableString>
+이 밤을 빌려 말해요</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -261,6 +335,7 @@
                         <outlet property="songNameLabel" destination="t6T-an-dRq" id="Eew-3G-woW"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ynh-Ta-1ZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3061.5384615384614" y="-248.10426540284359"/>
         </scene>
@@ -282,33 +357,152 @@
         <!--Settings View Controller-->
         <scene sceneID="YBC-73-Xm3">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" title="Settings View Controller" id="cEN-m0-sXn" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" title="Settings View Controller" id="cEN-m0-sXn" customClass="SettingsVC" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h57-68-4q4">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sdu-x2-GAV">
+                                <rect key="frame" x="0.0" y="88" width="390" height="756"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Dark Mode Cell" id="MlL-Cw-05b" customClass="DarkModeTableViewCell" customModule="GasaOK" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="49" width="350" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MlL-Cw-05b" id="SCk-tW-ikJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="dark mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5c-KX-KU8">
+                                                    <rect key="frame" x="20" y="11" width="161" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mrm-aS-gmT">
+                                                    <rect key="frame" x="281" y="6" width="49" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="darkModeCellLabel" destination="b5c-KX-KU8" id="UFm-TU-qxN"/>
+                                            <outlet property="darkModeSwitch" destination="mrm-aS-gmT" id="HY9-fK-hRc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Folder Position Change Cell" id="s8f-zv-PAH" customClass="FolderPositionChangeTableViewCell" customModule="GasaOK" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="92.666667938232422" width="350" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s8f-zv-PAH" id="9Bl-9W-UJ2">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Folder Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMV-wb-Kz3">
+                                                    <rect key="frame" x="20" y="11" width="254" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="folderNameLabel" destination="uMV-wb-Kz3" id="zJc-Rv-02P"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Folder Add Cell" id="N4O-EE-RWL" customClass="FolderAddTableViewCell" customModule="GasaOK" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="136.33333587646484" width="350" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N4O-EE-RWL" id="FAn-GA-eZb">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Folder.." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGN-2I-cah">
+                                                    <rect key="frame" x="20" y="11" width="160" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="folderAddLabel" destination="nGN-2I-cah" id="dW2-Bx-CSu"/>
+                                            <segue destination="aZq-Bh-IYF" kind="presentation" id="8fq-VR-JjL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ct6-I2-3ig"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="설정" image="gearshape.fill" catalog="system" id="gRv-jO-OKo"/>
+                    <navigationItem key="navigationItem" title="설정" id="x7J-IU-gvE"/>
+                    <connections>
+                        <outlet property="folderSettingTableView" destination="sdu-x2-GAV" id="sf2-NS-5cZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVX-fM-83a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1568" y="1918"/>
+            <point key="canvasLocation" x="2496.9230769230767" y="1917.2985781990521"/>
         </scene>
         <!--Add Folder VC-->
         <scene sceneID="eKX-0w-XZH">
             <objects>
-                <viewController title="Add Folder VC" id="aZq-Bh-IYF" sceneMemberID="viewController">
+                <viewController title="Add Folder VC" id="aZq-Bh-IYF" customClass="AddFolderVC" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Igp-9V-4Li">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGa-9H-bS8">
+                                <rect key="frame" x="354" y="20" width="20" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="exitButton:" destination="aZq-Bh-IYF" eventType="touchUpInside" id="QLj-Dc-qu9"/>
+                                    <action selector="exitButton:" destination="umv-AV-MVe" eventType="touchUpInside" id="R2s-2p-zbP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Folder Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMC-Dw-FLJ">
+                                <rect key="frame" x="37" y="222" width="316" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9s-1B-ChA">
+                                <rect key="frame" x="16" y="693" width="358" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="addFolder:" destination="aZq-Bh-IYF" eventType="touchUpInside" id="PVF-57-HxE"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OPQ-tR-RWw">
+                                <rect key="frame" x="26" y="258" width="338" height="38.333333333333329"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="v5I-RS-bq1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ugC-Bs-Czb"/>
+                    <connections>
+                        <outlet property="addButton" destination="e9s-1B-ChA" id="M0z-JU-Bwl"/>
+                        <outlet property="folderNameLabel" destination="LMC-Dw-FLJ" id="OaW-HT-7B6"/>
+                        <outlet property="folderNameText" destination="OPQ-tR-RWw" id="TBH-1J-c5S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PS2-CC-ekj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="umv-AV-MVe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2945" y="1737"/>
+            <point key="canvasLocation" x="3456.9230769230767" y="1916.5876777251183"/>
         </scene>
         <!--Rename Folder VC-->
         <scene sceneID="uUc-qg-eKu">
@@ -323,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yxj-SG-P1D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3829" y="1738"/>
+            <point key="canvasLocation" x="4631" y="1917"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hJR-sl-E0A">
@@ -341,7 +535,7 @@
                         <segue destination="sK0-uD-q66" kind="relationship" relationship="viewControllers" id="FEh-b9-D3M"/>
                         <segue destination="zeX-wc-Qob" kind="relationship" relationship="viewControllers" id="mz5-64-aUc"/>
                         <segue destination="HnJ-Yw-nR1" kind="relationship" relationship="viewControllers" id="sdC-DR-4He"/>
-                        <segue destination="cEN-m0-sXn" kind="relationship" relationship="viewControllers" id="nHY-oc-Mfv"/>
+                        <segue destination="VLe-90-l8b" kind="relationship" relationship="viewControllers" id="nHY-oc-Mfv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7P7-rX-cGV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -386,6 +580,25 @@
             </objects>
             <point key="canvasLocation" x="1567.6923076923076" y="-248.10426540284359"/>
         </scene>
+        <!--설정-->
+        <scene sceneID="IpB-HX-N9f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VLe-90-l8b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="설정" image="gearshape.fill" catalog="system" id="gRv-jO-OKo"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wT2-7V-hai">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cEN-m0-sXn" kind="relationship" relationship="rootViewController" id="nKz-oh-FMV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HYk-6Y-5cK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1567.6923076923076" y="1917.2985781990521"/>
+        </scene>
     </scenes>
     <color key="tintColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
@@ -393,8 +606,10 @@
         <image name="folder.fill" catalog="system" width="128" height="97"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="music.mic.circle" catalog="system" width="128" height="121"/>
         <image name="music.note" catalog="system" width="97" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
