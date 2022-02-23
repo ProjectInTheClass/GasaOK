@@ -254,36 +254,10 @@
                                 <rect key="frame" x="20" y="223" width="350" height="561"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZwS-bY-Enb">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="692.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="36.333333333333336"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nO-iM-JmV">
-                                                <rect key="frame" x="5" y="5" width="335" height="682.66666666666663"/>
-                                                <string key="text">나의 두 눈에 제일 먼저 그대를 담고
-가장 예쁜 말들로 그댈 미소 짓게 하고
-바람이 차가운 오늘 밤 집에 돌아가는 길
-또 그대 생각이 나요
-늦은 이 밤 
-그대 괜찮다면 잠시 나와줄래요
-이 밤을 보내기엔 아쉽잖아요
-잠시라도 그댈 보고 싶은 내 맘을
-이 밤을 빌려 말해요
-유난히도 오늘 그대가 더 예뻐 보이고
-웃음 짓던 그대 표정 자꾸 아른거려서
-바람이 차가운 오늘 밤 집에 돌아가는 길
-또 그대 생각이 나요
-늦은 이 밤 그대 괜찮다면 
-잠시 나와줄래요
-이 밤을 보내기엔 아쉽잖아요
-잠시라도 그댈 보고 싶은 내 맘을
-이 밤을 빌려 말해요
-별거 아닌 말들이라도
-그대와 함께라면
-더 바랄 게 없어요
-늦은 이 밤 그대 괜찮다면 
-잠시 나와줄래요
-이 밤을 보내기엔 아쉽잖아요
-잠시라도 그댈 보고 싶은 내 맘을
-이 밤을 빌려 말해요</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로딩중...." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nO-iM-JmV">
+                                                <rect key="frame" x="5" y="4.9999999999999982" width="78.666666666666671" height="26.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -331,14 +305,14 @@
                     <navigationItem key="navigationItem" title="가사 정보" id="jUu-D2-pL3"/>
                     <connections>
                         <outlet property="karaokaNumberLabel" destination="hhf-6H-OGG" id="5W9-i4-CkT"/>
-                        <outlet property="lyricsLabel" destination="2nO-iM-JmV" id="IUd-pb-Kof"/>
+                        <outlet property="lyricsLabel" destination="2nO-iM-JmV" id="5Zx-AF-klm"/>
                         <outlet property="singerNameLabel" destination="L8W-L5-WaG" id="LJG-xs-u4Q"/>
                         <outlet property="songNameLabel" destination="t6T-an-dRq" id="Eew-3G-woW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ynh-Ta-1ZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3456" y="-248"/>
+            <point key="canvasLocation" x="3457" y="-248"/>
         </scene>
         <!--Song Info Detail VC-->
         <scene sceneID="GkW-xO-BQG">
