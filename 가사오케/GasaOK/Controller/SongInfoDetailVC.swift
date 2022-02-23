@@ -21,7 +21,7 @@ class SongInfoDetailVC: UIViewController {
         // nav bar 가사 화면 네이비게이션 뒤로가기버튼 설정
         self.navigationController?.navigationBar.topItem?.title = ""
         // 가사 상세 보기화면에서 탭 숨기기
-        self.tabBarController?.tabBar.isHidden = true
+        //  self.tabBarController?.tabBar.isHidden = true
         // Do any additional setup after loading the view.
         songNameLabel.text = songDetailData.songName
         singerNameLabel.text = songDetailData.singerName
