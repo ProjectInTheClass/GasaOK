@@ -19,6 +19,7 @@ class SongInfoDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         songInfodidshow()
     }
     

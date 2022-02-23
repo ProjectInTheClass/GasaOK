@@ -97,4 +97,24 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableViewDataSource() {
         mySongTableView.dataSource = self
     }
+    
+    
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         
+         if segue.identifier == "MySongDetailIdentifier" {
+             let MySongDetailTableViewIndexPath = mySongTableView.indexPath(for: sender as! MySongTableViewCell)!
+             
+             let VCDestination = segue.destination as! MySongInfoDetailVC
+             
+             VCDestination.MySongDetailData =
+             mySongDummyFolder1[MySongDetailTableViewIndexPath.row]
+     }
+         else{
+             
+         }
+
+ }
+
+    
+    
 }
