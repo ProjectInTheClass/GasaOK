@@ -19,6 +19,10 @@
 		686D808527BCEE7A005975F7 /* AddFolderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D808427BCEE7A005975F7 /* AddFolderVC.swift */; };
 		686D808727BCEE8C005975F7 /* SongInfoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D808627BCEE8C005975F7 /* SongInfoDetailVC.swift */; };
 		686D808927BCEEA0005975F7 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D808827BCEEA0005975F7 /* SettingsVC.swift */; };
+		687FEF7C27C600B80085FEAB /* LyricsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687FEF7B27C600B80085FEAB /* LyricsService.swift */; };
+		68970D8C27C6273C0044477E /* LyricsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68970D8B27C6273C0044477E /* LyricsModel.swift */; };
+		68970D8E27C628ED0044477E /* GeniusAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68970D8D27C628ED0044477E /* GeniusAuthorization.swift */; };
+		68970D9127C653A80044477E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 68970D9027C653A80044477E /* SwiftSoup */; };
 		689B67C327BDF6F50062D0F8 /* StatisticVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689B67C227BDF6F50062D0F8 /* StatisticVC.swift */; };
 		689B67C627BE4C3D0062D0F8 /* searchResultDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689B67C527BE4C3D0062D0F8 /* searchResultDummy.swift */; };
 		68CCCF4A27B79FD1005E073E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCCF4927B79FD1005E073E /* AppDelegate.swift */; };
@@ -64,6 +68,9 @@
 		686D808427BCEE7A005975F7 /* AddFolderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderVC.swift; sourceTree = "<group>"; };
 		686D808627BCEE8C005975F7 /* SongInfoDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfoDetailVC.swift; sourceTree = "<group>"; };
 		686D808827BCEEA0005975F7 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		687FEF7B27C600B80085FEAB /* LyricsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsService.swift; sourceTree = "<group>"; };
+		68970D8B27C6273C0044477E /* LyricsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsModel.swift; sourceTree = "<group>"; };
+		68970D8D27C628ED0044477E /* GeniusAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeniusAuthorization.swift; sourceTree = "<group>"; };
 		689B67C227BDF6F50062D0F8 /* StatisticVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticVC.swift; sourceTree = "<group>"; };
 		689B67C527BE4C3D0062D0F8 /* searchResultDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchResultDummy.swift; sourceTree = "<group>"; };
 		68CCCF4627B79FD1005E073E /* GasaOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasaOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68970D9127C653A80044477E /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,12 +122,20 @@
 				6802ABC127BBC2A600BC6243 /* hotSongDummy.swift */,
 				6802ABC327BBC2C200BC6243 /* SongInfo.swift */,
 				689B67C527BE4C3D0062D0F8 /* searchResultDummy.swift */,
-
 				68297D8427C288CE0073F5F6 /* folderDummy.swift */,
-
 				6F4BC00127C1598B0076E04C /* mySongDummy.swift */,
+				68970D8B27C6273C0044477E /* LyricsModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		68970D8927C626FF0044477E /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				687FEF7B27C600B80085FEAB /* LyricsService.swift */,
+				68970D8D27C628ED0044477E /* GeniusAuthorization.swift */,
+			);
+			path = APIService;
 			sourceTree = "<group>";
 		};
 		689B67C427BDFC740062D0F8 /* Controller */ = {
@@ -133,13 +149,10 @@
 				686D808827BCEEA0005975F7 /* SettingsVC.swift */,
 				6802ABBE27BB85BD00BC6243 /* SearchVC.swift */,
 				6802ABC527BBCEE500BC6243 /* SearchTableViewCell.swift */,
-
 				68297D7E27C269920073F5F6 /* DarkModeTableViewCell.swift */,
 				68297D8027C26A170073F5F6 /* FolderPositionChangeTableViewCell.swift */,
 				68297D8227C26A7D0073F5F6 /* FolderAddTableViewCell.swift */,
-
 				6F4BC00327C164D10076E04C /* MySongTableViewCell.swift */,
-
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -167,6 +180,7 @@
 		68CCCF4827B79FD1005E073E /* GasaOK */ = {
 			isa = PBXGroup;
 			children = (
+				68970D8927C626FF0044477E /* APIService */,
 				689B67C427BDFC740062D0F8 /* Controller */,
 				6802ABC027BBC28400BC6243 /* Model */,
 				68CCCF4927B79FD1005E073E /* AppDelegate.swift */,
@@ -212,6 +226,9 @@
 			dependencies = (
 			);
 			name = GasaOK;
+			packageProductDependencies = (
+				68970D9027C653A80044477E /* SwiftSoup */,
+			);
 			productName = GasaOK;
 			productReference = 68CCCF4627B79FD1005E073E /* GasaOK.app */;
 			productType = "com.apple.product-type.application";
@@ -284,6 +301,9 @@
 				Base,
 			);
 			mainGroup = 68CCCF3D27B79FD1005E073E;
+			packageReferences = (
+				68970D8F27C653A80044477E /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = 68CCCF4727B79FD1005E073E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -332,7 +352,10 @@
 				686D808727BCEE8C005975F7 /* SongInfoDetailVC.swift in Sources */,
 				6802ABC427BBC2C200BC6243 /* SongInfo.swift in Sources */,
 				686D808527BCEE7A005975F7 /* AddFolderVC.swift in Sources */,
+				687FEF7C27C600B80085FEAB /* LyricsService.swift in Sources */,
+				68970D8E27C628ED0044477E /* GeniusAuthorization.swift in Sources */,
 				6802ABC227BBC2A600BC6243 /* hotSongDummy.swift in Sources */,
+				68970D8C27C6273C0044477E /* LyricsModel.swift in Sources */,
 				6802ABBF27BB85BD00BC6243 /* SearchVC.swift in Sources */,
 				68CCCF4E27B79FD1005E073E /* ViewController.swift in Sources */,
 				68CCCF4A27B79FD1005E073E /* AppDelegate.swift in Sources */,
@@ -524,7 +547,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8B3LP78353;
+				DEVELOPMENT_TEAM = 9T9YFXL798;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GasaOK/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -552,7 +575,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8B3LP78353;
+				DEVELOPMENT_TEAM = 9T9YFXL798;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GasaOK/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -689,6 +712,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		68970D8F27C653A80044477E /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		68970D9027C653A80044477E /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 68970D8F27C653A80044477E /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 68CCCF3E27B79FD1005E073E /* Project object */;
 }
