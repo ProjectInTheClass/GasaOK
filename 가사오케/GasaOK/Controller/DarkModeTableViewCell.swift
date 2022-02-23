@@ -1,18 +1,17 @@
 //
-//  SearchTableViewCell.swift
+//  DarkModeTableViewCell.swift
 //  GasaOK
 //
-//  Created by Da Hae Lee on 2022/02/15.
+//  Created by Da Hae Lee on 2022/02/20.
 //
 
 import UIKit
 
-class SearchTableViewCell: UITableViewCell {
+class DarkModeTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var darkModeSwitch: UISwitch!
+    @IBOutlet weak var darkModeCellLabel: UILabel!
     
-    @IBOutlet weak var songNameLabel: UILabel!
-    @IBOutlet weak var singerNameLabel: UILabel!
-    @IBOutlet weak var karaokeNumber: UILabel!
-        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +22,5 @@ class SearchTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 
 }

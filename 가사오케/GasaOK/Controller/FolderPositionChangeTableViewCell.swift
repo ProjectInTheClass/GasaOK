@@ -1,18 +1,16 @@
 //
-//  SearchTableViewCell.swift
+//  FolderPositionChangeTableViewCell.swift
 //  GasaOK
 //
-//  Created by Da Hae Lee on 2022/02/15.
+//  Created by Da Hae Lee on 2022/02/20.
 //
 
 import UIKit
 
-class SearchTableViewCell: UITableViewCell {
+class FolderPositionChangeTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var folderNameLabel: UILabel!
     
-    @IBOutlet weak var songNameLabel: UILabel!
-    @IBOutlet weak var singerNameLabel: UILabel!
-    @IBOutlet weak var karaokeNumber: UILabel!
-        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +21,5 @@ class SearchTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 
 }
