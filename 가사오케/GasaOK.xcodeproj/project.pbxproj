@@ -114,9 +114,7 @@
 				6802ABC127BBC2A600BC6243 /* hotSongDummy.swift */,
 				6802ABC327BBC2C200BC6243 /* SongInfo.swift */,
 				689B67C527BE4C3D0062D0F8 /* searchResultDummy.swift */,
-
 				68297D8427C288CE0073F5F6 /* folderDummy.swift */,
-
 				6F4BC00127C1598B0076E04C /* mySongDummy.swift */,
 			);
 			path = Model;
@@ -133,13 +131,10 @@
 				686D808827BCEEA0005975F7 /* SettingsVC.swift */,
 				6802ABBE27BB85BD00BC6243 /* SearchVC.swift */,
 				6802ABC527BBCEE500BC6243 /* SearchTableViewCell.swift */,
-
 				68297D7E27C269920073F5F6 /* DarkModeTableViewCell.swift */,
 				68297D8027C26A170073F5F6 /* FolderPositionChangeTableViewCell.swift */,
 				68297D8227C26A7D0073F5F6 /* FolderAddTableViewCell.swift */,
-
 				6F4BC00327C164D10076E04C /* MySongTableViewCell.swift */,
-
 			);
 			path = Controller;
 			sourceTree = "<group>";
