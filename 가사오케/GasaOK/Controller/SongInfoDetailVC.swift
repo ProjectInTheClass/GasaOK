@@ -6,38 +6,60 @@
 //
 
 import UIKit
+import SwiftSoup
 
 class SongInfoDetailVC: UIViewController {
     
-    var songDetailData : SongInfo!
-    
+    var songInfoData: SongInfo!
+    var lyricsDataModel: LyricsModel?
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var singerNameLabel: UILabel!
     @IBOutlet weak var karaokaNumberLabel: UILabel!
+    @IBOutlet weak var lyricsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // nav bar 가사 화면 네이비게이션 뒤로가기버튼 설정
-        self.navigationController?.navigationBar.topItem?.title = ""
-        // 가사 상세 보기화면에서 탭 숨기기
-        //  self.tabBarController?.tabBar.isHidden = true
-        // Do any additional setup after loading the view.
+
+        songInfodidshow()
+    }
+    
+    func songInfodidshow() {
         songNameLabel.text = songDetailData.songName
         singerNameLabel.text = songDetailData.singerName
         karaokaNumberLabel.text = songDetailData.karaokeNumber
-        
+    }
+
+    func getLyricsData(title: String, singer: String) {
+        var lyricsPath: String = ""
+        LyricsService.shared.fetchLyricsData(songTitle: title, songSinger: singer) { (response) in
+            switch response {
+            case .success(let lyricsData):
+                if let decodedData = lyricsData as? LyricsModel {
+                    lyricsPath = String((decodedData.response?.hits[0].result.path)!)
+                    print(lyricsPath)
+                    let lyrics = self.lyricsScrap(path: lyricsPath)
+                    DispatchQueue.main.async {
+                        self.lyricsLabel.text = lyrics
+                    }
+                    return 
+                }
+            case .failure(let lyricsData):
+                print("fail", lyricsData)
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func lyricsScrap(path: String) -> String {
+        var lyrics: String = ""
+        do {
+            let url = URL(string: "https://genius.com" + path)!
+            let html = try String(contentsOf: url, encoding: .utf8)
+            let doc: Document = try SwiftSoup.parse(html)
+            lyrics = try doc.select("div.Lyrics__Container-sc-1ynbvzw-6").text()
+            print(lyrics)
+        } catch {
+            print("error!")
+        }
+        return lyrics
     }
-    */
-
 }
