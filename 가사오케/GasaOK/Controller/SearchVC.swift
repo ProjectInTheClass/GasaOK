@@ -27,6 +27,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         hotSongScopeBarSetUp()
 
         searchControllerDelegate()
+        barButtonItemTextRemove()
     }
     
     // MARK: - set up
@@ -210,4 +211,9 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         }
     }
     
+    func barButtonItemTextRemove() {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+
 }
