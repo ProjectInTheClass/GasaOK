@@ -17,24 +17,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sn0-VT-suQ">
-                                <rect key="frame" x="0.0" y="88" width="428" height="755"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MySongTableViewCell" id="evJ-ch-xR7" customClass="MySongTableViewCell" customModule="GasaOK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="65"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="evJ-ch-xR7" id="8xp-Fb-gic">
-                                            <rect key="frame" x="0.0" y="0.0" width="428" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SingerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czt-xo-xnp">
-                                                    <rect key="frame" x="57" y="36" width="267" height="18"/>
+                                                    <rect key="frame" x="57" y="36" width="229" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" systemColor="systemGray2Color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzv-UZ-cL1">
-                                                    <rect key="frame" x="57" y="11" width="267" height="21"/>
+                                                    <rect key="frame" x="57" y="11" width="229" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                                                     <buttonConfiguration key="configuration" style="plain" image="music.mic.circle" catalog="system"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fJ-JI-G4d">
-                                                    <rect key="frame" x="332" y="22" width="76" height="21"/>
+                                                    <rect key="frame" x="294" y="22" width="76" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="76" id="fON-rU-3uz"/>
                                                     </constraints>
@@ -76,7 +76,7 @@
                                             <outlet property="karaokeNumber" destination="7fJ-JI-G4d" id="fmF-eu-fN5"/>
                                             <outlet property="singerNameLabel" destination="Czt-xo-xnp" id="01v-of-GtO"/>
                                             <outlet property="songNameLabel" destination="nzv-UZ-cL1" id="fwB-rh-TVq"/>
-                                            <segue destination="M0s-Zk-ht0" kind="show" identifier="MySongDetailIdentifier" id="CKT-6a-umw"/>
+                                            <segue destination="0Ij-zj-KDV" kind="show" identifier="songDetailIdentifier2" id="AGl-yz-3Ba"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -105,39 +105,39 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="M0s-Zk-ht0" customClass="MySongInfoDetailVC" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XfK-Jf-5CU">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BF-Ui-VMT">
-                                <rect key="frame" x="29.999999999999993" y="113" width="113.33333333333331" height="27"/>
+                                <rect key="frame" x="29.999999999999993" y="69" width="113.33333333333331" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="singername" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="va3-d1-FaI">
-                                <rect key="frame" x="30" y="150" width="90" height="21"/>
+                                <rect key="frame" x="30" y="106" width="90" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBD-z5-hLh">
-                                <rect key="frame" x="333" y="181" width="65" height="21"/>
+                                <rect key="frame" x="295" y="137" width="65" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.note" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PeF-Ju-auE">
-                                <rect key="frame" x="316.66666666666669" y="182" width="14.333333333333314" height="18.999999999999986"/>
+                                <rect key="frame" x="278.66666666666669" y="138" width="14.333333333333314" height="18.999999999999986"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2X-TV-USD">
-                                <rect key="frame" x="20" y="222" width="388" height="644"/>
+                                <rect key="frame" x="20" y="178" width="350" height="606"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjN-y0-In5">
-                                        <rect key="frame" x="0.0" y="0.0" width="388" height="692.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="692.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71g-Jq-OaO">
                                                 <rect key="frame" x="5" y="5" width="335" height="682.66666666666663"/>
-                                                <mutableString key="text">나의 두 눈에 제일 먼저 그대를 담고
+                                                <string key="text">나의 두 눈에 제일 먼저 그대를 담고
 가장 예쁜 말들로 그댈 미소 짓게 하고
 바람이 차가운 오늘 밤 집에 돌아가는 길
 또 그대 생각이 나요
@@ -162,7 +162,7 @@
 잠시 나와줄래요
 이 밤을 보내기엔 아쉽잖아요
 잠시라도 그댈 보고 싶은 내 맘을
-이 밤을 빌려 말해요</mutableString>
+이 밤을 빌려 말해요</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -216,23 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9f3-gy-1kI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3218.6915887850464" y="460.69114470842334"/>
-        </scene>
-        <!--Statistics View Controller-->
-        <scene sceneID="hPd-ZE-eT2">
-            <objects>
-                <viewController title="Statistics View Controller" id="HnJ-Yw-nR1" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IyQ-0b-C4A">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="L38-Rg-hW3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="My통계" image="chart.pie.fill" catalog="system" id="jY6-Mh-FMM"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EWY-oa-ox9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1568" y="1189"/>
+            <point key="canvasLocation" x="3457" y="468"/>
         </scene>
         <!--Change Folder Floating VC-->
         <scene sceneID="o8Y-JF-o1q">
@@ -357,9 +341,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="singername" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8W-L5-WaG">
                                 <rect key="frame" x="29.999999999999993" y="149.33333333333334" width="94.333333333333314" height="21.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-
                                 <color key="textColor" systemColor="systemGray2Color"/>
-
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhf-6H-OGG">
@@ -369,9 +351,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.note" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IJ9-VP-yD3">
-
-                                <rect key="frame" x="316.66666666666669" y="182" width="14.333333333333314" height="18.999999999999986"/>
-
+                                <rect key="frame" x="278.66666666666669" y="182" width="14.333333333333314" height="18.999999999999986"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03S-ho-cjS">
                                 <rect key="frame" x="20" y="223" width="350" height="561"/>
@@ -379,10 +359,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZwS-bY-Enb">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="36.333333333333336"/>
                                         <subviews>
-
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로딩중...." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nO-iM-JmV">
                                                 <rect key="frame" x="5" y="4.9999999999999982" width="78.666666666666671" height="26.333333333333329"/>
-
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -437,24 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ynh-Ta-1ZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-
             <point key="canvasLocation" x="3457" y="-248"/>
-
-        </scene>
-        <!--Song Info Detail VC-->
-        <scene sceneID="GkW-xO-BQG">
-            <objects>
-                <viewController title="Song Info Detail VC" id="hOl-jS-CoC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3Ar-jT-bHp">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="iqR-HG-2vn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ojO-pP-8B0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6629.2307692307686" y="-248.10426540284359"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="YBC-73-Xm3">
@@ -554,7 +515,7 @@
             <objects>
                 <viewController title="Add Folder VC" id="aZq-Bh-IYF" customClass="AddFolderVC" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Igp-9V-4Li">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGa-9H-bS8">
@@ -606,21 +567,6 @@
             </objects>
             <point key="canvasLocation" x="3456.9230769230767" y="1916.5876777251183"/>
         </scene>
-        <!--Rename Folder VC-->
-        <scene sceneID="uUc-qg-eKu">
-            <objects>
-                <viewController title="Rename Folder VC" id="ST7-dS-6wK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HLd-8r-CJP">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="WOs-Bw-lGC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yxj-SG-P1D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4631" y="1917"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hJR-sl-E0A">
             <objects>
@@ -636,7 +582,6 @@
                     <connections>
                         <segue destination="sK0-uD-q66" kind="relationship" relationship="viewControllers" id="FEh-b9-D3M"/>
                         <segue destination="zeX-wc-Qob" kind="relationship" relationship="viewControllers" id="mz5-64-aUc"/>
-                        <segue destination="HnJ-Yw-nR1" kind="relationship" relationship="viewControllers" id="sdC-DR-4He"/>
                         <segue destination="VLe-90-l8b" kind="relationship" relationship="viewControllers" id="nHY-oc-Mfv"/>
                     </connections>
                 </tabBarController>
@@ -689,7 +634,7 @@
                     <tabBarItem key="tabBarItem" title="설정" image="gearshape.fill" catalog="system" id="gRv-jO-OKo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wT2-7V-hai">
-                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -702,9 +647,11 @@
             <point key="canvasLocation" x="1567.6923076923076" y="1917.2985781990521"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="AGl-yz-3Ba"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
-        <image name="chart.pie.fill" catalog="system" width="128" height="121"/>
         <image name="folder.fill" catalog="system" width="128" height="97"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>

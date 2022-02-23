@@ -24,9 +24,13 @@ class SongInfoDetailVC: UIViewController {
     }
     
     func songInfodidshow() {
-        songNameLabel.text = songDetailData.songName
-        singerNameLabel.text = songDetailData.singerName
-        karaokaNumberLabel.text = songDetailData.karaokeNumber
+        songNameLabel.text = songInfoData.songName
+        singerNameLabel.text = songInfoData.singerName
+        karaokaNumberLabel.text = songInfoData.karaokeNumber
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getLyricsData(title: songInfoData.songName, singer: songInfoData.singerName)
     }
 
     func getLyricsData(title: String, singer: String) {
@@ -36,7 +40,7 @@ class SongInfoDetailVC: UIViewController {
             case .success(let lyricsData):
                 if let decodedData = lyricsData as? LyricsModel {
                     lyricsPath = String((decodedData.response?.hits[0].result.path)!)
-                    print(lyricsPath)
+//                    print(lyricsPath)
                     let lyrics = self.lyricsScrap(path: lyricsPath)
                     DispatchQueue.main.async {
                         self.lyricsLabel.text = lyrics
@@ -56,7 +60,7 @@ class SongInfoDetailVC: UIViewController {
             let html = try String(contentsOf: url, encoding: .utf8)
             let doc: Document = try SwiftSoup.parse(html)
             lyrics = try doc.select("div.Lyrics__Container-sc-1ynbvzw-6").text()
-            print(lyrics)
+//            print(lyrics)
         } catch {
             print("error!")
         }

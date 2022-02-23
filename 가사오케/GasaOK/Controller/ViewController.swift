@@ -99,22 +99,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         
-         if segue.identifier == "MySongDetailIdentifier" {
-             let MySongDetailTableViewIndexPath = mySongTableView.indexPath(for: sender as! MySongTableViewCell)!
-             
-             let VCDestination = segue.destination as! MySongInfoDetailVC
-             
-             VCDestination.MySongDetailData =
-             mySongDummyFolder1[MySongDetailTableViewIndexPath.row]
-     }
-         else{
-             
-         }
-
- }
-
-    
+//     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//         if segue.identifier == "songDetailIdentifier" {
+//             let MySongDetailTableViewIndexPath = mySongTableView.indexPath(for: sender as! MySongTableViewCell)!
+//
+//             let VCDestination = segue.destination as! SongInfoDetailVC
+//             VCDestination.songInfoData =
+//             mySongDummyFolder1[MySongDetailTableViewIndexPath.row]
+//         }
+//     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "songDetailIdentifier2" {
+            let songDetailIndexPath = mySongTableView.indexPath(for: sender as! MySongTableViewCell)!
+            let VCDestination = segue.destination as! SongInfoDetailVC
+            VCDestination.songInfoData = mySongDummyFolder1[songDetailIndexPath.row]
+        }
+    }
     
 }
