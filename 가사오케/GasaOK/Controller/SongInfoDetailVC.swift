@@ -17,10 +17,21 @@ class SongInfoDetailVC: UIViewController {
     @IBOutlet weak var karaokaNumberLabel: UILabel!
     @IBOutlet weak var lyricsLabel: UILabel!
     
+    
+    let backbutton = UIBarButtonItem()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        backButtonTitleDelete()
         songInfodidshow()
+    }
+    
+    // 뒤로가기 버튼 타이틀 지우기 < 'Back' <- '' 부분
+    func backButtonTitleDelete() {
+        backbutton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backbutton
     }
     
     func songInfodidshow() {

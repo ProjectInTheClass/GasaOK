@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         setFolderChangeButton()
         tableViewDelegate()
         tableViewDataSource()
+        
     }
     // MARK: - 네비게이션 아이템 (보관함 변경 버튼) 생성
     /*iOS15부터 사용 가능한 configuration으로 하니 버튼 이미지나 타이틀 위치 조정이 쉬웠다*/
