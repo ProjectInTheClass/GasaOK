@@ -160,7 +160,11 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
             let songDetailIndexPath = searchTableView.indexPath(for: sender as! UITableViewCell)!
             let VCDestination = segue.destination as! SongInfoDetailVC
             /// 수정해야 함
-            VCDestination.songInfoData = filteredSong[songDetailIndexPath.row]
+            if searchController.searchBar.selectedScopeButtonIndex == 0 {
+                VCDestination.songInfoData = filteredSongOfTJ[songDetailIndexPath.row]
+            } else {
+                VCDestination.songInfoData = filteredSongOfKY[songDetailIndexPath.row]
+            }
         }
     }
     

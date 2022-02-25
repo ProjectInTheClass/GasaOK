@@ -25,7 +25,7 @@ class SongInfoDetailVC: UIViewController {
     
     func songInfodidshow() {
         songNameLabel.text = songInfoData.title
-        singerNameLabel.text = songInfoData.title
+        singerNameLabel.text = songInfoData.singer
         karaokaNumberLabel.text = songInfoData.no
     }
     
