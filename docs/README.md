@@ -3,3 +3,4 @@
 
 ## Landing Page
 * 가사오케에 대한 설명 페이지
+[https://projectintheclass.github.io/GasaOK/]
