@@ -11,19 +11,10 @@ class KaraokeService {
     static let shared = KaraokeService()
     let url = "https://api.manana.kr/karaoke/"
 
-    func fetchSongData(songTitle: String, songSinger: String, brand: String, completion: @escaping (Result<Any, Error>) -> ()) {
-//        let title = songTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-//        let singer = songSinger.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-//        var urlSongString: String
-//        if brand == Brand.tj.rawValue {
-//            urlSongString = url + "song/" + title + "/" + "tj" + ".json"
-//            urlSingerString = url + "singer/" + singer +
-//        } else {
-//            urlSongString = url + "song/" + title + "/" + Brand.ky.rawValue + ".json"
-//        }
+    func fetchSongData(songTitle: String, songSinger: String, completion: @escaping (Result<Any, Error>) -> ()) {
         let title = songTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 //        let singer = songSinger.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let urlSongString = url + "song/" + title + "/tj.json"
+        let urlSongString = url + "song/" + title + ".json"
         print(urlSongString)
         if let url = URL(string: urlSongString) {
             let sesseion = URLSession(configuration: .default)
@@ -35,7 +26,6 @@ class KaraokeService {
                 }
                 if let safeData = data {
                     do {
-//                        print("inclosure")
                         let decodedData = try? JSONDecoder().decode(SongInfo2.self, from: safeData)
                         completion(.success(decodedData as Any))
                     }

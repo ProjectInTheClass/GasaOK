@@ -112,7 +112,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "songDetailIdentifier2" {
             let songDetailIndexPath = mySongTableView.indexPath(for: sender as! MySongTableViewCell)!
             let VCDestination = segue.destination as! SongInfoDetailVC
-            VCDestination.songInfoData = mySongDummyFolder1[songDetailIndexPath.row]
+//            VCDestination.songInfoData = mySongDummyFolder1[songDetailIndexPath.row]
         }
     }
     

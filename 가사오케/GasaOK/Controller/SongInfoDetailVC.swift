@@ -10,7 +10,7 @@ import SwiftSoup
 
 class SongInfoDetailVC: UIViewController {
     
-    var songInfoData: SongInfo!
+    var songInfoData: SongInfoElement!
     var lyricsDataModel: LyricsModel?
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var singerNameLabel: UILabel!
@@ -24,13 +24,13 @@ class SongInfoDetailVC: UIViewController {
     }
     
     func songInfodidshow() {
-        songNameLabel.text = songInfoData.songName
-        singerNameLabel.text = songInfoData.singerName
-        karaokaNumberLabel.text = songInfoData.karaokeNumber
+        songNameLabel.text = songInfoData.title
+        singerNameLabel.text = songInfoData.title
+        karaokaNumberLabel.text = songInfoData.no
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getLyricsData(title: songInfoData.songName, singer: songInfoData.singerName)
+        getLyricsData(title: songInfoData.title, singer: songInfoData.singer)
     }
 
     func getLyricsData(title: String, singer: String) {
