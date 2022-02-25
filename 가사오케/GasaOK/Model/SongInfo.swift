@@ -22,9 +22,8 @@ enum KaraokeType: String {
 
 
 struct SongInfoElement: Codable {
-    let brand: Brand
-    let no, title, singer, composer: String
-    let lyricist, release: String
+    let brand: Brand?
+    let no, title, singer: String
 }
 
 enum Brand: String, Codable {
