@@ -23,8 +23,11 @@ class SongInfoDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lyricssetting()
         songInfodidshow()
+        
+        navigationItem.largeTitleDisplayMode = .never
+
     }
     
     func songInfodidshow() {
@@ -36,7 +39,14 @@ class SongInfoDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         getLyricsData(title: songInfoData.title, singer: songInfoData.singer)
     }
-
+    func lyricssetting(){
+        
+        let attrString = NSMutableAttributedString(string: lyricsLabel.text!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        lyricsLabel.attributedText = attrString
+    }
     func getLyricsData(title: String, singer: String) {
         var lyricsPath: String = ""
         LyricsService.shared.fetchLyricsData(songTitle: title, songSinger: singer) { (response) in
