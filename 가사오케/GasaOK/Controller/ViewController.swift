@@ -12,6 +12,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
 
     @IBOutlet weak var mySongTableView: UITableView!
     
+    let isDark = UserDefaults.standard.bool(forKey: "darkModeState")
+    
     lazy var list:[NSManagedObject] = {
         return self.fetch()
     }()
@@ -60,6 +62,22 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
         present(alert, animated: true, completion: nil)
 
     }
+    func barButtonItemTextRemove() {
+            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            self.navigationItem.backBarButtonItem = backBarButtonItem
+        }
+    
+    func darkModeCheck(){
+            if let window = UIApplication.shared.windows.first{
+                if #available(iOS 13.0, *){
+                    window.overrideUserInterfaceStyle = isDark == true ? .dark : .light
+                }
+                else{
+                    window.overrideUserInterfaceStyle = .light
+                }
+                
+            }
+        }
     
 }
 
