@@ -39,12 +39,23 @@ class SongInfoDetailVC: UIViewController {
             switch response {
             case .success(let lyricsData):
                 if let decodedData = lyricsData as? LyricsModel {
-                    lyricsPath = String((decodedData.response?.hits[0].result.path)!)
-//                    print(lyricsPath)
-                    let lyrics = self.lyricsScrap(path: lyricsPath)
-                    DispatchQueue.main.sync {
-                        self.lyricsLabel.text = lyrics
+//                    print(decodedData)
+                    if let bool = decodedData.response?.hits.isEmpty {
+                        if bool {
+                            DispatchQueue.main.sync {
+                                self.lyricsLabel.text = "노래 가사가 없습니다..."
+                            }
+                        } else {
+                            lyricsPath = String((decodedData.response?.hits[0].result.path)!)
+                            let lyrics = self.lyricsScrap(path: lyricsPath)
+                            DispatchQueue.main.sync {
+                                self.lyricsLabel.text = lyrics
+                            }
+                        }
+                        
                     }
+//                    print(lyricsPath)
+                    
                     return 
                 }
             case .failure(let lyricsData):
