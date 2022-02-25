@@ -96,9 +96,6 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         return UISwipeActionsConfiguration(actions: [delete, modify])
     }
     
-//    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-//        <#code#>
-//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -126,18 +123,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
         }
     }
+
+}
     
 
-    }
-    
-
-//extension SettingsVC: UIAdaptivePresentationControllerDelegate {
-//    func presentationController
-//}
-
-//extension SettingsVC: UIViewControllerTransitioningDelegate {
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        print("dismiss!!!")
-//        return nil
-//    }
-//}

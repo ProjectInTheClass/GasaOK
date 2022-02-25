@@ -32,7 +32,7 @@ class LyricsService {
                 if let safeData = data {
                     do {
                         let decodedData = try? JSONDecoder().decode(LyricsModel.self, from: safeData)
-                        print(decodedData as Any)
+//                        print(decodedData as Any)
                         completion(.success(decodedData as Any))
                     }
                 }

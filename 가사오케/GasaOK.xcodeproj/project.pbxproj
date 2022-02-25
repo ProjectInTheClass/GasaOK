@@ -15,6 +15,7 @@
 		68297D8127C26A170073F5F6 /* FolderPositionChangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68297D8027C26A170073F5F6 /* FolderPositionChangeTableViewCell.swift */; };
 		68297D8327C26A7D0073F5F6 /* FolderAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68297D8227C26A7D0073F5F6 /* FolderAddTableViewCell.swift */; };
 		68297D8527C288CE0073F5F6 /* folderDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68297D8427C288CE0073F5F6 /* folderDummy.swift */; };
+		682E4C5D27C75E2800BE3D2B /* KaraokeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682E4C5C27C75E2800BE3D2B /* KaraokeService.swift */; };
 		686D808327BCEE51005975F7 /* ChangeFolderFloatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D808227BCEE51005975F7 /* ChangeFolderFloatingVC.swift */; };
 		686D808527BCEE7A005975F7 /* AddFolderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D808427BCEE7A005975F7 /* AddFolderVC.swift */; };
 		686D808727BCEE8C005975F7 /* SongInfoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D808627BCEE8C005975F7 /* SongInfoDetailVC.swift */; };
@@ -63,6 +64,7 @@
 		68297D8027C26A170073F5F6 /* FolderPositionChangeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPositionChangeTableViewCell.swift; sourceTree = "<group>"; };
 		68297D8227C26A7D0073F5F6 /* FolderAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddTableViewCell.swift; sourceTree = "<group>"; };
 		68297D8427C288CE0073F5F6 /* folderDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = folderDummy.swift; sourceTree = "<group>"; };
+		682E4C5C27C75E2800BE3D2B /* KaraokeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeService.swift; sourceTree = "<group>"; };
 		686D808227BCEE51005975F7 /* ChangeFolderFloatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFolderFloatingVC.swift; sourceTree = "<group>"; };
 		686D808427BCEE7A005975F7 /* AddFolderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderVC.swift; sourceTree = "<group>"; };
 		686D808627BCEE8C005975F7 /* SongInfoDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfoDetailVC.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				687FEF7B27C600B80085FEAB /* LyricsService.swift */,
 				68FD442627C68A9A00B7CBC2 /* GeniusAuthorization.swift */,
+				682E4C5C27C75E2800BE3D2B /* KaraokeService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				68FD442727C68A9A00B7CBC2 /* GeniusAuthorization.swift in Sources */,
 				68CCCF4C27B79FD1005E073E /* SceneDelegate.swift in Sources */,
 				68297D8527C288CE0073F5F6 /* folderDummy.swift in Sources */,
+				682E4C5D27C75E2800BE3D2B /* KaraokeService.swift in Sources */,
 				68297D8127C26A170073F5F6 /* FolderPositionChangeTableViewCell.swift in Sources */,
 				686D808327BCEE51005975F7 /* ChangeFolderFloatingVC.swift in Sources */,
 				6F4BC00227C1598B0076E04C /* mySongDummy.swift in Sources */,
