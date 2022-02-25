@@ -13,18 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let isDark = UserDefaults.standard.bool(forKey: "darkModeState")
-        
-        if let window = UIApplication.shared.windows.first{
-            if #available(iOS 13.0, *){
-                window.overrideUserInterfaceStyle = isDark == true ? .dark : .light
-            }
-            else{
-                window.overrideUserInterfaceStyle = .light
-            }
-            
-        }
-        
+       
         return true
     }
 
