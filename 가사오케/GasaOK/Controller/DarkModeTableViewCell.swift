@@ -8,7 +8,7 @@
 import UIKit
 
 class DarkModeTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var darkModeCellLabel: UILabel!
     

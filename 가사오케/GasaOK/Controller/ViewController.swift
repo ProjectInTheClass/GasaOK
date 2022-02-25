@@ -10,13 +10,17 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var mySongTableView: UITableView!
+   
+    let isDark = UserDefaults.standard.bool(forKey: "darkModeState")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setFolderChangeButton()
         tableViewDelegate()
         tableViewDataSource()
-        
+        barButtonItemTextRemove()
+        darkModeCheck()
+     
     }
     // MARK: - 네비게이션 아이템 (보관함 변경 버튼) 생성
     /*iOS15부터 사용 가능한 configuration으로 하니 버튼 이미지나 타이틀 위치 조정이 쉬웠다*/
@@ -30,12 +34,15 @@ class ViewController: UIViewController {
         configuration.preferredSymbolConfigurationForImage = imageConfig
         configuration.imagePlacement = .trailing
         configuration.imagePadding = 9
+        
         let folderChangeButton = UIButton(configuration: configuration, primaryAction: nil)
         folderChangeButton.setAttributedTitle(attributedTitle, for: .normal)
-        folderChangeButton.tintColor = .black
+            folderChangeButton.tintColor = .black
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: folderChangeButton)
     }
+    
+    
     
     // MARK: - 보관함 내 노래 삭제 시 뜨는 알림창
     func songWillDelete(deleteIndex:IndexPath) {
@@ -116,5 +123,25 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             VCDestination.songInfoData = mySongDummyFolder1[songDetailIndexPath.row]
         }
     }
+    
+    func barButtonItemTextRemove() {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    func darkModeCheck(){
+        
+        if let window = UIApplication.shared.windows.first{
+            if #available(iOS 13.0, *){
+                window.overrideUserInterfaceStyle = isDark == true ? .dark : .light
+            }
+            else{
+                window.overrideUserInterfaceStyle = .light
+            }
+            
+        }
+    }
+    
+    
     
 }
