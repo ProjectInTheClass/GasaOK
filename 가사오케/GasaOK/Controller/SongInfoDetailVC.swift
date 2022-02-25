@@ -42,7 +42,7 @@ class SongInfoDetailVC: UIViewController {
                     lyricsPath = String((decodedData.response?.hits[0].result.path)!)
 //                    print(lyricsPath)
                     let lyrics = self.lyricsScrap(path: lyricsPath)
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.sync {
                         self.lyricsLabel.text = lyrics
                     }
                     return 
