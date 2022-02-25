@@ -20,26 +20,34 @@ class ViewController: UIViewController {
         tableViewDataSource()
         barButtonItemTextRemove()
         darkModeCheck()
-     
+             
     }
     // MARK: - 네비게이션 아이템 (보관함 변경 버튼) 생성
     /*iOS15부터 사용 가능한 configuration으로 하니 버튼 이미지나 타이틀 위치 조정이 쉬웠다*/
     func setFolderChangeButton() {
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 10)
-        let title = "💡 보관함1"
-        let attribute = [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 20)]
-        let attributedTitle = NSAttributedString(string: title, attributes: attribute)
-        var configuration = UIButton.Configuration.plain()
-        configuration.image = UIImage(systemName: "chevron.down")
-        configuration.preferredSymbolConfigurationForImage = imageConfig
-        configuration.imagePlacement = .trailing
-        configuration.imagePadding = 9
+        navigationController?.navigationBar.prefersLargeTitles = true
+//        let imageConfig = UIImage.SymbolConfiguration(pointSize: 10)
+//        let title = "💡 보관함1"
+//        let attribute = [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 20)]
+//        let attributedTitle = NSAttributedString(string: title, attributes: attribute)
+//        var configuration = UIButton.Configuration.plain()
+        //configuration.image = UIImage(systemName: "chevron.down")
+        //configuration.preferredSymbolConfigurationForImage = imageConfig
+        //configuration.imagePlacement = .trailing
+        //configuration.imagePadding = 9
         
-        let folderChangeButton = UIButton(configuration: configuration, primaryAction: nil)
-        folderChangeButton.setAttributedTitle(attributedTitle, for: .normal)
-            folderChangeButton.tintColor = .black
+//        let folderChangeButton = UIButton(configuration: configuration, primaryAction: nil)
+//        folderChangeButton.setAttributedTitle(attributedTitle, for: .normal)
+//
+//        if isDark == true{
+//            folderChangeButton.tintColor = .white
+//            print("gadfasdfafasdfasdfhahadfasdfasdfgaga")
+//        }else {
+//            folderChangeButton.tintColor = .black
+//    }
+//
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: folderChangeButton)
+      //  self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: folderChangeButton)
     }
     
     
