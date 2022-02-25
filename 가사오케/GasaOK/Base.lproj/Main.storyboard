@@ -124,18 +124,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FBP-uR-mwq">
-                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <rect key="frame" x="0.0" y="88" width="428" height="755"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="65" reuseIdentifier="searchCell" rowHeight="65" id="Hu5-Y4-zDs" customClass="SearchTableViewCell" customModule="GasaOK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="65"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hu5-Y4-zDs" id="ZAf-1f-grD">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="428" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SingerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-F8-VL9">
-                                                    <rect key="frame" x="20" y="33" width="245" height="21"/>
+                                                    <rect key="frame" x="20" y="33" width="283" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="245" id="Nqe-VJ-C45"/>
                                                     </constraints>
@@ -144,7 +144,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qD6-WC-7E4">
-                                                    <rect key="frame" x="363" y="16" width="16" height="31"/>
+                                                    <rect key="frame" x="401" y="16" width="16" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="16" id="bJu-An-7Az"/>
                                                     </constraints>
@@ -152,15 +152,18 @@
                                                     <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
                                                         <color key="baseForegroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="songAddButtonDidTap:" destination="HiZ-Tf-KUE" eventType="touchUpInside" id="bsU-nd-bar"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOq-s7-F6e">
-                                                    <rect key="frame" x="20" y="11" width="245" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="283" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEk-lk-WA4">
-                                                    <rect key="frame" x="273" y="21" width="75.666666666666686" height="21"/>
+                                                    <rect key="frame" x="311" y="21" width="75.666666666666686" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75.666666666666686" id="mD1-Xs-gns"/>
                                                     </constraints>
@@ -186,6 +189,7 @@
                                         <connections>
                                             <outlet property="karaokeNumber" destination="NEk-lk-WA4" id="sNh-6U-h0r"/>
                                             <outlet property="singerNameLabel" destination="Bhg-F8-VL9" id="2AO-hK-IeP"/>
+                                            <outlet property="songAddButton" destination="qD6-WC-7E4" id="w77-ve-N0I"/>
                                             <outlet property="songNameLabel" destination="iOq-s7-F6e" id="Ene-aE-iz5"/>
                                             <segue destination="0Ij-zj-KDV" kind="show" identifier="songDetailIdentifier" id="Y9N-LS-hyz"/>
                                         </connections>
@@ -319,7 +323,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uzm-73-GXf">
-                                <rect key="frame" x="301" y="132" width="51" height="31"/>
+                                <rect key="frame" x="339" y="132" width="51" height="31"/>
                                 <connections>
                                     <action selector="darkModeChangeSwitch:" destination="cEN-m0-sXn" eventType="valueChanged" id="KHM-1v-W5k"/>
                                 </connections>
@@ -348,7 +352,7 @@
             <objects>
                 <viewController title="Add Folder VC" id="aZq-Bh-IYF" customClass="AddFolderVC" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Igp-9V-4Li">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGa-9H-bS8">
@@ -482,7 +486,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Y9N-LS-hyz"/>
+        <segue reference="AGl-yz-3Ba"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
     <resources>

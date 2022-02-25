@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+    
+   
     
     @IBOutlet weak var searchTableView: UITableView!
     var searchController: UISearchController = UISearchController()
@@ -23,6 +26,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 //        hotSongScopeBarSetUp()
         searchControllerDelegate()
         barButtonItemTextRemove()
+//        fetchSong()
     }
     
     // MARK: - set up
@@ -64,17 +68,11 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
     }
     
     func songSeperatedByKaraokeType() {
-        //        filteredSongOfTJ = filteredSong.filter({ (song:SongInfo) -> Bool in
-        //            return song.karaokeType == KaraokeType.TJ
-        //        })
-        //        filteredSongOfKY = filteredSong.filter({ (song:SongInfo) -> Bool in
-        //            return song.karaokeType == KaraokeType.KY
-        //        })
         filteredSongOfTJ = filteredSong.filter({ (song:SongInfoElement) -> Bool in
-            return song.brand.rawValue == "tj"
+            return song.brand!.rawValue == "tj"
         })
         filteredSongOfKY = filteredSong.filter({ (song:SongInfoElement) -> Bool in
-            return song.brand.rawValue == "kumyoung"
+            return song.brand!.rawValue == "kumyoung"
         })
     }
     
@@ -194,5 +192,37 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         return song
     }
     
-    
+    // MARK: - 곡 추가 버튼 누름
+    @IBAction func songAddButtonDidTap(_ sender: UIButton) {
+        Swift.print("추가 버튼 누름!")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Song", in: context)
+        
+        if let entity = entity {
+            let mySongList = NSManagedObject(entity: entity, insertInto: context)
+            let contentView = sender.superview
+            let cell = contentView?.superview as! UITableViewCell
+            let index = searchTableView.indexPath(for: cell)
+            if searchController.searchBar.selectedScopeButtonIndex == 0 {
+                mySongList.setValue(filteredSongOfTJ[index!.row].title, forKey: "songTitle")
+                mySongList.setValue(filteredSongOfTJ[index!.row].singer, forKey: "singer")
+                mySongList.setValue(filteredSongOfTJ[index!.row].no, forKey: "number")
+            } else {
+                mySongList.setValue(filteredSongOfKY[index!.row].title, forKey: "songTitle")
+                mySongList.setValue(filteredSongOfKY[index!.row].singer, forKey: "singer")
+                mySongList.setValue(filteredSongOfKY[index!.row].no, forKey: "number")
+            }
+                
+            do {
+                try context.save()
+            } catch {
+                Swift.print(error.localizedDescription)
+            }
+        }
+        
+        
+    }
+
 }
