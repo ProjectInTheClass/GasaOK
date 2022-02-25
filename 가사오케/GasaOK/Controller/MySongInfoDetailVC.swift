@@ -18,8 +18,6 @@ class MySongInfoDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // nav bar 가사 화면 네이비게이션 뒤로가기버튼 설정
-        self.navigationController?.navigationBar.topItem?.title = ""
         // Do any additional setup after loading the view.
         
         SongNameLabel.text = MySongDetailData.songName

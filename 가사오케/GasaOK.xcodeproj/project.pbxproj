@@ -36,7 +36,6 @@
 		68FD442727C68A9A00B7CBC2 /* GeniusAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FD442627C68A9A00B7CBC2 /* GeniusAuthorization.swift */; };
 		6F4BC00227C1598B0076E04C /* mySongDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BC00127C1598B0076E04C /* mySongDummy.swift */; };
 		6F4BC00427C164D10076E04C /* MySongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BC00327C164D10076E04C /* MySongTableViewCell.swift */; };
-		C95B84D327C675DA00C35EE7 /* MySongInfoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B84D227C675DA00C35EE7 /* MySongInfoDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +88,6 @@
 		68FD442627C68A9A00B7CBC2 /* GeniusAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeniusAuthorization.swift; sourceTree = "<group>"; };
 		6F4BC00127C1598B0076E04C /* mySongDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mySongDummy.swift; sourceTree = "<group>"; };
 		6F4BC00327C164D10076E04C /* MySongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySongTableViewCell.swift; sourceTree = "<group>"; };
-		C95B84D227C675DA00C35EE7 /* MySongInfoDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySongInfoDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +153,6 @@
 				68297D8027C26A170073F5F6 /* FolderPositionChangeTableViewCell.swift */,
 				68297D8227C26A7D0073F5F6 /* FolderAddTableViewCell.swift */,
 				6F4BC00327C164D10076E04C /* MySongTableViewCell.swift */,
-				C95B84D227C675DA00C35EE7 /* MySongInfoDetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -354,7 +351,6 @@
 				686D808927BCEEA0005975F7 /* SettingsVC.swift in Sources */,
 				686D808727BCEE8C005975F7 /* SongInfoDetailVC.swift in Sources */,
 				6802ABC427BBC2C200BC6243 /* SongInfo.swift in Sources */,
-				C95B84D327C675DA00C35EE7 /* MySongInfoDetailVC.swift in Sources */,
 				686D808527BCEE7A005975F7 /* AddFolderVC.swift in Sources */,
 				687FEF7C27C600B80085FEAB /* LyricsService.swift in Sources */,
 				6802ABC227BBC2A600BC6243 /* hotSongDummy.swift in Sources */,

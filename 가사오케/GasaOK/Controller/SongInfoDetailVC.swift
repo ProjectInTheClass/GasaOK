@@ -17,9 +17,13 @@ class SongInfoDetailVC: UIViewController {
     @IBOutlet weak var karaokaNumberLabel: UILabel!
     @IBOutlet weak var lyricsLabel: UILabel!
     
+    
+    let backbutton = UIBarButtonItem()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         songInfodidshow()
     }
     
