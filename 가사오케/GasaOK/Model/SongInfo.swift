@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct SongInfo {
-    let songName: String
-    let singerName: String
-    let karaokeNumber: String
-    let lryics: String?
-    let karaokeType: KaraokeType?
-}
-
-enum KaraokeType: String {
-    case TJ = "TJ"
-    case KY = "KY"
-}
+//struct SongInfo {
+//    let songName: String
+//    let singerName: String
+//    let karaokeNumber: String
+//    let lryics: String?
+//    let karaokeType: KaraokeType?
+//}
+//
+//enum KaraokeType: String {
+//    case TJ = "TJ"
+//    case KY = "KY"
+//}
 
 
 struct SongInfoElement: Codable {

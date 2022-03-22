@@ -9,7 +9,7 @@ import UIKit
 
 class MySongInfoDetailVC: UIViewController {
 
-    var MySongDetailData : SongInfo!
+    var MySongDetailData : SongInfoElement!
     
     @IBOutlet weak var SongNameLabel: UILabel!
     @IBOutlet weak var singernameLabel: UILabel!
@@ -20,9 +20,9 @@ class MySongInfoDetailVC: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        SongNameLabel.text = MySongDetailData.songName
-        singernameLabel.text = MySongDetailData.singerName
-        karanumberLabel.text = MySongDetailData.karaokeNumber
+        SongNameLabel.text = MySongDetailData.title
+        singernameLabel.text = MySongDetailData.singer
+        karanumberLabel.text = MySongDetailData.no
     }
     
 }

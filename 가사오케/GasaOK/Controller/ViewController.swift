@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         list = self.fetch()
-        print("dma~")
+        print("보관함 화면으로 전환~")
         DispatchQueue.main.async {
             self.mySongTableView.reloadData()
         }
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     
 }
 
-// MARK: - 보관함별 노래 목록 tableView
+// MARK: - 보관함 노래 목록 tableView
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.list.count

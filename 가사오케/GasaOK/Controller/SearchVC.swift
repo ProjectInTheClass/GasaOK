@@ -49,23 +49,23 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
     }
     
     // MARK: - filtering
-    func songFilteredByTitle() -> [SongInfo] {
-        let filteredSongByTitle = searchResultDummy.filter({ (song:SongInfo) -> Bool in
-            let noBlankTitle = song.songName.lowercased().split(separator: " ")
-            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
-            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
-        })
-        return filteredSongByTitle
-    }
-    
-    func songFilteredBySinger() -> [SongInfo] {
-        let filteredSongBySinger = searchResultDummy.filter({ (song:SongInfo) -> Bool in
-            let noBlankTitle = song.singerName.lowercased().split(separator: " ")
-            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
-            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
-        })
-        return filteredSongBySinger
-    }
+//    func songFilteredByTitle() -> [SongInfoElement] {
+//        let filteredSongByTitle = searchResultDummy.filter({ (song:SongInfoElement) -> Bool in
+//            let noBlankTitle = song.songName.lowercased().split(separator: " ")
+//            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
+//            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
+//        })
+//        return filteredSongByTitle
+//    }
+//
+//    func songFilteredBySinger() -> [SongInfoElement] {
+//        let filteredSongBySinger = searchResultDummy.filter({ (song:SongInfoElement) -> Bool in
+//            let noBlankTitle = song.singerName.lowercased().split(separator: " ")
+//            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
+//            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
+//        })
+//        return filteredSongBySinger
+//    }
     
     func songSeperatedByKaraokeType() {
         filteredSongOfTJ = filteredSong.filter({ (song:SongInfoElement) -> Bool in
@@ -91,7 +91,6 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //        filteredSong = songFilteredByTitle() + songFilteredBySinger()
         if searchBar.selectedScopeButtonIndex == 0 {
             filteredSong = getSearchSongData(title: searchController.searchBar.text!.lowercased(), singer: "")
         } else {
@@ -217,12 +216,35 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
                 
             do {
                 try context.save()
+                try showAlert()
             } catch {
                 Swift.print(error.localizedDescription)
             }
         }
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: nil, message: "보관함에 추가되었습니다.", preferredStyle: .alert)
+        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alert.setMessage(color: UIColor(red: 255/255, green: 51/255, blue: 102/255, alpha: 1))
+        self.present(alert, animated: false)
+        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: {_ in alert.dismiss(animated: true, completion: nil)})
+    }
+}
+
+extension UIAlertController {
+
+    // Set message font and message color
+    func setMessage(color: UIColor?) {
+        guard let message = self.message else { return }
+        let attributeString = NSMutableAttributedString(string: message)
         
-        
+        if let messageColorColor = color {
+            attributeString.addAttributes([NSAttributedString.Key.foregroundColor: messageColorColor],
+                                          range: NSRange(location: 0, length: message.count))
+            
+        }
+        self.setValue(attributeString, forKey: "attributedMessage")
     }
 
 }
