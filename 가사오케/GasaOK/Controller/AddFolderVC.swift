@@ -26,17 +26,17 @@ class AddFolderVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func addFolder(_ sender: Any) {
-        /// if let 구문으로 바꾸자.
-        if folderNameText.isEditing == false {
-            print("메롱")
-        } else {
-            /// 실제로는 데이터베이스에 폴더를 추가하도록~
-            folderName.append(folderNameText.text ?? "0")
-            print(folderName)
-            exitButton(self)
-        }
-    }
+//    @IBAction func addFolder(_ sender: Any) {
+//        /// if let 구문으로 바꾸자.
+//        if folderNameText.isEditing == false {
+//            print("메롱")
+//        } else {
+//            /// 실제로는 데이터베이스에 폴더를 추가하도록~
+//            folderName.append(folderNameText.text ?? "0")
+//            print(folderName)
+//            exitButton(self)
+//        }
+//    }
     
     func addButtonSetUp() {
         addButton.layer.cornerRadius = 10.0
