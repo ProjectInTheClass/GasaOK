@@ -1,8 +1,8 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
+about: "버그가 생긴 부분에 대한 이슈를 작성해주세요❗️ BugFix\U0001F6E0"
+title: "[BugFix]"
+labels: "bug\U0001F41B"
 assignees: ''
 
 ---
