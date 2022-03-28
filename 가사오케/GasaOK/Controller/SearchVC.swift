@@ -10,10 +10,8 @@ import CoreData
 
 class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
-   
-    
     @IBOutlet weak var searchTableView: UITableView!
-    var searchController: UISearchController = UISearchController()
+    let searchController: UISearchController = UISearchController(searchResultsController: nil)
     var filteredSong: [SongInfoElement] = []
     var filteredSongOfTJ: [SongInfoElement] = []
     var filteredSongOfKY: [SongInfoElement] = []
@@ -23,50 +21,29 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         tableViewDelegate()
         tableViewDataSource()
         searchControllerSetUp()
-//        hotSongScopeBarSetUp()
         searchControllerDelegate()
         barButtonItemTextRemove()
-//        fetchSong()
     }
     
     // MARK: - set up
+    // search Controller 생성
     func searchControllerSetUp() {
-        searchController = UISearchController(searchResultsController: nil)
+//        searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "노래 제목을 입력해주세요"
         searchController.searchBar.searchBarStyle = .minimal
         navigationItem.searchController = searchController
         definesPresentationContext = false
+        searchResultScopeBarSetUp()
     }
     
-    func hotSongScopeBarSetUp() {
-        searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.scopeButtonTitles = ["TJ인기차트", "KY인기차트"]
-    }
+    //scope Bar 생성
     func searchResultScopeBarSetUp() {
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.scopeButtonTitles = ["TJ", "KY"]
     }
     
-    // MARK: - filtering
-//    func songFilteredByTitle() -> [SongInfoElement] {
-//        let filteredSongByTitle = searchResultDummy.filter({ (song:SongInfoElement) -> Bool in
-//            let noBlankTitle = song.songName.lowercased().split(separator: " ")
-//            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
-//            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
-//        })
-//        return filteredSongByTitle
-//    }
-//
-//    func songFilteredBySinger() -> [SongInfoElement] {
-//        let filteredSongBySinger = searchResultDummy.filter({ (song:SongInfoElement) -> Bool in
-//            let noBlankTitle = song.singerName.lowercased().split(separator: " ")
-//            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
-//            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
-//        })
-//        return filteredSongBySinger
-//    }
-    
+
     func songSeperatedByKaraokeType() {
         filteredSongOfTJ = filteredSong.filter({ (song:SongInfoElement) -> Bool in
             return song.brand!.rawValue == "tj"
@@ -78,11 +55,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
     
     // MARK: - searchController Delegate func
     func updateSearchResults(for searchController: UISearchController) {
-//        filteredSong = searchResultDummy.filter({ (song:SongInfo) -> Bool in
-//            return song.songName.lowercased().contains(searchController.searchBar.text!.lowercased())
-//        })
         print("update Search Result")
-//        searchTableView.reloadData()
     }
     
     // MARK: - searchBar Delegate func
@@ -98,13 +71,10 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         }
         print("search Bar Search Button Clicked")
         songSeperatedByKaraokeType()
-        searchResultScopeBarSetUp()
-//        searchTableView.reloadData()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("search Bar Cancel Button Clicked")
         filteredSong = []
-//        hotSongScopeBarSetUp()
         searchTableView.reloadData()
     }
     
@@ -142,13 +112,14 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
     func tableViewDelegate() {
         searchTableView.delegate = self
     }
-    func searchControllerDelegate() {
-        searchController.searchBar.delegate = self
-    }
     
     // MARK: - DataSource
     func tableViewDataSource() {
         searchTableView.dataSource = self
+    }
+    
+    func searchControllerDelegate() {
+        searchController.searchBar.delegate = self
     }
     
     // MARK: - prepare
