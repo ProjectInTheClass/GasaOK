@@ -33,3 +33,4 @@ enum Brand: String, Codable {
 
 typealias SongInfo2 = [SongInfoElement]
 
+var filteredSong1: SongInfo2 = []

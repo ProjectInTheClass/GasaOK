@@ -8,11 +8,10 @@
 import UIKit
 import CoreData
 
-class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
-    
-   
+class SearchVC: UIViewController {
     
     @IBOutlet weak var searchTableView: UITableView!
+    
     var searchController: UISearchController = UISearchController()
     var filteredSong: [SongInfoElement] = []
     var filteredSongOfTJ: [SongInfoElement] = []
@@ -22,14 +21,14 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         super.viewDidLoad()
         tableViewDelegate()
         tableViewDataSource()
+        
         searchControllerSetUp()
-//        hotSongScopeBarSetUp()
+        
         searchControllerDelegate()
         barButtonItemTextRemove()
-//        fetchSong()
     }
     
-    // MARK: - set up
+    // MARK: - search bar
     func searchControllerSetUp() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -39,35 +38,13 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         definesPresentationContext = false
     }
     
-    func hotSongScopeBarSetUp() {
-        searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.scopeButtonTitles = ["TJ인기차트", "KY인기차트"]
-    }
     func searchResultScopeBarSetUp() {
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.scopeButtonTitles = ["TJ", "KY"]
     }
     
-    // MARK: - filtering
-    func songFilteredByTitle() -> [SongInfo] {
-        let filteredSongByTitle = searchResultDummy.filter({ (song:SongInfo) -> Bool in
-            let noBlankTitle = song.songName.lowercased().split(separator: " ")
-            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
-            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
-        })
-        return filteredSongByTitle
-    }
-    
-    func songFilteredBySinger() -> [SongInfo] {
-        let filteredSongBySinger = searchResultDummy.filter({ (song:SongInfo) -> Bool in
-            let noBlankTitle = song.singerName.lowercased().split(separator: " ")
-            let noBlankInputText = searchController.searchBar.text!.lowercased().split(separator: " ")
-            return noBlankTitle.reduce("", +).contains(noBlankInputText.reduce("", +))
-        })
-        return filteredSongBySinger
-    }
-    
-    func songSeperatedByKaraokeType() {
+    // MARK: - song filter by brand
+    func songSeperatedByBrand() {
         filteredSongOfTJ = filteredSong.filter({ (song:SongInfoElement) -> Bool in
             return song.brand!.rawValue == "tj"
         })
@@ -76,121 +53,38 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
         })
     }
     
-    // MARK: - searchController Delegate func
-    func updateSearchResults(for searchController: UISearchController) {
-//        filteredSong = searchResultDummy.filter({ (song:SongInfo) -> Bool in
-//            return song.songName.lowercased().contains(searchController.searchBar.text!.lowercased())
-//        })
-        print("update Search Result")
-//        searchTableView.reloadData()
-    }
-    
-    // MARK: - searchBar Delegate func
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        searchTableView.reloadData()
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //        filteredSong = songFilteredByTitle() + songFilteredBySinger()
-        if searchBar.selectedScopeButtonIndex == 0 {
-            filteredSong = getSearchSongData(title: searchController.searchBar.text!.lowercased(), singer: "")
-        } else {
-            filteredSong = getSearchSongData(title: searchController.searchBar.text!.lowercased(), singer: "")
-        }
-        print("search Bar Search Button Clicked")
-        songSeperatedByKaraokeType()
-        searchResultScopeBarSetUp()
-//        searchTableView.reloadData()
-    }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("search Bar Cancel Button Clicked")
-        filteredSong = []
-//        hotSongScopeBarSetUp()
-        searchTableView.reloadData()
-    }
-    
-    // MARK: - tableView Delegate func
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if filteredSong.isEmpty == false {
-            if searchController.searchBar.selectedScopeButtonIndex == 0 {
-                return filteredSongOfTJ.count
-            } else {
-                return filteredSongOfKY.count
-            }
-        } else {
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:SearchTableViewCell = self.searchTableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
-        if filteredSong.isEmpty == false {
-            if searchController.searchBar.selectedScopeButtonIndex == 0 {
-                cell.songNameLabel.text = filteredSongOfTJ[indexPath.row].title
-                cell.singerNameLabel.text = filteredSongOfTJ[indexPath.row].singer
-                cell.karaokeNumber.text = filteredSongOfTJ[indexPath.row].no
-                return cell
-            } else {
-                cell.songNameLabel.text = filteredSongOfKY[indexPath.row].title
-                cell.singerNameLabel.text = filteredSongOfKY[indexPath.row].singer
-                cell.karaokeNumber.text = filteredSongOfKY[indexPath.row].no
-                return cell
-            }
-        } else { return cell }
-    }
-    
-    // MARK: - Delegate
-    func tableViewDelegate() {
-        searchTableView.delegate = self
-    }
-    func searchControllerDelegate() {
-        searchController.searchBar.delegate = self
-    }
-    
-    // MARK: - DataSource
-    func tableViewDataSource() {
-        searchTableView.dataSource = self
-    }
-    
-    // MARK: - prepare
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "songDetailIdentifier" {
-            let songDetailIndexPath = searchTableView.indexPath(for: sender as! UITableViewCell)!
-            let VCDestination = segue.destination as! SongInfoDetailVC
-            /// 수정해야 함
-            if searchController.searchBar.selectedScopeButtonIndex == 0 {
-                VCDestination.songInfoData = filteredSongOfTJ[songDetailIndexPath.row]
-            } else {
-                VCDestination.songInfoData = filteredSongOfKY[songDetailIndexPath.row]
-            }
-        }
-    }
-    
+    // MARK: - func
     func barButtonItemTextRemove() {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
+
     
-    func getSearchSongData(title: String, singer: String) -> [SongInfoElement] {
-        var song: [SongInfoElement] = []
-        KaraokeService.shared.fetchSongData(songTitle: title, songSinger: singer) { (response) in
-            switch response {
-            case .success(let lyricsData):
-                if let decodedData = lyricsData as? SongInfo2 {
-                    song = decodedData
-//                    print(decodedData)
-                    DispatchQueue.main.async {
-                        self.searchTableView.reloadData()
-                    }
-                    return
-                }
-            case .failure(let lyricsData):
-                print("fail", lyricsData)
-            }
-        }
-        Thread.sleep(forTimeInterval: 1.5)
-        return song
+    func fetchSongDataByTitle(songTitle: String) {
+        let url = "https://api.manana.kr/karaoke/"
+        let session = URLSession.shared
+        let title = songTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let urlSongString = url + "song/" + title + ".json"
+        
+        guard let requestURL = URL(string: urlSongString) else { return }
+        session.dataTask(with: requestURL) { (data, response, error) in
+             guard error == nil else { return }
+             if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                 do {
+                     let songResult = try JSONDecoder().decode(SongInfo2.self, from: data)
+                     self.filteredSong = songResult
+                     DispatchQueue.main.async {
+                         self.songSeperatedByBrand()
+                         self.searchTableView.reloadData()
+                     }
+                 } catch(let err) {
+                     print("Decoding Error")
+                     print(err.localizedDescription)
+                 }
+             }
+        }.resume()
     }
+    
     
     // MARK: - 곡 추가 버튼 누름
     @IBAction func songAddButtonDidTap(_ sender: UIButton) {
@@ -222,7 +116,81 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
             }
         }
         
-        
     }
+    
+    
+}
 
+// MARK: - UITableView extension
+extension SearchVC: UITableViewDelegate, UITableViewDataSource {
+    
+    // MARK:  tableView Delegate func
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.searchBar.selectedScopeButtonIndex == 0 {
+            return filteredSongOfTJ.count
+        } else {
+            return filteredSongOfKY.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:SearchTableViewCell = self.searchTableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
+        if searchController.searchBar.selectedScopeButtonIndex == 0 {
+            cell.setSongData(model: filteredSongOfTJ[indexPath.row])
+            return cell
+        } else {
+            cell.setSongData(model: filteredSongOfKY[indexPath.row])
+            return cell
+        }
+    
+    }
+    
+    // MARK:  DataSource, DataSource
+    func tableViewDataSource() {
+        searchTableView.dataSource = self
+    }
+    func tableViewDelegate() {
+        searchTableView.delegate = self
+    }
+    
+    // MARK:  prepare
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "songDetailIdentifier" {
+            let songDetailIndexPath = searchTableView.indexPath(for: sender as! UITableViewCell)!
+            let VCDestination = segue.destination as! SongInfoDetailVC
+            /// 수정해야 함
+            if searchController.searchBar.selectedScopeButtonIndex == 0 {
+                VCDestination.songInfoData = filteredSongOfTJ[songDetailIndexPath.row]
+            } else {
+                VCDestination.songInfoData = filteredSongOfKY[songDetailIndexPath.row]
+            }
+        }
+    }
+    
+}
+
+// MARK: - UISearchController, UISearchBar extension
+extension SearchVC: UISearchControllerDelegate, UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        searchTableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        fetchSongDataByTitle(songTitle: searchController.searchBar.text!.lowercased())
+//        fetchSongDataBySinger(songSinger: searchController.searchBar.text!.lowercased())
+        print("search Bar Search Button Clicked")
+        searchResultScopeBarSetUp()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("search Bar Cancel Button Clicked")
+        filteredSong = []
+        searchTableView.reloadData()
+    }
+    
+    
+    func searchControllerDelegate() {
+        searchController.searchBar.delegate = self
+    }
 }

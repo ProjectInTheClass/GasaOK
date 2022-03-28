@@ -133,6 +133,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		684A685B27EC80E500E96249 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		68970D8927C626FF0044477E /* APIService */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,8 +194,9 @@
 			isa = PBXGroup;
 			children = (
 				68970D8927C626FF0044477E /* APIService */,
-				689B67C427BDFC740062D0F8 /* Controller */,
 				6802ABC027BBC28400BC6243 /* Model */,
+				684A685B27EC80E500E96249 /* View */,
+				689B67C427BDFC740062D0F8 /* Controller */,
 				68CCCF4927B79FD1005E073E /* AppDelegate.swift */,
 				68CCCF4B27B79FD1005E073E /* SceneDelegate.swift */,
 				68CCCF4F27B79FD1005E073E /* Main.storyboard */,
@@ -572,7 +580,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -600,7 +608,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
