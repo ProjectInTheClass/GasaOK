@@ -28,17 +28,17 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //        folderSettingTableView.dragDelega석te = self
     }
     
-    func songWillDelete(deleteIndex: IndexPath) {
-        let alert = UIAlertController(title: nil, message: "보관함에서 이 노래를 삭제하시겠습니까?", preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: "노래 삭제", style: .destructive) { (_) in
-            folderName.remove(at: deleteIndex.row)
-            self.folderSettingTableView.deleteRows(at: [deleteIndex], with: .fade)
-        }
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
-        alert.addAction(deleteAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
-    }
+//    func songWillDelete(deleteIndex: IndexPath) {
+//        let alert = UIAlertController(title: nil, message: "보관함에서 이 노래를 삭제하시겠습니까?", preferredStyle: .actionSheet)
+//        let deleteAction = UIAlertAction(title: "노래 삭제", style: .destructive) { (_) in
+//            folderName.remove(at: deleteIndex.row)
+//            self.folderSettingTableView.deleteRows(at: [deleteIndex], with: .fade)
+//        }
+//        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+//        alert.addAction(deleteAction)
+//        alert.addAction(cancelAction)
+//        present(alert, animated: true, completion: nil)
+//    }
     
     // MARK: - tableView Delegate, DataSource func
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,21 +80,21 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modify = UIContextualAction(style: .normal, title: "수정", handler: {(action, view, completionHandler) in
-            print("folder name modify")
-            completionHandler(true)
-        })
-        modify.backgroundColor = .systemBlue
-        let delete = UIContextualAction(style: .normal, title: "삭제", handler: {(action, view, completionHandler) in
-            print("folder delete")
-            self.songWillDelete(deleteIndex: indexPath)
-            completionHandler(true)
-        })
-        delete.backgroundColor = .systemRed
-        
-        return UISwipeActionsConfiguration(actions: [delete, modify])
-    }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let modify = UIContextualAction(style: .normal, title: "수정", handler: {(action, view, completionHandler) in
+//            print("folder name modify")
+//            completionHandler(true)
+//        })
+//        modify.backgroundColor = .systemBlue
+//        let delete = UIContextualAction(style: .normal, title: "삭제", handler: {(action, view, completionHandler) in
+//            print("folder delete")
+//            self.songWillDelete(deleteIndex: indexPath)
+//            completionHandler(true)
+//        })
+//        delete.backgroundColor = .systemRed
+//        
+//        return UISwipeActionsConfiguration(actions: [delete, modify])
+//    }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {

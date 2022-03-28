@@ -23,21 +23,24 @@ class SearchVC: UIViewController {
         tableViewDataSource()
         
         searchControllerSetUp()
-        
+
         searchControllerDelegate()
         barButtonItemTextRemove()
     }
     
-    // MARK: - search bar
+
+    // MARK: - set up
+    // search Controller 생성
     func searchControllerSetUp() {
-        searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "노래 제목을 입력해주세요"
         searchController.searchBar.searchBarStyle = .minimal
         navigationItem.searchController = searchController
         definesPresentationContext = false
+        searchResultScopeBarSetUp()
     }
     
+    //scope Bar 생성
     func searchResultScopeBarSetUp() {
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.scopeButtonTitles = ["TJ", "KY"]
@@ -111,11 +114,35 @@ class SearchVC: UIViewController {
                 
             do {
                 try context.save()
+                try showAlert()
             } catch {
                 Swift.print(error.localizedDescription)
             }
         }
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: nil, message: "보관함에 추가되었습니다.", preferredStyle: .alert)
+        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
+        alert.setMessage(color: UIColor(red: 255/255, green: 51/255, blue: 102/255, alpha: 1))
+        self.present(alert, animated: false)
+        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: {_ in alert.dismiss(animated: true, completion: nil)})
+    }
+}
+
+extension UIAlertController {
+
+    // Set message font and message color
+    func setMessage(color: UIColor?) {
+        guard let message = self.message else { return }
+        let attributeString = NSMutableAttributedString(string: message)
         
+        if let messageColorColor = color {
+            attributeString.addAttributes([NSAttributedString.Key.foregroundColor: messageColorColor],
+                                          range: NSRange(location: 0, length: message.count))
+            
+        }
+        self.setValue(attributeString, forKey: "attributedMessage")
     }
     
     
