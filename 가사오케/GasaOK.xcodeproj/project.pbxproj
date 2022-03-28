@@ -37,7 +37,10 @@
 		6F4BC00227C1598B0076E04C /* mySongDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BC00127C1598B0076E04C /* mySongDummy.swift */; };
 		6F4BC00427C164D10076E04C /* MySongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BC00327C164D10076E04C /* MySongTableViewCell.swift */; };
 		6F9E4E4527C938B500A1BC20 /* SongModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F9E4E4327C938B500A1BC20 /* SongModel.xcdatamodeld */; };
+		C94E308927E4CE0D00E84D3C /* TJ.png in Resources */ = {isa = PBXBuildFile; fileRef = C94E308827E4CE0D00E84D3C /* TJ.png */; };
+		C94E308D27E4CE7300E84D3C /* KG.png in Resources */ = {isa = PBXBuildFile; fileRef = C94E308C27E4CE7300E84D3C /* KG.png */; };
 		C95B84D327C675DA00C35EE7 /* MySongInfoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B84D227C675DA00C35EE7 /* MySongInfoDetailVC.swift */; };
+		C9E1BCCF27F20B56006F4B0D /* load_page.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E1BCCE27F20B56006F4B0D /* load_page.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +94,10 @@
 		6F4BC00127C1598B0076E04C /* mySongDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mySongDummy.swift; sourceTree = "<group>"; };
 		6F4BC00327C164D10076E04C /* MySongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySongTableViewCell.swift; sourceTree = "<group>"; };
 		6F9E4E4427C938B500A1BC20 /* SongModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SongModel.xcdatamodel; sourceTree = "<group>"; };
+		C94E308827E4CE0D00E84D3C /* TJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TJ.png; path = ../../../../../Downloads/TJ.png; sourceTree = "<group>"; };
+		C94E308C27E4CE7300E84D3C /* KG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KG.png; path = ../../../../../Downloads/KG.png; sourceTree = "<group>"; };
 		C95B84D227C675DA00C35EE7 /* MySongInfoDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySongInfoDetailVC.swift; sourceTree = "<group>"; };
+		C9E1BCCE27F20B56006F4B0D /* load_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = load_page.png; path = ../../../../../Downloads/load_page.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +194,7 @@
 			children = (
 				68970D8927C626FF0044477E /* APIService */,
 				689B67C427BDFC740062D0F8 /* Controller */,
+				C94E308727E4CDCA00E84D3C /* TJKG_image */,
 				6802ABC027BBC28400BC6243 /* Model */,
 				68CCCF4927B79FD1005E073E /* AppDelegate.swift */,
 				68CCCF4B27B79FD1005E073E /* SceneDelegate.swift */,
@@ -214,6 +221,16 @@
 				68CCCF6C27B79FD2005E073E /* GasaOKUITestsLaunchTests.swift */,
 			);
 			path = GasaOKUITests;
+			sourceTree = "<group>";
+		};
+		C94E308727E4CDCA00E84D3C /* TJKG_image */ = {
+			isa = PBXGroup;
+			children = (
+				C9E1BCCE27F20B56006F4B0D /* load_page.png */,
+				C94E308C27E4CE7300E84D3C /* KG.png */,
+				C94E308827E4CE0D00E84D3C /* TJ.png */,
+			);
+			path = TJKG_image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,9 +343,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C94E308927E4CE0D00E84D3C /* TJ.png in Resources */,
 				68CCCF5627B79FD2005E073E /* LaunchScreen.storyboard in Resources */,
 				68CCCF5327B79FD2005E073E /* Assets.xcassets in Resources */,
 				68CCCF5127B79FD1005E073E /* Main.storyboard in Resources */,
+				C94E308D27E4CE7300E84D3C /* KG.png in Resources */,
+				C9E1BCCF27F20B56006F4B0D /* load_page.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
