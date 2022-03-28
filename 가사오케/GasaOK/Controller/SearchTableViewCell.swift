@@ -14,6 +14,12 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var karaokeNumber: UILabel!
     @IBOutlet weak var songAddButton: UIButton!
     
+    func setSongData(model: SongInfoElement) {
+        self.songNameLabel.text = model.title
+        self.singerNameLabel.text = model.singer
+        self.karaokeNumber.text = model.no
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

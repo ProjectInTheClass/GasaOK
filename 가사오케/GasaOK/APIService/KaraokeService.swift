@@ -11,29 +11,28 @@ class KaraokeService {
     static let shared = KaraokeService()
     let url = "https://api.manana.kr/karaoke/"
 
-    func fetchSongData(songTitle: String, songSinger: String, completion: @escaping (Result<Any, Error>) -> ()) {
+    // 사용하고 있지 않음. 삭제할 것.
+    func fetchSongData(songTitle: String, songSinger: String) {
+        let session = URLSession.shared
         let title = songTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-//        let singer = songSinger.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlSongString = url + "song/" + title + ".json"
-        print(urlSongString)
-        if let url = URL(string: urlSongString) {
-            let sesseion = URLSession(configuration: .default)
-            let requestURL = URLRequest(url: url)
-            let dataTask = sesseion.dataTask(with: requestURL) { (data, response, error) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                if let safeData = data {
-                    do {
-                        let decodedData = try? JSONDecoder().decode(SongInfo2.self, from: safeData)
-                        completion(.success(decodedData as Any))
-                    }
-                }
-            }
-            dataTask.resume()
-        }
+        
+        guard let requestURL = URL(string: urlSongString) else { return }
+        session.dataTask(with: requestURL) { (data, response, error) in
+             guard error == nil else { return }
+             if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                 do {
+                     let songResult = try JSONDecoder().decode(SongInfo2.self, from: data)
+                     filteredSong1 = songResult
+                     DispatchQueue.main.async {
+                     }
+                     print(filteredSong1)
+                 } catch(let err) {
+                     print("Decoding Error")
+                     print(err.localizedDescription)
+                 }
+             }
+        }.resume()
     }
-
     
 }
