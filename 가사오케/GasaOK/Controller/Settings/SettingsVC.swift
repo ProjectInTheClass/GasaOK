@@ -45,10 +45,10 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         switch section {
         case 0:
             return 1
-        case 1:
-            return folderName.count
-        case 2:
-            return 1
+//        case 1:
+//            return folderName.count
+//        case 2:
+//            return 1
         default:
             return 0
         }
@@ -61,15 +61,15 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             /// 다크모드인지 아닌지 확인한 결과가 들어가도록 수정.
             cell.darkModeSwitch.isOn = false
             return cell
-        } else if indexPath.section == 1 {
-            let cell: FolderPositionChangeTableViewCell = folderSettingTableView.dequeueReusableCell(withIdentifier: "Folder Position Change Cell", for: indexPath) as! FolderPositionChangeTableViewCell
-            cell.folderNameLabel.text = folderName[indexPath.row]
-            return cell
-        } else {
-            let cell: FolderAddTableViewCell = folderSettingTableView.dequeueReusableCell(withIdentifier: "Folder Add Cell", for: indexPath) as! FolderAddTableViewCell
-            cell.folderAddLabel.text = "보관함 추가하기..."
-            return cell
-        }
+//        } else if indexPath.section == 1 {
+//            let cell: FolderPositionChangeTableViewCell = folderSettingTableView.dequeueReusableCell(withIdentifier: "Folder Position Change Cell", for: indexPath) as! FolderPositionChangeTableViewCell
+//            cell.folderNameLabel.text = folderName[indexPath.row]
+//            return cell
+//        } else {
+//            let cell: FolderAddTableViewCell = folderSettingTableView.dequeueReusableCell(withIdentifier: "Folder Add Cell", for: indexPath) as! FolderAddTableViewCell
+//            cell.folderAddLabel.text = "보관함 추가하기..."
+//            return cell
+        } else { return UITableViewCell() }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -98,7 +98,7 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
     
     // MARK: - Delegate

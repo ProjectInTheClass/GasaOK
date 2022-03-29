@@ -114,7 +114,7 @@ class SearchVC: UIViewController {
                 
             do {
                 try context.save()
-                try showAlert()
+                showAlert()
             } catch {
                 Swift.print(error.localizedDescription)
             }
