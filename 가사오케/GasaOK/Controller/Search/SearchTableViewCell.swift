@@ -9,6 +9,8 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
     
+   
+    @IBOutlet weak var brandImage: UIImageView!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var singerNameLabel: UILabel!
     @IBOutlet weak var karaokeNumber: UILabel!
