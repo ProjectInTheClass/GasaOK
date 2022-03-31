@@ -58,6 +58,7 @@ class SearchVC: UIViewController {
             return song.brand!.rawValue == "kumyoung"
         })
         filteredSong = filteredSongOfTJ + filteredSongOfKY
+        filteredSong.sort(by: {$0.title < $1.title} )
     }
     
     // MARK: - func
