@@ -7,20 +7,6 @@
 
 import Foundation
 
-//struct SongInfo {
-//    let songName: String
-//    let singerName: String
-//    let karaokeNumber: String
-//    let lryics: String?
-//    let karaokeType: KaraokeType?
-//}
-//
-//enum KaraokeType: String {
-//    case TJ = "TJ"
-//    case KY = "KY"
-//}
-
-
 struct SongInfoElement: Codable {
     let brand: Brand?
     let no, title, singer: String
@@ -29,8 +15,9 @@ struct SongInfoElement: Codable {
 enum Brand: String, Codable {
     case tj = "tj"
     case ky = "kumyoung"
+    case dam = "dam"
+    case joysound = "joysound"
+    case uga = "uga"
 }
 
-typealias SongInfo2 = [SongInfoElement]
-
-var filteredSong1: SongInfo2 = []
+typealias SongInfo = [SongInfoElement]

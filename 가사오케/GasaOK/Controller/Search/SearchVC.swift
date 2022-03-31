@@ -46,7 +46,7 @@ class SearchVC: UIViewController {
     //scope Bar 생성
     func searchResultScopeBarSetUp() {
         searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.scopeButtonTitles = ["TJ", "KY"]
+        searchController.searchBar.scopeButtonTitles = ["전체보기", "TJ", "KY"]
     }
     
     // MARK: - song filter by brand
@@ -57,6 +57,7 @@ class SearchVC: UIViewController {
         filteredSongOfKY = filteredSong.filter({ (song:SongInfoElement) -> Bool in
             return song.brand!.rawValue == "kumyoung"
         })
+        filteredSong = filteredSongOfTJ + filteredSongOfKY
     }
     
     // MARK: - func
@@ -70,6 +71,7 @@ class SearchVC: UIViewController {
         let url = "https://api.manana.kr/karaoke/"
         let session = URLSession.shared
         let title = songTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        print(title)
         let urlSongString = url + "song/" + title + ".json"
         
         guard let requestURL = URL(string: urlSongString) else { return }
@@ -77,7 +79,7 @@ class SearchVC: UIViewController {
              guard error == nil else { return }
              if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                  do {
-                     let songResult = try JSONDecoder().decode(SongInfo2.self, from: data)
+                     let songResult = try JSONDecoder().decode(SongInfo.self, from: data)
                      self.filteredSong = songResult
                      DispatchQueue.main.async {
                          self.songSeperatedByBrand()
@@ -85,7 +87,7 @@ class SearchVC: UIViewController {
                      }
                  } catch(let err) {
                      print("Decoding Error")
-                     print(err.localizedDescription)
+                     print(err)
                  }
              }
         }.resume()
@@ -106,6 +108,10 @@ class SearchVC: UIViewController {
             let cell = contentView?.superview as! UITableViewCell
             let index = searchTableView.indexPath(for: cell)
             if searchController.searchBar.selectedScopeButtonIndex == 0 {
+                mySongList.setValue(filteredSong[index!.row].title, forKey: "songTitle")
+                mySongList.setValue(filteredSong[index!.row].singer, forKey: "singer")
+                mySongList.setValue(filteredSong[index!.row].no, forKey: "number")
+            } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
                 mySongList.setValue(filteredSongOfTJ[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSongOfTJ[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSongOfTJ[index!.row].no, forKey: "number")
@@ -143,7 +149,6 @@ extension UIAlertController {
         if let messageColorColor = color {
             attributeString.addAttributes([NSAttributedString.Key.foregroundColor: messageColorColor],
                                           range: NSRange(location: 0, length: message.count))
-            
         }
         self.setValue(attributeString, forKey: "attributedMessage")
     }
@@ -157,6 +162,8 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     // MARK:  tableView Delegate func
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.searchBar.selectedScopeButtonIndex == 0 {
+            return filteredSong.count
+        } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
             return filteredSongOfTJ.count
         } else {
             return filteredSongOfKY.count
@@ -166,6 +173,9 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SearchTableViewCell = self.searchTableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
         if searchController.searchBar.selectedScopeButtonIndex == 0 {
+            cell.setSongData(model: filteredSong[indexPath.row])
+            return cell
+        } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
             cell.setSongData(model: filteredSongOfTJ[indexPath.row])
         
             return cell
@@ -174,7 +184,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
            // cell.brandImage.image = UIImage(named: "KG_logo")
             return cell
         }
-    
     }
     
     // MARK:  DataSource, DataSource
@@ -190,8 +199,9 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "songDetailIdentifier" {
             let songDetailIndexPath = searchTableView.indexPath(for: sender as! UITableViewCell)!
             let VCDestination = segue.destination as! SongInfoDetailVC
-            /// 수정해야 함
             if searchController.searchBar.selectedScopeButtonIndex == 0 {
+                VCDestination.songInfoData = filteredSong[songDetailIndexPath.row]
+            } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
                 VCDestination.songInfoData = filteredSongOfTJ[songDetailIndexPath.row]
             } else {
                 VCDestination.songInfoData = filteredSongOfKY[songDetailIndexPath.row]
@@ -218,6 +228,8 @@ extension SearchVC: UISearchControllerDelegate, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("search Bar Cancel Button Clicked")
         filteredSong = []
+        filteredSongOfTJ = []
+        filteredSongOfKY = []
         searchTableView.reloadData()
     }
     
