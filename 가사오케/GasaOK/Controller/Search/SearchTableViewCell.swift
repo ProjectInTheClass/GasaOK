@@ -21,7 +21,7 @@ class SearchTableViewCell: UITableViewCell {
         self.singerNameLabel.text = model.singer
         self.karaokeNumber.text = model.no
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

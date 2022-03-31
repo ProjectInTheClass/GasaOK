@@ -24,9 +24,10 @@ class SearchVC: UIViewController {
         tableViewDataSource()
         
         searchControllerSetUp()
-
+       
         searchControllerDelegate()
         barButtonItemTextRemove()
+       
     }
     
 
@@ -111,7 +112,7 @@ class SearchVC: UIViewController {
                 mySongList.setValue(filteredSongOfKY[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSongOfKY[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSongOfKY[index!.row].no, forKey: "number")
-            }
+                            }
                 
             do {
                 try context.save()
@@ -165,9 +166,11 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         let cell:SearchTableViewCell = self.searchTableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
         if searchController.searchBar.selectedScopeButtonIndex == 0 {
             cell.setSongData(model: filteredSongOfTJ[indexPath.row])
+            cell.brandImage.image = UIImage(named: "TJ_logo")
             return cell
         } else {
             cell.setSongData(model: filteredSongOfKY[indexPath.row])
+            cell.brandImage.image = UIImage(named: "KG_logo")
             return cell
         }
     
