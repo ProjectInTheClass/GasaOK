@@ -31,11 +31,11 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         list = self.fetch()
-        print("보관함 화면으로 전환~")
+//        print("보관함 화면으로 전환~")
         DispatchQueue.main.async {
             self.mySongTableView.reloadData()
         }
-        print("view will appear")
+//        print("view will appear")
     }
 
     
@@ -142,7 +142,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Song")
         let result = try! context.fetch(fetchRequest)
-        print(result)
+//        print(result)
         return result
     }
     

@@ -12,7 +12,9 @@ class SearchVC: UIViewController {
     
     @IBOutlet weak var searchTableView: UITableView!
     
+   
     var searchController: UISearchController = UISearchController()
+    var songBrand: [Brand] = [] //추가함
     var filteredSong: [SongInfoElement] = []
     var filteredSongOfTJ: [SongInfoElement] = []
     var filteredSongOfKY: [SongInfoElement] = []
@@ -23,9 +25,10 @@ class SearchVC: UIViewController {
         tableViewDataSource()
         
         searchControllerSetUp()
-
+       
         searchControllerDelegate()
         barButtonItemTextRemove()
+       
     }
     
 
@@ -116,7 +119,7 @@ class SearchVC: UIViewController {
                 mySongList.setValue(filteredSongOfKY[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSongOfKY[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSongOfKY[index!.row].no, forKey: "number")
-            }
+                            }
                 
             do {
                 try context.save()
@@ -174,9 +177,11 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
             cell.setSongData(model: filteredSongOfTJ[indexPath.row])
+        
             return cell
         } else {
             cell.setSongData(model: filteredSongOfKY[indexPath.row])
+           // cell.brandImage.image = UIImage(named: "KG_logo")
             return cell
         }
     }
@@ -232,4 +237,7 @@ extension SearchVC: UISearchControllerDelegate, UISearchBarDelegate {
     func searchControllerDelegate() {
         searchController.searchBar.delegate = self
     }
+
+
+
 }
