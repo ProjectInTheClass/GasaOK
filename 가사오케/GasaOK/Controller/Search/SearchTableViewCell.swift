@@ -20,6 +20,13 @@ class SearchTableViewCell: UITableViewCell {
         self.songNameLabel.text = model.title
         self.singerNameLabel.text = model.singer
         self.karaokeNumber.text = model.no
+        if model.brand == Brand.tj {
+            self.brandImage.image = UIImage(named: "TJ_logo")
+        }
+        else if model.brand == Brand.ky{
+            self.brandImage.image = UIImage(named: "KG_logo")
+        }
+        else{ }
     }
 
     override func awakeFromNib() {
