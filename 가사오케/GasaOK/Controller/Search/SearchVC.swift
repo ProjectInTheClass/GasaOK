@@ -54,6 +54,7 @@ class SearchVC: UIViewController {
         filteredSongOfKY = filteredSong.filter({ (song:SongInfoElement) -> Bool in
             return song.brand!.rawValue == "kumyoung"
         })
+        filteredSong = filteredSongOfTJ + filteredSongOfKY
     }
     
     // MARK: - func
@@ -67,6 +68,7 @@ class SearchVC: UIViewController {
         let url = "https://api.manana.kr/karaoke/"
         let session = URLSession.shared
         let title = songTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        print(title)
         let urlSongString = url + "song/" + title + ".json"
         
         guard let requestURL = URL(string: urlSongString) else { return }
@@ -74,7 +76,7 @@ class SearchVC: UIViewController {
              guard error == nil else { return }
              if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                  do {
-                     let songResult = try JSONDecoder().decode(SongInfo2.self, from: data)
+                     let songResult = try JSONDecoder().decode(SongInfo.self, from: data)
                      self.filteredSong = songResult
                      DispatchQueue.main.async {
                          self.songSeperatedByBrand()
@@ -82,7 +84,7 @@ class SearchVC: UIViewController {
                      }
                  } catch(let err) {
                      print("Decoding Error")
-                     print(err.localizedDescription)
+                     print(err)
                  }
              }
         }.resume()
