@@ -9,9 +9,10 @@ import UIKit
 import SwiftSoup
 
 class SongInfoDetailVC: UIViewController {
-    
+
     var songInfoData: SongInfoElement!
     var lyricsDataModel: LyricsModel?
+    @IBOutlet weak var brandLogo: UIImageView!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var singerNameLabel: UILabel!
     @IBOutlet weak var karaokaNumberLabel: UILabel!
@@ -34,6 +35,7 @@ class SongInfoDetailVC: UIViewController {
         songNameLabel.text = songInfoData.title
         singerNameLabel.text = songInfoData.singer
         karaokaNumberLabel.text = songInfoData.no
+        brandLogo.image = UIImage(named : songInfoData.brand!.rawValue+"Logo")
     }
     
     override func viewWillAppear(_ animated: Bool) {

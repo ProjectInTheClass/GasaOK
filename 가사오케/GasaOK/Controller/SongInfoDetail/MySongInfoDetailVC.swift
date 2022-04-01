@@ -24,6 +24,7 @@ class MySongInfoDetailVC: UIViewController {
         singernameLabel.text = MySongDetailData.singer
         karanumberLabel.text = MySongDetailData.no
         
+        
     }
     
 }
