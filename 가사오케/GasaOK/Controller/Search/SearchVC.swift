@@ -72,7 +72,7 @@ class SearchVC: UIViewController {
         let url = "https://api.manana.kr/karaoke/"
         let session = URLSession.shared
         let title = songTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        print(title)
+//        print(title)
         let urlSongString = url + "song/" + title + ".json"
         
         guard let requestURL = URL(string: urlSongString) else { return }
@@ -97,7 +97,7 @@ class SearchVC: UIViewController {
     
     // MARK: - 곡 추가 버튼 누름
     @IBAction func songAddButtonDidTap(_ sender: UIButton) {
-        Swift.print("추가 버튼 누름!")
+//        Swift.print("추가 버튼 누름!")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
@@ -120,7 +120,7 @@ class SearchVC: UIViewController {
                 mySongList.setValue(filteredSongOfKY[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSongOfKY[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSongOfKY[index!.row].no, forKey: "number")
-                            }
+            }
                 
             do {
                 try context.save()
@@ -138,6 +138,8 @@ class SearchVC: UIViewController {
         self.present(alert, animated: false)
         Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: {_ in alert.dismiss(animated: true, completion: nil)})
     }
+    
+    
 }
 
 extension UIAlertController {
@@ -187,6 +189,13 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let songTitle = filteredSong[indexPath.row].title
+        let singer = filteredSong[indexPath.row].singer
+        showLyricsAlert(title: songTitle, singer: singer)
+    }
+    
     // MARK:  DataSource, DataSource
     func tableViewDataSource() {
         searchTableView.dataSource = self
@@ -195,19 +204,24 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         searchTableView.delegate = self
     }
     
-    // MARK:  prepare
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "songDetailIdentifier" {
-            let songDetailIndexPath = searchTableView.indexPath(for: sender as! UITableViewCell)!
-            let VCDestination = segue.destination as! SongInfoDetailVC
-            if searchController.searchBar.selectedScopeButtonIndex == 0 {
-                VCDestination.songInfoData = filteredSong[songDetailIndexPath.row]
-            } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
-                VCDestination.songInfoData = filteredSongOfTJ[songDetailIndexPath.row]
-            } else {
-                VCDestination.songInfoData = filteredSongOfKY[songDetailIndexPath.row]
+    func showLyricsAlert(title: String, singer: String) {
+        let alert = UIAlertController(title: "가사를 보시겠습니까?", message: "가사 저작권에 의해 앱 내에서 바로 가사를 보여드릴 수 없습니다. 링크를 통해 가사를 확인하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        alert.addAction(UIAlertAction(title: "이동", style: .default, handler: { _ in
+            let baseURL = "https://m.search.naver.com/search.naver?sm=mtp_hty.top&where=m&query="
+            var titleArray: [Character] = []
+            for char in title{
+                if char == "(" { break }
+                titleArray.append(char)
+                
             }
-        }
+            let realTitle = titleArray.map{String($0)}.joined()
+            print(realTitle)
+            let url = baseURL + realTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + "+" + singer.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + "+" + "가사".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let searchURL = URL(string: url)
+            UIApplication.shared.open(searchURL!, options: [:])
+        }))
+        self.present(alert, animated: false)
     }
     
 }

@@ -31,12 +31,11 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         list = self.fetch()
-//        print("보관함 화면으로 전환~")
         DispatchQueue.main.async {
             self.mySongTableView.reloadData()
         }
-//        print("view will appear")
     }
+
 
     
     // MARK: - 네비게이션 아이템 (보관함 변경 버튼) 생성
@@ -121,19 +120,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         mySongTableView.dataSource = self
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "songDetailIdentifier2" {
-
-            let songDetailIndexPath = mySongTableView.indexPath(for: sender as! MySongTableViewCell)!
-            let VCDestination = segue.destination as! SongInfoDetailVC
-//            VCDestination.songInfoData = list[songDetailIndexPath.row]
-            let song: SongInfoElement = SongInfoElement( brand: nil,
-                                                        no: list[songDetailIndexPath.row].value(forKey: "number") as! String,
-                                                        title: list[songDetailIndexPath.row].value(forKey: "songTitle") as! String,
-                                                        singer: list[songDetailIndexPath.row].value(forKey: "singer") as! String )
-            VCDestination.songInfoData = song
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let index = self.list[indexPath.row]
+        guard let songTitle = index.value(forKey: "songTitle") as? String else { return }
+        guard let singer = index.value(forKey: "singer") as? String else { return }
+        
+        showLyricsAlert(title: songTitle, singer: singer)
     }
     
     // MARK: - 데이터 fetch
@@ -142,7 +135,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Song")
         let result = try! context.fetch(fetchRequest)
-//        print(result)
         return result
     }
     
@@ -160,5 +152,26 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             context.rollback()
             return false
         }
+    }
+    
+    func showLyricsAlert(title: String, singer: String) {
+        let alert = UIAlertController(title: "가사를 보시겠습니까?", message: "가사 저작권에 의해 앱 내에서 바로 가사를 보여드릴 수 없습니다. 링크를 통해 가사를 확인하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        alert.addAction(UIAlertAction(title: "이동", style: .default, handler: { _ in
+            let baseURL = "https://m.search.naver.com/search.naver?sm=mtp_hty.top&where=m&query="
+            var titleArray: [Character] = []
+            for char in title{
+                if char == "(" { break }
+                titleArray.append(char)
+                
+            }
+            let realTitle = titleArray.map{String($0)}.joined()
+            print(realTitle)
+            let url = baseURL + realTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + "+" + singer.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + "+" + "가사".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let searchURL = URL(string: url)
+            UIApplication.shared.open(searchURL!, options: [:])
+        }))
+        
+        self.present(alert, animated: false)
     }
 }
