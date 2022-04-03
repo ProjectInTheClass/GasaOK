@@ -21,10 +21,10 @@ class SearchTableViewCell: UITableViewCell {
         self.singerNameLabel.text = model.singer
         self.karaokeNumber.text = model.no
         if model.brand == Brand.tj {
-            self.brandImage.image = UIImage(named: "TJ_logo")
+            self.brandImage.image = UIImage(named: "tjLogo")
         }
         else if model.brand == Brand.ky{
-            self.brandImage.image = UIImage(named: "KG_logo")
+            self.brandImage.image = UIImage(named: "kumyoungLogo")
         }
         else{ }
     }

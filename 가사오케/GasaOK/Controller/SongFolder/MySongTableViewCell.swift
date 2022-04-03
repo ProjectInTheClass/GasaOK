@@ -12,5 +12,8 @@ class MySongTableViewCell: UITableViewCell {
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var singerNameLabel: UILabel!
     @IBOutlet weak var karaokeNumber: UILabel!
+    @IBOutlet weak var imageLogo: UIImageView!
+    
+    
     
 }

@@ -14,7 +14,6 @@ class SearchVC: UIViewController {
     
    
     var searchController: UISearchController = UISearchController()
-    var songBrand: [Brand] = [] //추가함
     var filteredSong: [SongInfoElement] = []
     var filteredSongOfTJ: [SongInfoElement] = []
     var filteredSongOfKY: [SongInfoElement] = []
@@ -112,14 +111,18 @@ class SearchVC: UIViewController {
                 mySongList.setValue(filteredSong[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSong[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSong[index!.row].no, forKey: "number")
+                mySongList.setValue(filteredSong[index!.row].brand?.rawValue, forKey: "brand")
+                
             } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
                 mySongList.setValue(filteredSongOfTJ[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSongOfTJ[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSongOfTJ[index!.row].no, forKey: "number")
+                mySongList.setValue(filteredSongOfTJ[index!.row].brand?.rawValue, forKey: "brand")
             } else {
                 mySongList.setValue(filteredSongOfKY[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSongOfKY[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSongOfKY[index!.row].no, forKey: "number")
+                mySongList.setValue(filteredSongOfKY[index!.row].brand?.rawValue, forKey: "brand")                            
             }
                 
             do {
@@ -213,7 +216,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             for char in title{
                 if char == "(" { break }
                 titleArray.append(char)
-                
             }
             let realTitle = titleArray.map{String($0)}.joined()
             print(realTitle)
