@@ -91,13 +91,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let songTitle = index.value(forKey: "songTitle") as? String
         let singer = index.value(forKey: "singer") as? String
         let number = index.value(forKey: "number") as? String
-        let brandName = index.value(forKey: "brand") as? String
+        guard let brandName = index.value(forKey: "brand") as? String else { return UITableViewCell() }
   
         let cell = self.mySongTableView.dequeueReusableCell(withIdentifier: "MySongTableViewCell") as! MySongTableViewCell
         cell.songNameLabel.text = songTitle
         cell.singerNameLabel.text = singer
         cell.karaokeNumber.text = number
-        cell.imageLogo.image = UIImage (named: brandName! + "Logo")
+        cell.imageLogo.image = UIImage (named: brandName + "Logo")
         return cell
     }
     ///스와이프 메뉴
