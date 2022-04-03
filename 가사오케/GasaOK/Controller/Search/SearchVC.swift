@@ -194,8 +194,18 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let songTitle = filteredSong[indexPath.row].title
-        let singer = filteredSong[indexPath.row].singer
+        var songTitle = ""
+        var singer = ""
+        if searchController.searchBar.selectedScopeButtonIndex == 0 {
+            songTitle = filteredSong[indexPath.row].title
+            singer = filteredSong[indexPath.row].singer
+        } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
+            songTitle = filteredSongOfTJ[indexPath.row].title
+            singer = filteredSongOfTJ[indexPath.row].singer
+        } else {
+            songTitle = filteredSongOfKY[indexPath.row].title
+            singer = filteredSongOfKY[indexPath.row].singer
+        }
         showLyricsAlert(title: songTitle, singer: singer)
     }
     
