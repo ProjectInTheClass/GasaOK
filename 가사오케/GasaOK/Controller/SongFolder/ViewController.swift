@@ -157,7 +157,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func showLyricsAlert(title: String, singer: String) {
-        let alert = UIAlertController(title: "가사를 보시겠습니까?", message: "가사 저작권에 의해 앱 내에서 바로 가사를 보여드릴 수 없습니다. 링크를 통해 가사를 확인하시겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "가사를 보시겠습니까?", message: "가사 저작권에 의해 앱 내에서 바로 가사를 보여드릴 수 없습니다.\n링크를 통해 가사를 확인하시겠습니까?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .cancel))
         alert.addAction(UIAlertAction(title: "이동", style: .default, handler: { _ in
             let baseURL = "https://m.search.naver.com/search.naver?sm=mtp_hty.top&where=m&query="
