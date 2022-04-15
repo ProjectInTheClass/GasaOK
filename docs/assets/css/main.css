@@ -19,6 +19,15 @@
 	font-style: normal;
 }
 
+#header .inner h1 {
+	font-family: 'yg-jalnan';
+}
+#header .inner p {
+	font-family: 'S-CoreDream-4Regular';
+}
+#header .inner h3 {
+	font-family: 'S-CoreDream-4Regular';
+}
 header.major {
 	font-family: 'yg-jalnan';
 }
