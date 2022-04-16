@@ -19,6 +19,19 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'HSSaemaul-Regular';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSSaemaul-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'twayair';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayair.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 #header .inner h1 {
 	font-family: 'yg-jalnan';
 }
@@ -31,14 +44,21 @@
 header.major {
 	font-family: 'yg-jalnan';
 }
-.col-6 > p {
+.col-6 > h4 {
 	font-family: 'S-CoreDream-4Regular';
 }
 .container p {
 	font-family: 'S-CoreDream-4Regular';
 }
 .col-4 > h3 {
-	font-family: 'yg-jalnan';
+	font-family: 'twayair';
+}
+.row .col-3 h4 {
+	font-family: 'twayair';
+}
+#one > div > div > div.col-5.col-12-medium.imp-medium {
+	margin-left: 60px;
+	margin-top: 100px;	
 }
 
 /*
