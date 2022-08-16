@@ -14,42 +14,44 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     
     let isDark = UserDefaults.standard.bool(forKey: "darkModeState")
     
-    lazy var list:[NSManagedObject] = {
+    lazy var songLists:[NSManagedObject] = {
         return self.fetch()
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setFolderChangeButton()
+        navigationController?.navigationBar.prefersLargeTitles = true
+//        setFolderChangeButton()
         tableViewDelegate()
         tableViewDataSource()
-        barButtonItemTextRemove()
+//        barButtonItemTextRemove()
         darkModeCheck()
     }
     
     // MARK: - 곡 추가 시 보관함 테이블뷰 reload
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        list = self.fetch()
+        songLists = self.fetch()
         DispatchQueue.main.async {
             self.mySongTableView.reloadData()
         }
     }
 
 
-    
-    // MARK: - 네비게이션 아이템 (보관함 변경 버튼) 생성
-    func setFolderChangeButton() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
+    /// REMOVE🅾️: 보관함 변경 버튼 생성 시 살리고 아니면 삭제
+//    // MARK: - 네비게이션 아이템 (보관함 변경 버튼) 생성
+//    func setFolderChangeButton() {
+//        navigationController?.navigationBar.prefersLargeTitles = true
+//    }
     
     // MARK: - 보관함 내 노래 삭제 시 뜨는 알림창
+    /// - Parameter deleteIndex: 삭제하려는 노래의 인덱스
     func songWillDelete(deleteIndex:IndexPath) {
         let alert = UIAlertController(title: nil, message: "보관함에서 이 노래를 삭제하시겠습니까?", preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "노래 삭제", style: .destructive) { (_) in
-            let object = self.list[deleteIndex.row]
+            let object = self.songLists[deleteIndex.row]
             if self.delete(object: object) {
-                self.list.remove(at: deleteIndex.row)
+                self.songLists.remove(at: deleteIndex.row)
                 self.mySongTableView.deleteRows(at: [deleteIndex], with: .fade)
             }
         }
@@ -61,10 +63,11 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
         present(alert, animated: true, completion: nil)
 
     }
-    func barButtonItemTextRemove() {
-            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-            self.navigationItem.backBarButtonItem = backBarButtonItem
-        }
+    ///REMOVE🅾️ : 가사를 보는 화면이 있을 때, 해당 화면의 백버튼 아이템의 타이틀을 지워주는 용도였음. 지금은 필요x
+//    func barButtonItemTextRemove() {
+//            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+//            self.navigationItem.backBarButtonItem = backBarButtonItem
+//        }
     
     func darkModeCheck(){
             if let window = UIApplication.shared.windows.first{
@@ -83,11 +86,11 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
 // MARK: - 보관함 노래 목록 tableView
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.list.count
+        return self.songLists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let index = self.list[indexPath.row]
+        let index = self.songLists[indexPath.row]
         let songTitle = index.value(forKey: "songTitle") as? String
         let singer = index.value(forKey: "singer") as? String
         let number = index.value(forKey: "number") as? String
@@ -100,7 +103,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.imageLogo.image = UIImage (named: brandName + "Logo")
         return cell
     }
-    ///스와이프 메뉴
+    /// 스와이프 메뉴
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
             
             let delete = UIContextualAction(style: .normal, title: "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
@@ -122,12 +125,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         mySongTableView.dataSource = self
     }
     
+    /// 선택한 노래의 가사를 확인
+    /// didSelectRowAt, IndexPath를 활용
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let index = self.list[indexPath.row]
+        /// 선택한 셀이 화면에 뿌려지고 있는 songLists 배열에서 몇 번째인지 찾는다.
+        let index = self.songLists[indexPath.row]
+        /// 해당 셀의 노래제목과 가수를 가져온다.
         guard let songTitle = index.value(forKey: "songTitle") as? String else { return }
         guard let singer = index.value(forKey: "singer") as? String else { return }
         
+        /// 노래제목과 가수를 파라미터로 함수 호출
         showLyricsAlert(title: songTitle, singer: singer)
     }
     
@@ -156,6 +164,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: - 가사 보기 알림창
+    ///FIXME: 변수명 제안 lyricsAlertWillShow
     func showLyricsAlert(title: String, singer: String) {
         let alert = UIAlertController(title: "가사를 보시겠습니까?", message: "가사 저작권에 의해 앱 내에서 바로 가사를 보여드릴 수 없습니다.\n링크를 통해 가사를 확인하시겠습니까?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .cancel))
