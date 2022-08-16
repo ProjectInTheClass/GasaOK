@@ -103,7 +103,7 @@
         <!--Search View Controller-->
         <scene sceneID="goh-OK-kGm">
             <objects>
-                <viewController storyboardIdentifier="SearchVC" title="Search View Controller" id="HiZ-Tf-KUE" customClass="SearchVC" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchVC" title="Search View Controller" id="HiZ-Tf-KUE" customClass="SearchViewController" customModule="GasaOK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pB3-su-BLG">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -173,7 +173,7 @@
                                                                 <color key="baseForegroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </buttonConfiguration>
                                                             <connections>
-                                                                <action selector="songAddButtonDidTap:" destination="HiZ-Tf-KUE" eventType="touchUpInside" id="bsU-nd-bar"/>
+                                                                <action selector="didTapSongAddButton:" destination="HiZ-Tf-KUE" eventType="touchUpInside" id="9eH-Af-ouD"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
