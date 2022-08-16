@@ -10,7 +10,7 @@ import UIKit
 class SearchTableViewCell: UITableViewCell {
     
    
-    @IBOutlet weak var brandImage: UIImageView!
+    @IBOutlet weak var imageLogo: UIImageView!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var singerNameLabel: UILabel!
     @IBOutlet weak var karaokeNumber: UILabel!
@@ -21,10 +21,10 @@ class SearchTableViewCell: UITableViewCell {
         self.singerNameLabel.text = model.singer
         self.karaokeNumber.text = model.no
         if model.brand == Brand.tj {
-            self.brandImage.image = UIImage(named: "tjLogo")
+            self.imageLogo.image = UIImage(named: "tjLogo")
         }
         else if model.brand == Brand.ky{
-            self.brandImage.image = UIImage(named: "kumyoungLogo")
+            self.imageLogo.image = UIImage(named: "kumyoungLogo")
         }
         else{ }
     }
