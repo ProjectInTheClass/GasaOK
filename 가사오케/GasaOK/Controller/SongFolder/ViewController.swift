@@ -63,12 +63,16 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
         present(alert, animated: true, completion: nil)
 
     }
+
     ///REMOVE🅾️ : 가사를 보는 화면이 있을 때, 해당 화면의 백버튼 아이템의 타이틀을 지워주는 용도였음. 지금은 필요x
 //    func barButtonItemTextRemove() {
 //            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
 //            self.navigationItem.backBarButtonItem = backBarButtonItem
 //        }
     
+    /// 다크모드 설정을 확인한다.
+    /// 앱의 설정에 따라 다크모드인지 라이트모드인지 결정됨.
+    // FIXME: - 현재 13을 기준으로 개발되어있으므로 windows 말고 다른 방법으로 개발이 필요
     func darkModeCheck(){
             if let window = UIApplication.shared.windows.first{
                 if #available(iOS 13.0, *){
@@ -77,10 +81,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
                 else{
                     window.overrideUserInterfaceStyle = .light
                 }
-                
             }
         }
-    
 }
 
 // MARK: - 보관함 노래 목록 tableView
@@ -94,12 +96,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let songTitle = index.value(forKey: "songTitle") as? String
         let singer = index.value(forKey: "singer") as? String
         let number = index.value(forKey: "number") as? String
+        //브랜드 이름을 songModel의 brand 속성으로부터 받아옴
         guard let brandName = index.value(forKey: "brand") as? String else { return UITableViewCell() }
-  
         let cell = self.mySongTableView.dequeueReusableCell(withIdentifier: "MySongTableViewCell") as! MySongTableViewCell
         cell.songNameLabel.text = songTitle
         cell.singerNameLabel.text = singer
         cell.karaokeNumber.text = number
+        //imageLogo를 brandName+"Logo"로 저장하여 해당 이름을 가진 이미지 로고를 불러오게 됨
         cell.imageLogo.image = UIImage (named: brandName + "Logo")
         return cell
     }
