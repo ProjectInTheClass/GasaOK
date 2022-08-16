@@ -111,6 +111,7 @@ class SearchVC: UIViewController {
                 mySongList.setValue(filteredSong[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSong[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSong[index!.row].no, forKey: "number")
+               //예원
                 mySongList.setValue(filteredSong[index!.row].brand?.rawValue, forKey: "brand")
                 
             } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
