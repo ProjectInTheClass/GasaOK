@@ -69,7 +69,11 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     /// 앱의 설정에 따라 다크모드인지 라이트모드인지 결정됨.
     // FIXME: - 현재 13을 기준으로 개발되어있으므로 windows 말고 다른 방법으로 개발이 필요
     func darkModeCheck(){
-            if let window = UIApplication.shared.windows.first{
+        
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        
+            if let window = windowScene?.windows.first{
                 if #available(iOS 13.0, *){
                     window.overrideUserInterfaceStyle = isDark == true ? .dark : .light
                 }
