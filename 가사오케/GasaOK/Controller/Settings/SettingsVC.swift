@@ -84,7 +84,10 @@ class SettingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     //FIXME: - 함수명 바꿔야할 것 같음.
     @IBAction func darkModeChangeSwitch(_ sender: UISwitch) {
         
-        if let window = UIApplication.shared.windows.first {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        
+            if let window = windowScene?.windows.first{
             if #available(iOS 13.0, *){
                 window.overrideUserInterfaceStyle = darkModeSwitch.isOn == true ? .dark : .light
                 //변경된 스위치 값의 상태를 UserDefaults에 저장
