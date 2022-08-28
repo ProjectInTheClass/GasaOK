@@ -25,7 +25,6 @@ class SearchViewController: UIViewController {
         searchController.searchBar.delegate = self
 
         setSearchController()
-        removeBarButtonItemTitle()
     }
     
 
@@ -45,13 +44,7 @@ class SearchViewController: UIViewController {
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.scopeButtonTitles = ["전체보기", "TJ", "KY"]
     }
-    
-    /// 네비게이션바의 뒤로가기 버튼의 타이틀을 제거합니다.
-    func removeBarButtonItemTitle() {
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButtonItem
-    }
-    
+
     /// 사용자가 검색한 결과를 노래방 브랜드별로 필터링합니다.
     func songSeperatedByBrand() {
         filteredSongsOfTJ = filteredSongs.filter({ (song:SongInfoElement) -> Bool in
