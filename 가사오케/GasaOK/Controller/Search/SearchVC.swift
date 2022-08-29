@@ -98,23 +98,26 @@ class SearchViewController: UIViewController {
             let cell = contentView?.superview?.superview as! UITableViewCell    // 스토리보드 구조가 바뀌어서 superview 하나 더 붙임
             let index = searchTableView.indexPath(for: cell)
 
-            if searchController.searchBar.selectedScopeButtonIndex == 0 {
+            let searchType = searchController.searchBar.selectedScopeButtonIndex
+            switch searchType {
+            case 0:
                 mySongList.setValue(filteredSongs[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSongs[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSongs[index!.row].no, forKey: "number")
                //예원
                 mySongList.setValue(filteredSongs[index!.row].brand?.rawValue, forKey: "brand")
-
-            } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
+            case 1:
                 mySongList.setValue(filteredSongsOfTJ[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSongsOfTJ[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSongsOfTJ[index!.row].no, forKey: "number")
                 mySongList.setValue(filteredSongsOfTJ[index!.row].brand?.rawValue, forKey: "brand")
-            } else {
+            case 2:
                 mySongList.setValue(filteredSongsOfKY[index!.row].title, forKey: "songTitle")
                 mySongList.setValue(filteredSongsOfKY[index!.row].singer, forKey: "singer")
                 mySongList.setValue(filteredSongsOfKY[index!.row].no, forKey: "number")
                 mySongList.setValue(filteredSongsOfKY[index!.row].brand?.rawValue, forKey: "brand")
+            default:
+                print("didTapSongAddButton: 검색 타입이 정확하지 않습니다.")
             }
                 
             do {
@@ -137,27 +140,37 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     /// 어떤 scope(전체, TJ, KY)가 선택되었는지에 따라 table view cell 갯수를 반환합니다.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.searchBar.selectedScopeButtonIndex == 0 {
+        let searchType = searchController.searchBar.selectedScopeButtonIndex
+        switch searchType {
+        case 0:
             return filteredSongs.count
-        } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
+        case 1:
             return filteredSongsOfTJ.count
-        } else {
+        case 2:
             return filteredSongsOfKY.count
+        default:
+            print("table view numberOfRowsInSectin: 검색 타입이 정확하지 않습니다.")
+            return 0
         }
     }
     
     /// 선택된 scope에 따라 필터링된 노래 데이터를 cell에 넘겨 줍니다.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SearchTableViewCell = self.searchTableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
-        if searchController.searchBar.selectedScopeButtonIndex == 0 {
+        let searchType = searchController.searchBar.selectedScopeButtonIndex
+        switch searchType {
+        case 0:
             cell.setSongData(model: filteredSongs[indexPath.row])
             return cell
-        } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
+        case 1:
             cell.setSongData(model: filteredSongsOfTJ[indexPath.row])
             return cell
-        } else {
+        case 2:
             cell.setSongData(model: filteredSongsOfKY[indexPath.row])
             return cell
+        default:
+            print("table view cellForRow: 검색 타입이 명확하지 않습니다.")
+            return UITableViewCell()
         }
     }
     
@@ -166,15 +179,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         var songTitle = ""
         var singer = ""
-        if searchController.searchBar.selectedScopeButtonIndex == 0 {
+        let searchType = searchController.searchBar.selectedScopeButtonIndex
+        switch searchType {
+        case 0:
             songTitle = filteredSongs[indexPath.row].title
             singer = filteredSongs[indexPath.row].singer
-        } else if searchController.searchBar.selectedScopeButtonIndex == 1 {
+        case 1:
             songTitle = filteredSongsOfTJ[indexPath.row].title
             singer = filteredSongsOfTJ[indexPath.row].singer
-        } else {
+        case 2:
             songTitle = filteredSongsOfKY[indexPath.row].title
             singer = filteredSongsOfKY[indexPath.row].singer
+        default:
+            print("table view didSelectRowAt: 검색 타입이 명확하지 않습니다.")
         }
         AlertManager.shared.lyricsAlert(vc: self, title: songTitle, singer: singer)
     }

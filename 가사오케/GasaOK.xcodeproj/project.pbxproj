@@ -105,6 +105,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		683FFE0428BCA27B00D873D0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				683FFE0228BC9E6B00D873D0 /* AlertManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		684A685B27EC80E500E96249 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,7 +160,8 @@
 		689B67C427BDFC740062D0F8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				683FFE0228BC9E6B00D873D0 /* AlertManager.swift */,
+				6899BF1D28ABCDB60040FB8A /* Extension */,
+				683FFE0428BCA27B00D873D0 /* Service */,
 				686E35B227F21B12001DBEAA /* SongFolder */,
 				686E35B327F21B25001DBEAA /* Search */,
 				686E35B427F21B2E001DBEAA /* Settings */,
@@ -183,7 +192,6 @@
 		68CCCF4827B79FD1005E073E /* GasaOK */ = {
 			isa = PBXGroup;
 			children = (
-				6899BF1D28ABCDB60040FB8A /* Extension */,
 				6802ABC027BBC28400BC6243 /* Model */,
 				684A685B27EC80E500E96249 /* View */,
 				689B67C427BDFC740062D0F8 /* Controller */,
