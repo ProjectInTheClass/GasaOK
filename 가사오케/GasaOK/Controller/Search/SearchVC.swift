@@ -98,6 +98,7 @@ class SearchViewController: UIViewController {
             let cell = contentView?.superview?.superview as! UITableViewCell    // 스토리보드 구조가 바뀌어서 superview 하나 더 붙임
             let index = searchTableView.indexPath(for: cell)
 
+            // FIXME: 아래의 반복되는 코드를 어떻게 합칠 수 있을까... 
             let searchType = searchController.searchBar.selectedScopeButtonIndex
             switch searchType {
             case 0:
