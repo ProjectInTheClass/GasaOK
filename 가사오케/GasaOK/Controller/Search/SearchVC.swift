@@ -119,22 +119,11 @@ class SearchViewController: UIViewController {
                 
             do {
                 try context.save()
-                showAlert()
+                AlertManager.shared.songAddAlert(vc: self)
             } catch {
                 Swift.print(error.localizedDescription)
             }
         }
-    }
-    
-    // FIXME: - 알림창!!
-    
-    /// 노래가 보관함에 추가되었다는 알림창을 띄웁니다.
-    func showAlert() {
-        let alert = UIAlertController(title: nil, message: "보관함에 추가되었습니다.", preferredStyle: .alert)
-        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
-        alert.setMessage(color: UIColor(red: 255/255, green: 51/255, blue: 102/255, alpha: 1))
-        self.present(alert, animated: false)
-        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: {_ in alert.dismiss(animated: true, completion: nil)})
     }
     
     
