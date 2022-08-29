@@ -25,11 +25,10 @@ class SearchViewController: UIViewController {
         searchController.searchBar.delegate = self
 
         setSearchController()
-        removeBarButtonItemTitle()
     }
     
 
-    // MARK: - view
+    // MARK: - View
     /// 기본 search Controller 화면을 세팅합니다.
     func setSearchController() {
         searchController.obscuresBackgroundDuringPresentation = false
@@ -44,12 +43,6 @@ class SearchViewController: UIViewController {
     func setSearchControllerScopeBar() {
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.scopeButtonTitles = ["전체보기", "TJ", "KY"]
-    }
-    
-    /// 네비게이션바의 뒤로가기 버튼의 타이틀을 제거합니다.
-    func removeBarButtonItemTitle() {
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     /// 사용자가 검색한 결과를 노래방 브랜드별로 필터링합니다.
@@ -133,6 +126,8 @@ class SearchViewController: UIViewController {
         }
     }
     
+    // FIXME: - 알림창!!
+    
     /// 노래가 보관함에 추가되었다는 알림창을 띄웁니다.
     func showAlert() {
         let alert = UIAlertController(title: nil, message: "보관함에 추가되었습니다.", preferredStyle: .alert)
@@ -142,33 +137,12 @@ class SearchViewController: UIViewController {
         Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: {_ in alert.dismiss(animated: true, completion: nil)})
     }
     
-    /// 노래 가사를 보기 전 알림창을 띄웁니다.
-    /// - Parameter title: song title
-    /// - Parameter singer: singer name
-    func showLyricsAlert(title: String, singer: String) {
-        let alert = UIAlertController(title: "가사를 보시겠습니까?", message: "가사 저작권에 의해 앱 내에서 바로 가사를 보여드릴 수 없습니다.\n링크를 통해 가사를 확인하시겠습니까?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
-        alert.addAction(UIAlertAction(title: "이동", style: .default, handler: { _ in
-            let baseURL = "https://m.search.naver.com/search.naver?sm=mtp_hty.top&where=m&query="
-            var titleArray: [Character] = []
-            for char in title{
-                if char == "(" { break }
-                titleArray.append(char)
-            }
-            let realTitle = titleArray.map{String($0)}.joined()
-            print(realTitle)
-            let url = baseURL + realTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + "+" + singer.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + "+" + "가사".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            let searchURL = URL(string: url)
-            UIApplication.shared.open(searchURL!, options: [:])
-        }))
-        self.present(alert, animated: false)
-    }
     
 }
 
 
 
-// MARK: - UITableView extension
+// MARK: - UITableView
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -213,13 +187,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             songTitle = filteredSongsOfKY[indexPath.row].title
             singer = filteredSongsOfKY[indexPath.row].singer
         }
-        showLyricsAlert(title: songTitle, singer: singer)
+        AlertManager.shared.lyricsAlert(vc: self, title: songTitle, singer: singer)
     }
     
 }
 
 
-// MARK: - UISearchController, UISearchBar extension
+// MARK: - UISearchController, UISearchBar
 
 extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate {
     
