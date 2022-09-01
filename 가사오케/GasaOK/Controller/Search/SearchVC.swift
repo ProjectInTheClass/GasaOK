@@ -44,7 +44,7 @@ class SearchViewController: UIViewController {
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.scopeButtonTitles = ["전체보기", "TJ", "KY"]
     }
-    
+
     /// 사용자가 검색한 결과를 노래방 브랜드별로 필터링합니다.
     func songSeperatedByBrand() {
         filteredSongsOfTJ = filteredSongs.filter({ (song:SongInfoElement) -> Bool in

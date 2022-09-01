@@ -26,6 +26,7 @@
 		68CCCF6D27B79FD2005E073E /* GasaOKUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCCF6C27B79FD2005E073E /* GasaOKUITestsLaunchTests.swift */; };
 		6F4BC00427C164D10076E04C /* MySongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4BC00327C164D10076E04C /* MySongTableViewCell.swift */; };
 		6F9E4E4527C938B500A1BC20 /* SongModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F9E4E4327C938B500A1BC20 /* SongModel.xcdatamodeld */; };
+		6FED13A528BB74D800DA4335 /* CoreDataMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FED13A428BB74D800DA4335 /* CoreDataMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		68CCCF6C27B79FD2005E073E /* GasaOKUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasaOKUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6F4BC00327C164D10076E04C /* MySongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySongTableViewCell.swift; sourceTree = "<group>"; };
 		6F9E4E4427C938B500A1BC20 /* SongModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SongModel.xcdatamodel; sourceTree = "<group>"; };
+		6FED13A428BB74D800DA4335 /* CoreDataMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				68CCCF4B27B79FD1005E073E /* SceneDelegate.swift */,
 				68CCCF5227B79FD2005E073E /* Assets.xcassets */,
 				68CCCF5727B79FD2005E073E /* Info.plist */,
+				6FED13A428BB74D800DA4335 /* CoreDataMethod.swift */,
 			);
 			path = GasaOK;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			files = (
 				68297D7F27C269920073F5F6 /* DarkModeTableViewCell.swift in Sources */,
 				686D808927BCEEA0005975F7 /* SettingsVC.swift in Sources */,
+				6FED13A528BB74D800DA4335 /* CoreDataMethod.swift in Sources */,
 				6802ABC427BBC2C200BC6243 /* SongInfo.swift in Sources */,
 				6899BF1F28ABCDC30040FB8A /* UIAlertController.swift in Sources */,
 				6802ABBF27BB85BD00BC6243 /* SearchVC.swift in Sources */,
