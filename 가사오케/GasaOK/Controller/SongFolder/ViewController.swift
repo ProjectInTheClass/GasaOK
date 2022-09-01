@@ -133,9 +133,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let singer = index.value(forKey: "singer") as? String else { return }
         
         /// 노래제목과 가수를 파라미터로 함수 호출
-        showLyricsAlert(title: songTitle, singer: singer)
+        AlertManager.shared.lyricsAlert(vc: self, title: songTitle, singer: singer)
+
     }
     
+
     // MARK: - 가사 보기 알림창
     ///FIXME: 변수명 제안 lyricsAlertWillShow
     func showLyricsAlert(title: String, singer: String) {
@@ -158,4 +160,5 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         self.present(alert, animated: false)
     }
+
 }

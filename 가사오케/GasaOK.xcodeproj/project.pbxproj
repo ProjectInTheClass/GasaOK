@@ -11,8 +11,8 @@
 		6802ABC427BBC2C200BC6243 /* SongInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802ABC327BBC2C200BC6243 /* SongInfo.swift */; };
 		6802ABC627BBCEE500BC6243 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802ABC527BBCEE500BC6243 /* SearchTableViewCell.swift */; };
 		68297D7F27C269920073F5F6 /* DarkModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68297D7E27C269920073F5F6 /* DarkModeTableViewCell.swift */; };
+		683FFE0328BC9E6B00D873D0 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683FFE0228BC9E6B00D873D0 /* AlertManager.swift */; };
 		686D808927BCEEA0005975F7 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D808827BCEEA0005975F7 /* SettingsVC.swift */; };
-		68970D8C27C6273C0044477E /* LyricsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68970D8B27C6273C0044477E /* LyricsModel.swift */; };
 		68970D9127C653A80044477E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 68970D9027C653A80044477E /* SwiftSoup */; };
 		6899BF1F28ABCDC30040FB8A /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6899BF1E28ABCDC30040FB8A /* UIAlertController.swift */; };
 		68CCCF4A27B79FD1005E073E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CCCF4927B79FD1005E073E /* AppDelegate.swift */; };
@@ -51,8 +51,8 @@
 		6802ABC327BBC2C200BC6243 /* SongInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInfo.swift; sourceTree = "<group>"; };
 		6802ABC527BBCEE500BC6243 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		68297D7E27C269920073F5F6 /* DarkModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeTableViewCell.swift; sourceTree = "<group>"; };
+		683FFE0228BC9E6B00D873D0 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		686D808827BCEEA0005975F7 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		68970D8B27C6273C0044477E /* LyricsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsModel.swift; sourceTree = "<group>"; };
 		6899BF1E28ABCDC30040FB8A /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		68CCCF4627B79FD1005E073E /* GasaOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GasaOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CCCF4927B79FD1005E073E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,9 +103,16 @@
 			children = (
 				6F9E4E4327C938B500A1BC20 /* SongModel.xcdatamodeld */,
 				6802ABC327BBC2C200BC6243 /* SongInfo.swift */,
-				68970D8B27C6273C0044477E /* LyricsModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		683FFE0428BCA27B00D873D0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				683FFE0228BC9E6B00D873D0 /* AlertManager.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		684A685B27EC80E500E96249 /* View */ = {
@@ -155,6 +162,8 @@
 		689B67C427BDFC740062D0F8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6899BF1D28ABCDB60040FB8A /* Extension */,
+				683FFE0428BCA27B00D873D0 /* Service */,
 				686E35B227F21B12001DBEAA /* SongFolder */,
 				686E35B327F21B25001DBEAA /* Search */,
 				686E35B427F21B2E001DBEAA /* Settings */,
@@ -185,7 +194,6 @@
 		68CCCF4827B79FD1005E073E /* GasaOK */ = {
 			isa = PBXGroup;
 			children = (
-				6899BF1D28ABCDB60040FB8A /* Extension */,
 				6802ABC027BBC28400BC6243 /* Model */,
 				684A685B27EC80E500E96249 /* View */,
 				689B67C427BDFC740062D0F8 /* Controller */,
@@ -356,12 +364,12 @@
 				686D808927BCEEA0005975F7 /* SettingsVC.swift in Sources */,
 				6FED13A528BB74D800DA4335 /* CoreDataMethod.swift in Sources */,
 				6802ABC427BBC2C200BC6243 /* SongInfo.swift in Sources */,
-				68970D8C27C6273C0044477E /* LyricsModel.swift in Sources */,
 				6899BF1F28ABCDC30040FB8A /* UIAlertController.swift in Sources */,
 				6802ABBF27BB85BD00BC6243 /* SearchVC.swift in Sources */,
 				68CCCF4E27B79FD1005E073E /* ViewController.swift in Sources */,
 				68CCCF4A27B79FD1005E073E /* AppDelegate.swift in Sources */,
 				68CCCF4C27B79FD1005E073E /* SceneDelegate.swift in Sources */,
+				683FFE0328BC9E6B00D873D0 /* AlertManager.swift in Sources */,
 				6F9E4E4527C938B500A1BC20 /* SongModel.xcdatamodeld in Sources */,
 				6F4BC00427C164D10076E04C /* MySongTableViewCell.swift in Sources */,
 				6802ABC627BBCEE500BC6243 /* SearchTableViewCell.swift in Sources */,
