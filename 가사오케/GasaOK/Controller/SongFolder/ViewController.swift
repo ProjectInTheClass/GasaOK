@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     let isDark = UserDefaults.standard.bool(forKey: "darkModeState")
     
     lazy var songLists:[NSManagedObject] = {
-        return self.fetch()
+        return CoreDataMethod.dataWillFetch()
     }()
     
     override func viewDidLoad() {
@@ -31,18 +31,13 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     // MARK: - 곡 추가 시 보관함 테이블뷰 reload
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        songLists = self.fetch()
+        songLists = CoreDataMethod.dataWillFetch()
         DispatchQueue.main.async {
             self.mySongTableView.reloadData()
         }
     }
 
 
-    /// REMOVE🅾️: 보관함 변경 버튼 생성 시 살리고 아니면 삭제
-//    // MARK: - 네비게이션 아이템 (보관함 변경 버튼) 생성
-//    func setFolderChangeButton() {
-//        navigationController?.navigationBar.prefersLargeTitles = true
-//    }
     
     // MARK: - 보관함 내 노래 삭제 시 뜨는 알림창
     /// - Parameter deleteIndex: 삭제하려는 노래의 인덱스
@@ -50,7 +45,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
         let alert = UIAlertController(title: nil, message: "보관함에서 이 노래를 삭제하시겠습니까?", preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "노래 삭제", style: .destructive) { (_) in
             let object = self.songLists[deleteIndex.row]
-            if self.delete(object: object) {
+            if CoreDataMethod.dataWillDelete(object: object) {
                 self.songLists.remove(at: deleteIndex.row)
                 self.mySongTableView.deleteRows(at: [deleteIndex], with: .fade)
             }
@@ -64,12 +59,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
 
     }
 
-    ///REMOVE🅾️ : 가사를 보는 화면이 있을 때, 해당 화면의 백버튼 아이템의 타이틀을 지워주는 용도였음. 지금은 필요x
-//    func barButtonItemTextRemove() {
-//            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-//            self.navigationItem.backBarButtonItem = backBarButtonItem
-//        }
-    
+
     /// 다크모드 설정을 확인한다.
     /// 앱의 설정에 따라 다크모드인지 라이트모드인지 결정됨.
     // FIXME: - 현재 13을 기준으로 개발되어있으므로 windows 말고 다른 방법으로 개발이 필요
@@ -144,31 +134,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         /// 노래제목과 가수를 파라미터로 함수 호출
         showLyricsAlert(title: songTitle, singer: singer)
-    }
-    
-    // MARK: - 데이터 fetch
-    func fetch() -> [NSManagedObject] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Song")
-        let result = try! context.fetch(fetchRequest)
-        return result
-    }
-    
-    // MARK: - 데이터 삭제
-    func delete(object: NSManagedObject) -> Bool {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        context.delete(object)
-        
-        do {
-            try context.save()
-            return true
-        } catch {
-            context.rollback()
-            return false
-        }
     }
     
     // MARK: - 가사 보기 알림창
