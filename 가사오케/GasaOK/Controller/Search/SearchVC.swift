@@ -84,6 +84,34 @@ class SearchViewController: UIViewController {
         }.resume()
     }
     
+    /// API에 노래 가수 검색을 요청합니다.
+    /// - Parameter title: song title
+    func requestSongsBySinger(title: String) {
+        let url = "https://api.manana.kr/karaoke/"
+        let session = URLSession.shared
+        let singer = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let urlSongString = url + "singer/" + singer + ".json"
+        
+        guard let requestURL = URL(string: urlSongString) else { return }
+        session.dataTask(with: requestURL) { (data, response, error) in
+             guard error == nil else { return }
+             if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                 do {
+                     let songResult = try JSONDecoder().decode(SongInfo.self, from: data)
+                     self.filteredSongs = songResult
+                     DispatchQueue.main.async {
+                         self.songSeperatedByBrand()
+                         self.searchTableView.reloadData()
+                     }
+                 } catch(let err) {
+                     print("Decoding Error")
+                     print(err)
+                 }
+             }
+        }.resume()
+    }
+  
+    
     /// 노래 추가 버튼을 눌렀을 때 노래를 보관함에 저장합니다.
     /// - Parameter sender: UIButton of SearchTableViewCell
     @IBAction func didTapSongAddButton(_ sender: UIButton) {
