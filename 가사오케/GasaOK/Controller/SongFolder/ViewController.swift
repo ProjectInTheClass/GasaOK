@@ -11,9 +11,12 @@ import CoreData
 class ViewController: UIViewController, UITabBarControllerDelegate {
 
     @IBOutlet weak var mySongTableView: UITableView!
-    
     @IBOutlet weak var emptyView: UIView!
     let isDark = UserDefaults.standard.bool(forKey: "darkModeState")
+    
+    @IBAction func btnMoveDatePickerView( sender: UIButton) {
+          tabBarController?.selectedIndex = 1 // 데이트 피커 뷰 탭으로 이동
+      }
     
     lazy var songLists:[NSManagedObject] = {
         return CoreDataMethod.dataWillFetch()
@@ -146,6 +149,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             self.emptyView.isHidden = false
         } else {
             self.emptyView.isHidden = true
+            
         }
     }
     // MARK: - 가사 보기 알림창
