@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TlX-OQ-W2a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TlX-OQ-W2a">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sn0-VT-suQ">
-                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <rect key="frame" x="0.0" y="91" width="390" height="670"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MySongTableViewCell" id="evJ-ch-xR7" customClass="MySongTableViewCell" customModule="GasaOK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="65"/>
+                                        <rect key="frame" x="0.0" y="50" width="390" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="evJ-ch-xR7" id="8xp-Fb-gic">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="65"/>
@@ -108,12 +109,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzZ-sP-vrO">
+                                <rect key="frame" x="8" y="96" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="FdP-iK-0Yt"/>
+                                    <constraint firstAttribute="height" constant="35" id="Uza-pT-04N"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal.decrease" catalog="system">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                            </button>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="TXF-VY-VAb">
+                                <rect key="frame" x="43" y="91" width="347" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="EVh-iQ-C7S"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HiZ-Tf-KUE" id="PIQ-VK-BU6"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FBP-uR-mwq">
-                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <rect key="frame" x="0.0" y="183" width="390" height="578"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="65" reuseIdentifier="searchCell" rowHeight="65" id="Hu5-Y4-zDs" customClass="SearchTableViewCell" customModule="GasaOK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="65"/>
+                                        <rect key="frame" x="0.0" y="50" width="390" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hu5-Y4-zDs" id="ZAf-1f-grD">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="65"/>
@@ -199,18 +223,37 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="z2X-Ld-vwL">
+                                <rect key="frame" x="9" y="144" width="373" height="32"/>
+                                <segments>
+                                    <segment title="전체보기"/>
+                                    <segment title="TJ"/>
+                                    <segment title="KY"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Obj-RH-9U9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="FBP-uR-mwq" firstAttribute="bottom" secondItem="Obj-RH-9U9" secondAttribute="bottom" id="0VY-I0-dr5"/>
+                            <constraint firstItem="FBP-uR-mwq" firstAttribute="top" secondItem="z2X-Ld-vwL" secondAttribute="bottom" constant="8" symbolic="YES" id="97K-IF-1tp"/>
                             <constraint firstItem="FBP-uR-mwq" firstAttribute="leading" secondItem="Obj-RH-9U9" secondAttribute="leading" id="9lA-Hs-Fne"/>
-                            <constraint firstItem="FBP-uR-mwq" firstAttribute="top" secondItem="Obj-RH-9U9" secondAttribute="top" id="WRB-Dp-Py8"/>
+                            <constraint firstItem="TXF-VY-VAb" firstAttribute="top" secondItem="Obj-RH-9U9" secondAttribute="top" id="G1x-Jy-eg0"/>
+                            <constraint firstItem="JzZ-sP-vrO" firstAttribute="leading" secondItem="Obj-RH-9U9" secondAttribute="leading" constant="8" id="ISs-8C-a2Z"/>
+                            <constraint firstItem="TXF-VY-VAb" firstAttribute="leading" secondItem="JzZ-sP-vrO" secondAttribute="trailing" id="Kcq-dQ-GWI"/>
+                            <constraint firstItem="TXF-VY-VAb" firstAttribute="trailing" secondItem="Obj-RH-9U9" secondAttribute="trailing" id="Q2Z-P7-rgn"/>
+                            <constraint firstItem="z2X-Ld-vwL" firstAttribute="leading" secondItem="Obj-RH-9U9" secondAttribute="leading" constant="9" id="f1n-I9-xr5"/>
+                            <constraint firstItem="JzZ-sP-vrO" firstAttribute="top" secondItem="Obj-RH-9U9" secondAttribute="top" constant="5" id="fSH-oo-nm3"/>
                             <constraint firstItem="FBP-uR-mwq" firstAttribute="trailing" secondItem="Obj-RH-9U9" secondAttribute="trailing" id="n23-uB-cx1"/>
+                            <constraint firstItem="z2X-Ld-vwL" firstAttribute="top" secondItem="TXF-VY-VAb" secondAttribute="bottom" constant="9" id="p1L-Ry-7S7"/>
+                            <constraint firstItem="Obj-RH-9U9" firstAttribute="trailing" secondItem="z2X-Ld-vwL" secondAttribute="trailing" constant="8" id="qOf-gn-zfS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="검색" id="e3P-sF-5eG"/>
                     <connections>
+                        <outlet property="customSearchBar" destination="TXF-VY-VAb" id="sCG-to-oOT"/>
+                        <outlet property="searchFilterButton" destination="JzZ-sP-vrO" id="tr1-za-57Z"/>
+                        <outlet property="searchFilterSegmentedControl" destination="z2X-Ld-vwL" id="61X-ug-4yM"/>
                         <outlet property="searchTableView" destination="FBP-uR-mwq" id="Sl9-R7-WDa"/>
                     </connections>
                 </viewController>
@@ -227,13 +270,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uzm-73-GXf">
-                                <rect key="frame" x="319" y="132" width="51" height="31"/>
+                                <rect key="frame" x="319" y="135" width="51" height="31"/>
                                 <connections>
                                     <action selector="darkModeChangeSwitch:" destination="cEN-m0-sXn" eventType="valueChanged" id="KHM-1v-W5k"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다크 모드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1C-6s-ysn">
-                                <rect key="frame" x="19.999999999999996" y="137" width="63.666666666666657" height="20.666666666666657"/>
+                                <rect key="frame" x="19.999999999999996" y="140" width="63.666666666666657" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -286,7 +329,7 @@
                     <tabBarItem key="tabBarItem" title="보관함" image="folder.fill" catalog="system" id="GaA-co-QII"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Swy-YB-iTE">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
@@ -306,7 +349,7 @@
                     <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="slI-LR-9ql"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NOE-6n-3uS">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -325,7 +368,7 @@
                     <tabBarItem key="tabBarItem" title="설정" image="gearshape.fill" catalog="system" id="gRv-jO-OKo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wT2-7V-hai">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -340,15 +383,19 @@
     </scenes>
     <color key="tintColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
-        <image name="folder.fill" catalog="system" width="128" height="97"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="folder.fill" catalog="system" width="128" height="96"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

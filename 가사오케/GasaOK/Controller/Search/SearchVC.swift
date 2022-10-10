@@ -10,9 +10,12 @@ import CoreData
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var searchFilterButton: UIButton!
+    @IBOutlet weak var customSearchBar: UISearchBar!
+    @IBOutlet weak var searchFilterSegmentedControl: UISegmentedControl!
     @IBOutlet weak var searchTableView: UITableView!
    
-    var searchController: UISearchController = UISearchController()
+//    var searchController: UISearchController = CustomSearchController()
     var filteredSongs: [SongInfoElement] = []
     var filteredSongsOfTJ: [SongInfoElement] = []
     var filteredSongsOfKY: [SongInfoElement] = []
@@ -22,28 +25,28 @@ class SearchViewController: UIViewController {
         
         searchTableView.dataSource = self
         searchTableView.delegate = self
-        searchController.searchBar.delegate = self
-
-        setSearchController()
+//        searchController.searchBar.delegate = self
+        customSearchBar.delegate = self
+//        setSearchController()
     }
     
 
     // MARK: - View
     /// 기본 search Controller 화면을 세팅합니다.
-    func setSearchController() {
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "노래 제목을 입력해주세요"
-        searchController.searchBar.searchBarStyle = .minimal
-        navigationItem.searchController = searchController
-        definesPresentationContext = false
-        setSearchControllerScopeBar()
-    }
+//    func setSearchController() {
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.searchBar.searchBarStyle = .minimal
+//        navigationItem.searchController = searchController
+//        definesPresentationContext = false
+//        setSearchControllerScopeBar()
+//    }
+    
     
     /// 검색창(search bar)에 scope bar를 생성합니다.
-    func setSearchControllerScopeBar() {
-        searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.scopeButtonTitles = ["전체보기", "TJ", "KY"]
-    }
+//    func setSearchControllerScopeBar() {
+//        searchController.searchBar.showsScopeBar = true
+//        searchController.searchBar.scopeButtonTitles = ["전체보기", "TJ", "KY"]
+//    }
 
     /// 사용자가 검색한 결과를 노래방 브랜드별로 필터링합니다.
     func songSeperatedByBrand() {
@@ -127,7 +130,8 @@ class SearchViewController: UIViewController {
             let index = searchTableView.indexPath(for: cell)
 
             // FIXME: 아래의 반복되는 코드를 어떻게 합칠 수 있을까... 
-            let searchType = searchController.searchBar.selectedScopeButtonIndex
+//            let searchType = searchController.searchBar.selectedScopeButtonIndex
+            let searchType = searchFilterSegmentedControl.selectedSegmentIndex
             switch searchType {
             case 0:
                 mySongList.setValue(filteredSongs[index!.row].title, forKey: "songTitle")
@@ -169,7 +173,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     /// 어떤 scope(전체, TJ, KY)가 선택되었는지에 따라 table view cell 갯수를 반환합니다.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let searchType = searchController.searchBar.selectedScopeButtonIndex
+//        let searchType = searchController.searchBar.selectedScopeButtonIndex
+        let searchType = searchFilterSegmentedControl.selectedSegmentIndex
         switch searchType {
         case 0:
             return filteredSongs.count
@@ -186,7 +191,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     /// 선택된 scope에 따라 필터링된 노래 데이터를 cell에 넘겨 줍니다.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SearchTableViewCell = self.searchTableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
-        let searchType = searchController.searchBar.selectedScopeButtonIndex
+//        let searchType = searchController.searchBar.selectedScopeButtonIndex
+        let searchType = searchFilterSegmentedControl.selectedSegmentIndex
         switch searchType {
         case 0:
             cell.setSongData(model: filteredSongs[indexPath.row])
@@ -208,7 +214,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         var songTitle = ""
         var singer = ""
-        let searchType = searchController.searchBar.selectedScopeButtonIndex
+//        let searchType = searchController.searchBar.selectedScopeButtonIndex
+        let searchType = searchFilterSegmentedControl.selectedSegmentIndex
         switch searchType {
         case 0:
             songTitle = filteredSongs[indexPath.row].title
@@ -230,7 +237,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - UISearchController, UISearchBar
 
-extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     
     /// 검색창에서 scope를 바꾸면 해당 데이터로 테이블뷰를 리로드하게 한다.
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
@@ -239,8 +246,10 @@ extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate 
     
     /// 검색창의 검색 버튼이 눌리면 검색을 시작하게 한다.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        requestSongsByTitle(title: searchController.searchBar.text!.lowercased())
-        setSearchControllerScopeBar()
+        searchBar.resignFirstResponder()
+//        requestSongsByTitle(title: searchController.searchBar.text!.lowercased())
+        requestSongsByTitle(title: searchBar.text!.lowercased())
+//        setSearchControllerScopeBar()
     }
     
     /// 검색창의 취소 버튼이 눌리면 검색 내용을 초기화한다.
