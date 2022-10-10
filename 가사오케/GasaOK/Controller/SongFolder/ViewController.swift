@@ -11,8 +11,12 @@ import CoreData
 class ViewController: UIViewController, UITabBarControllerDelegate {
 
     @IBOutlet weak var mySongTableView: UITableView!
-    
+    @IBOutlet weak var emptyView: UIView!
     let isDark = UserDefaults.standard.bool(forKey: "darkModeState")
+    
+    @IBAction func gotoSearchTabBar( sender: UIButton) {
+          tabBarController?.selectedIndex = 1
+      }
     
     lazy var songLists:[NSManagedObject] = {
         return CoreDataMethod.dataWillFetch()
@@ -35,10 +39,9 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
         DispatchQueue.main.async {
             self.mySongTableView.reloadData()
         }
+        self.checkStorageisEmpty()
     }
 
-
-    
     // MARK: - 보관함 내 노래 삭제 시 뜨는 알림창
     /// - Parameter deleteIndex: 삭제하려는 노래의 인덱스
     func songWillDelete(deleteIndex:IndexPath) {
@@ -48,6 +51,7 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
             if CoreDataMethod.dataWillDelete(object: object) {
                 self.songLists.remove(at: deleteIndex.row)
                 self.mySongTableView.deleteRows(at: [deleteIndex], with: .fade)
+                self.checkStorageisEmpty()
             }
         }
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
@@ -60,9 +64,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     }
 
 
-    /// 다크모드 설정을 확인한다.
+    // MARK: - 다크모드 설정 확인
     /// 앱의 설정에 따라 다크모드인지 라이트모드인지 결정됨.
-    // FIXME: - 현재 13을 기준으로 개발되어있으므로 windows 말고 다른 방법으로 개발이 필요
     func darkModeCheck(){
         
         let scenes = UIApplication.shared.connectedScenes
@@ -107,6 +110,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 print("delete!!")
                 self.songWillDelete(deleteIndex: indexPath)
                 success(true)
+                //
+                self.checkStorageisEmpty()
             })
         
         delete.backgroundColor = .systemRed
@@ -134,10 +139,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         /// 노래제목과 가수를 파라미터로 함수 호출
         AlertManager.shared.lyricsAlert(vc: self, title: songTitle, singer: singer)
+        
 
     }
     
-
+// MARK: - 보관함에 저장된 노래가 있는지 없는지 확인
+    func checkStorageisEmpty() {
+        if self.songLists.count == 0 {
+            self.emptyView.isHidden = false
+        } else {
+            self.emptyView.isHidden = true
+            
+        }
+    }
     // MARK: - 가사 보기 알림창
     ///FIXME: 변수명 제안 lyricsAlertWillShow
     func showLyricsAlert(title: String, singer: String) {
@@ -162,3 +176,4 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
 }
+				
