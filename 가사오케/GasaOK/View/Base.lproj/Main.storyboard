@@ -94,7 +94,7 @@
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="btnMoveDatePickerViewWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t50-Pj-0LE"/>
+                                            <action selector="gotoSearchTabBarWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FcK-KY-V4F"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="저장된 노래가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMb-cO-Abn">
@@ -119,7 +119,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="🎵 보관함" id="tsA-xT-oHB"/>
                     <connections>
-                        <outlet property="emptyView" destination="sQz-X6-a2d" id="uIp-N3-R6x"/>
+                        <outlet property="emptyView" destination="sQz-X6-a2d" id="DZw-Vx-xe8"/>
                         <outlet property="mySongTableView" destination="Sn0-VT-suQ" id="Bpz-Yh-Vbb"/>
                     </connections>
                 </viewController>

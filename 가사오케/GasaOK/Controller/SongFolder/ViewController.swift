@@ -14,8 +14,8 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
     @IBOutlet weak var emptyView: UIView!
     let isDark = UserDefaults.standard.bool(forKey: "darkModeState")
     
-    @IBAction func btnMoveDatePickerView( sender: UIButton) {
-          tabBarController?.selectedIndex = 1 // 데이트 피커 뷰 탭으로 이동
+    @IBAction func gotoSearchTabBar( sender: UIButton) {
+          tabBarController?.selectedIndex = 1
       }
     
     lazy var songLists:[NSManagedObject] = {
