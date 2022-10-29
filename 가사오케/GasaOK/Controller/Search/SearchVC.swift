@@ -15,7 +15,6 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchFilterSegmentedControl: UISegmentedControl!
     @IBOutlet weak var searchTableView: UITableView!
    
-//    var searchController: UISearchController = CustomSearchController()
     var filteredSongs: [SongInfoElement] = []
     var filteredSongsOfTJ: [SongInfoElement] = []
     var filteredSongsOfKY: [SongInfoElement] = []
@@ -25,9 +24,9 @@ class SearchViewController: UIViewController {
         
         searchTableView.dataSource = self
         searchTableView.delegate = self
-//        searchController.searchBar.delegate = self
         customSearchBar.delegate = self
-//        setSearchController()
+        
+        setSearchFilterButton()
     }
     
 
@@ -47,9 +46,33 @@ class SearchViewController: UIViewController {
 //        searchController.searchBar.showsScopeBar = true
 //        searchController.searchBar.scopeButtonTitles = ["전체보기", "TJ", "KY"]
 //    }
+    
+    func setSearchFilterButton() {
+        searchFilterButton.showsMenuAsPrimaryAction = true
+        searchFilterButton.menu = UIMenu(children: self.menuActions())
+    }
+    
+    func menuActions() -> [UIMenuElement] {
+        let searchAll = UIAction(title: "전체 검색", image: UIImage(systemName: "line.horizontal.3.decrease")) { _ in
+            // 전체 검색 함수 호출
+            print("전체 검색")
+        }
+        
+        let searchBySinger = UIAction(title: "가수 검색", image: UIImage(systemName: "person.fill")) { _ in
+            // 가수 검색 함수 호출
+            print("가수 검색")
+        }
+        
+        let searchByTitle = UIAction(title: "제목 검색", image: UIImage(systemName: "music.note.list")) { _ in
+            // 제목 검색 함수 호출
+            print("제목 검색")
+        }
+        
+        return [searchAll, searchBySinger, searchByTitle]
+    }
 
     /// 사용자가 검색한 결과를 노래방 브랜드별로 필터링합니다.
-    func songSeperatedByBrand() {
+    func songFilterByBrand() {
         filteredSongsOfTJ = filteredSongs.filter({ (song:SongInfoElement) -> Bool in
             return song.brand!.rawValue == "tj"
         })
@@ -62,7 +85,7 @@ class SearchViewController: UIViewController {
 
     /// API에 노래 제목 검색을 요청합니다.
     /// - Parameter title: song title
-    func requestSongsByTitle(title: String) {
+    func requestSongsFilterByTitle(title: String) {
         let url = "https://api.manana.kr/karaoke/"
         let session = URLSession.shared
         let title = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -76,7 +99,7 @@ class SearchViewController: UIViewController {
                      let songResult = try JSONDecoder().decode(SongInfo.self, from: data)
                      self.filteredSongs = songResult
                      DispatchQueue.main.async {
-                         self.songSeperatedByBrand()
+                         self.songFilterByBrand()
                          self.searchTableView.reloadData()
                      }
                  } catch(let err) {
@@ -89,10 +112,10 @@ class SearchViewController: UIViewController {
     
     /// API에 노래 가수 검색을 요청합니다.
     /// - Parameter title: song title
-    func requestSongsBySinger(title: String) {
+    func requestSongsFilterBySinger(artistName: String) {
         let url = "https://api.manana.kr/karaoke/"
         let session = URLSession.shared
-        let singer = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let singer = artistName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlSongString = url + "singer/" + singer + ".json"
         
         guard let requestURL = URL(string: urlSongString) else { return }
@@ -103,7 +126,7 @@ class SearchViewController: UIViewController {
                      let songResult = try JSONDecoder().decode(SongInfo.self, from: data)
                      self.filteredSongs = songResult
                      DispatchQueue.main.async {
-                         self.songSeperatedByBrand()
+                         self.songFilterByBrand()
                          self.searchTableView.reloadData()
                      }
                  } catch(let err) {
@@ -248,7 +271,7 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
 //        requestSongsByTitle(title: searchController.searchBar.text!.lowercased())
-        requestSongsByTitle(title: searchBar.text!.lowercased())
+        requestSongsFilterByTitle(title: searchBar.text!.lowercased())
 //        setSearchControllerScopeBar()
     }
     
