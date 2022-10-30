@@ -18,11 +18,7 @@ class SearchViewController: UIViewController {
     var filteredSongs: [SongInfoElement] = []
     var filteredSongsOfTJ: [SongInfoElement] = []
     var filteredSongsOfKY: [SongInfoElement] = []
-    var searchFilterType: Int = 0 {
-        didSet {
-            
-        }
-    }
+    var searchFilterType: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,22 +32,6 @@ class SearchViewController: UIViewController {
     
 
     // MARK: - View
-    /// 기본 search Controller 화면을 세팅합니다.
-//    func setSearchController() {
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.searchBarStyle = .minimal
-//        navigationItem.searchController = searchController
-//        definesPresentationContext = false
-//        setSearchControllerScopeBar()
-//    }
-    
-    
-    /// 검색창(search bar)에 scope bar를 생성합니다.
-//    func setSearchControllerScopeBar() {
-//        searchController.searchBar.showsScopeBar = true
-//        searchController.searchBar.scopeButtonTitles = ["전체보기", "TJ", "KY"]
-//    }
-    
     func setSearchFilterButton() {
         searchFilterButton.showsMenuAsPrimaryAction = true
         searchFilterButton.menu = UIMenu(children: self.searchFilterMenuActions())
@@ -63,7 +43,7 @@ class SearchViewController: UIViewController {
             print("전체 검색")
             self.searchFilterType = 0
             self.searchFilterButton.setImage(UIImage(systemName: "line.horizontal.3.decrease"), for: .normal)
-            self.searchTableView.reloadData()
+            self.searchBarSearchButtonClicked(self.customSearchBar)
         }
         
         let searchBySinger = UIAction(title: "가수 검색", image: UIImage(systemName: "person.fill")) { _ in
@@ -71,7 +51,7 @@ class SearchViewController: UIViewController {
             print("가수 검색")
             self.searchFilterType = 1
             self.searchFilterButton.setImage(UIImage(systemName: "person.fill"), for: .normal)
-            self.searchTableView.reloadData()
+            self.searchBarSearchButtonClicked(self.customSearchBar)
         }
         
         let searchByTitle = UIAction(title: "제목 검색", image: UIImage(systemName: "music.note.list")) { _ in
@@ -79,7 +59,7 @@ class SearchViewController: UIViewController {
             print("제목 검색")
             self.searchFilterType = 2
             self.searchFilterButton.setImage(UIImage(systemName: "music.note.list"), for: .normal)
-            self.searchTableView.reloadData()
+            self.searchBarSearchButtonClicked(self.customSearchBar)
         }
         
         return [searchAll, searchBySinger, searchByTitle]
@@ -295,6 +275,8 @@ extension SearchViewController: UISearchBarDelegate {
     /// 검색창의 검색 버튼이 눌리면 검색을 시작하게 한다.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        searchBar.setValue("취소", forKey: "cancelButtonText")
+        searchBar.setShowsCancelButton(true, animated: true)
         switch searchFilterType {
         case 1:
             requestSongsFilterBySinger(artistName: searchBar.text!.lowercased())
@@ -307,10 +289,17 @@ extension SearchViewController: UISearchBarDelegate {
     
     /// 검색창의 취소 버튼이 눌리면 검색 내용을 초기화한다.
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.searchTextField.text = nil    // 커서도 안보이게 clear 할 수는 없을까
         filteredSongs = []
         filteredSongsOfTJ = []
         filteredSongsOfKY = []
         searchTableView.reloadData()
     }
 
+    // Asks the delegate if editing should stop in the specified search bar.
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        // false로 해줘야 cancel 버튼이 활성화된다.
+        return false
+    }
 }

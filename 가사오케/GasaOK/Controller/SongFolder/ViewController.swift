@@ -153,7 +153,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             self.goToSearchBtn.isHidden = false
             self.noDataLabel.isHidden = false
         } else {
-            self.emptyView.isHidden = false
+            self.emptyView.isHidden = true
             self.goToSearchBtn.isHidden = true
             self.noDataLabel.isHidden = true
             
