@@ -15,19 +15,23 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchFilterSegmentedControl: UISegmentedControl!
     @IBOutlet weak var searchTableView: UITableView!
    
-//    var searchController: UISearchController = CustomSearchController()
     var filteredSongs: [SongInfoElement] = []
     var filteredSongsOfTJ: [SongInfoElement] = []
     var filteredSongsOfKY: [SongInfoElement] = []
+    var searchFilterType: Int = 0 {
+        didSet {
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchTableView.dataSource = self
         searchTableView.delegate = self
-//        searchController.searchBar.delegate = self
         customSearchBar.delegate = self
-//        setSearchController()
+        
+        setSearchFilterButton()
     }
     
 
@@ -47,22 +51,55 @@ class SearchViewController: UIViewController {
 //        searchController.searchBar.showsScopeBar = true
 //        searchController.searchBar.scopeButtonTitles = ["전체보기", "TJ", "KY"]
 //    }
+    
+    func setSearchFilterButton() {
+        searchFilterButton.showsMenuAsPrimaryAction = true
+        searchFilterButton.menu = UIMenu(children: self.searchFilterMenuActions())
+    }
+    
+    func searchFilterMenuActions() -> [UIMenuElement] {
+        let searchAll = UIAction(title: "전체 검색", image: UIImage(systemName: "line.horizontal.3.decrease")) { _ in
+            // 전체 검색 함수 호출
+            print("전체 검색")
+            self.searchFilterType = 0
+            self.searchFilterButton.setImage(UIImage(systemName: "line.horizontal.3.decrease"), for: .normal)
+            self.searchTableView.reloadData()
+        }
+        
+        let searchBySinger = UIAction(title: "가수 검색", image: UIImage(systemName: "person.fill")) { _ in
+            // 가수 검색 함수 호출
+            print("가수 검색")
+            self.searchFilterType = 1
+            self.searchFilterButton.setImage(UIImage(systemName: "person.fill"), for: .normal)
+            self.searchTableView.reloadData()
+        }
+        
+        let searchByTitle = UIAction(title: "제목 검색", image: UIImage(systemName: "music.note.list")) { _ in
+            // 제목 검색 함수 호출
+            print("제목 검색")
+            self.searchFilterType = 2
+            self.searchFilterButton.setImage(UIImage(systemName: "music.note.list"), for: .normal)
+            self.searchTableView.reloadData()
+        }
+        
+        return [searchAll, searchBySinger, searchByTitle]
+    }
 
     /// 사용자가 검색한 결과를 노래방 브랜드별로 필터링합니다.
-    func songSeperatedByBrand() {
+    func songFilterByBrand() {
         filteredSongsOfTJ = filteredSongs.filter({ (song:SongInfoElement) -> Bool in
             return song.brand!.rawValue == "tj"
         })
         filteredSongsOfKY = filteredSongs.filter({ (song:SongInfoElement) -> Bool in
             return song.brand!.rawValue == "kumyoung"
         })
-        filteredSongs = filteredSongsOfTJ + filteredSongsOfKY
+//        filteredSongs = filteredSongsOfTJ + filteredSongsOfKY
         filteredSongs.sort(by: {$0.title < $1.title} )
     }
 
     /// API에 노래 제목 검색을 요청합니다.
     /// - Parameter title: song title
-    func requestSongsByTitle(title: String) {
+    func requestSongsFilterByTitle(title: String) {
         let url = "https://api.manana.kr/karaoke/"
         let session = URLSession.shared
         let title = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -76,7 +113,7 @@ class SearchViewController: UIViewController {
                      let songResult = try JSONDecoder().decode(SongInfo.self, from: data)
                      self.filteredSongs = songResult
                      DispatchQueue.main.async {
-                         self.songSeperatedByBrand()
+                         self.songFilterByBrand()
                          self.searchTableView.reloadData()
                      }
                  } catch(let err) {
@@ -89,10 +126,10 @@ class SearchViewController: UIViewController {
     
     /// API에 노래 가수 검색을 요청합니다.
     /// - Parameter title: song title
-    func requestSongsBySinger(title: String) {
+    func requestSongsFilterBySinger(artistName: String) {
         let url = "https://api.manana.kr/karaoke/"
         let session = URLSession.shared
-        let singer = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let singer = artistName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlSongString = url + "singer/" + singer + ".json"
         
         guard let requestURL = URL(string: urlSongString) else { return }
@@ -103,7 +140,7 @@ class SearchViewController: UIViewController {
                      let songResult = try JSONDecoder().decode(SongInfo.self, from: data)
                      self.filteredSongs = songResult
                      DispatchQueue.main.async {
-                         self.songSeperatedByBrand()
+                         self.songFilterByBrand()
                          self.searchTableView.reloadData()
                      }
                  } catch(let err) {
@@ -114,6 +151,10 @@ class SearchViewController: UIViewController {
         }.resume()
     }
   
+    
+    @IBAction func scopeBarDidChange(_ sender: Any) {
+        self.searchTableView.reloadData()
+    }
     
     /// 노래 추가 버튼을 눌렀을 때 노래를 보관함에 저장합니다.
     /// - Parameter sender: UIButton of SearchTableViewCell
@@ -191,17 +232,24 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     /// 선택된 scope에 따라 필터링된 노래 데이터를 cell에 넘겨 줍니다.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SearchTableViewCell = self.searchTableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
-//        let searchType = searchController.searchBar.selectedScopeButtonIndex
         let searchType = searchFilterSegmentedControl.selectedSegmentIndex
         switch searchType {
         case 0:
             cell.setSongData(model: filteredSongs[indexPath.row])
             return cell
         case 1:
-            cell.setSongData(model: filteredSongsOfTJ[indexPath.row])
+            if filteredSongsOfTJ.count > 0 {
+                cell.setSongData(model: filteredSongsOfTJ[indexPath.row])
+            } else {
+                // FIXME: 0일 경우 검색 결과가 없다는 화면 출력
+            }
             return cell
         case 2:
-            cell.setSongData(model: filteredSongsOfKY[indexPath.row])
+            if filteredSongsOfKY.count > 0 {
+                cell.setSongData(model: filteredSongsOfKY[indexPath.row])
+            } else {
+                // FIXME: 0일 경우 검색 결과가 없다는 화면 출력
+            }
             return cell
         default:
             print("table view cellForRow: 검색 타입이 명확하지 않습니다.")
@@ -247,9 +295,14 @@ extension SearchViewController: UISearchBarDelegate {
     /// 검색창의 검색 버튼이 눌리면 검색을 시작하게 한다.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-//        requestSongsByTitle(title: searchController.searchBar.text!.lowercased())
-        requestSongsByTitle(title: searchBar.text!.lowercased())
-//        setSearchControllerScopeBar()
+        switch searchFilterType {
+        case 1:
+            requestSongsFilterBySinger(artistName: searchBar.text!.lowercased())
+        case 2:
+            requestSongsFilterByTitle(title: searchBar.text!.lowercased())
+        default:
+            print("아직 전체 검색 안되영~")
+        }
     }
     
     /// 검색창의 취소 버튼이 눌리면 검색 내용을 초기화한다.
