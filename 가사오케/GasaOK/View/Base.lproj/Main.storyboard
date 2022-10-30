@@ -256,6 +256,9 @@
                                     <segment title="TJ"/>
                                     <segment title="KY"/>
                                 </segments>
+                                <connections>
+                                    <action selector="scopeBarDidChange:" destination="HiZ-Tf-KUE" eventType="valueChanged" id="ZmQ-gu-jLf"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Obj-RH-9U9"/>
