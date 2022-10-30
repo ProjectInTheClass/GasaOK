@@ -219,12 +219,9 @@
                                                                 <constraint firstAttribute="height" constant="23" id="O8k-Jw-bdu"/>
                                                             </constraints>
                                                             <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
+                                                            <buttonConfiguration key="configuration" style="plain" image="ellipsis" catalog="system">
                                                                 <color key="baseForegroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </buttonConfiguration>
-                                                            <connections>
-                                                                <action selector="didTapSongAddButton:" destination="HiZ-Tf-KUE" eventType="touchUpInside" id="9eH-Af-ouD"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -242,8 +239,8 @@
                                         <connections>
                                             <outlet property="imageLogo" destination="PiZ-fE-LId" id="A0b-TT-1CP"/>
                                             <outlet property="karaokeNumber" destination="NEk-lk-WA4" id="sNh-6U-h0r"/>
+                                            <outlet property="moreMenuButton" destination="qD6-WC-7E4" id="w77-ve-N0I"/>
                                             <outlet property="singerNameLabel" destination="Bhg-F8-VL9" id="2AO-hK-IeP"/>
-                                            <outlet property="songAddButton" destination="qD6-WC-7E4" id="w77-ve-N0I"/>
                                             <outlet property="songNameLabel" destination="iOq-s7-F6e" id="Ene-aE-iz5"/>
                                         </connections>
                                     </tableViewCell>
@@ -410,11 +407,11 @@
     </scenes>
     <color key="tintColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="folder.fill" catalog="system" width="128" height="96"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
