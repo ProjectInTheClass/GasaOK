@@ -82,45 +82,65 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" id="sQz-X6-a2d" userLabel="emptyView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pfu-a5-HB2" userLabel="emptyView">
                                 <rect key="frame" x="0.0" y="87" width="390" height="670"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5g-Wi-ibk">
-                                        <rect key="frame" x="40" y="331" width="311" height="54"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="노래 찾아보기">
-                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="gotoSearchTabBarWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FcK-KY-V4F"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="저장된 노래가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMb-cO-Abn">
-                                        <rect key="frame" x="115" y="285" width="161" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="670" id="AkW-Lw-eje"/>
+                                    <constraint firstAttribute="width" constant="390" id="TIq-wQ-l7i"/>
+                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5g-Wi-ibk">
+                                <rect key="frame" x="40" y="395" width="310" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="WSD-Oj-Eg1"/>
+                                    <constraint firstAttribute="width" constant="310" id="X3t-ye-ePi"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="노래 찾아보기">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="gotoSearchTabBarWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FcK-KY-V4F"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저장된 노래가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GjT-2X-Y8v">
+                                <rect key="frame" x="114.66666666666667" y="363.66666666666669" width="160.66666666666663" height="21.333333333333314"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21.329999999999998" id="i0M-vy-c8E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Sn0-VT-suQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2Dh-hC-Jeb"/>
+                            <constraint firstItem="G5g-Wi-ibk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7a6-15-FaP"/>
+                            <constraint firstItem="Pfu-a5-HB2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JPs-pd-PZE"/>
+                            <constraint firstItem="G5g-Wi-ibk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UPC-OQ-Cwq"/>
                             <constraint firstItem="Sn0-VT-suQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="axG-GW-ehm"/>
+                            <constraint firstItem="GjT-2X-Y8v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bSc-Gf-wVH"/>
+                            <constraint firstItem="Pfu-a5-HB2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="c9U-GD-uwR"/>
+                            <constraint firstItem="G5g-Wi-ibk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cQN-py-9bO"/>
+                            <constraint firstItem="GjT-2X-Y8v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e0g-am-7uc"/>
                             <constraint firstItem="Sn0-VT-suQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eqj-Xd-aYC"/>
+                            <constraint firstItem="G5g-Wi-ibk" firstAttribute="top" secondItem="GjT-2X-Y8v" secondAttribute="bottom" constant="10" id="k1o-wC-veN"/>
                             <constraint firstItem="Sn0-VT-suQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mly-I1-9M9"/>
                             <constraint firstAttribute="trailing" secondItem="Sn0-VT-suQ" secondAttribute="trailing" id="pJx-5c-rUh"/>
+                            <constraint firstItem="Sn0-VT-suQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vyu-S6-v7j"/>
+                            <constraint firstItem="G5g-Wi-ibk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wlT-LO-iBj"/>
+                            <constraint firstItem="Sn0-VT-suQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yCu-c5-68j"/>
+                            <constraint firstItem="Sn0-VT-suQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zJM-be-4ay"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="🎵 보관함" id="tsA-xT-oHB"/>
                     <connections>
-                        <outlet property="emptyView" destination="sQz-X6-a2d" id="DZw-Vx-xe8"/>
+                        <outlet property="emptyView" destination="Pfu-a5-HB2" id="72z-as-Pgu"/>
+                        <outlet property="goToSearchBtn" destination="G5g-Wi-ibk" id="aTg-8d-E8f"/>
                         <outlet property="mySongTableView" destination="Sn0-VT-suQ" id="Bpz-Yh-Vbb"/>
+                        <outlet property="noDataLabel" destination="GjT-2X-Y8v" id="vsO-Ai-1af"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -253,6 +273,9 @@
                                     <segment title="TJ"/>
                                     <segment title="KY"/>
                                 </segments>
+                                <connections>
+                                    <action selector="scopeBarDidChange:" destination="HiZ-Tf-KUE" eventType="valueChanged" id="ZmQ-gu-jLf"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Obj-RH-9U9"/>

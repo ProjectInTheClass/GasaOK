@@ -10,8 +10,11 @@ import CoreData
 
 class ViewController: UIViewController, UITabBarControllerDelegate {
 
+    @IBOutlet weak var noDataLabel: UILabel!
+    @IBOutlet weak var goToSearchBtn: UIButton!
     @IBOutlet weak var mySongTableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
+    
     let isDark = UserDefaults.standard.bool(forKey: "darkModeState")
     
     @IBAction func gotoSearchTabBar( sender: UIButton) {
@@ -147,8 +150,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func checkStorageisEmpty() {
         if self.songLists.count == 0 {
             self.emptyView.isHidden = false
+            self.goToSearchBtn.isHidden = false
+            self.noDataLabel.isHidden = false
         } else {
-            self.emptyView.isHidden = true
+            self.emptyView.isHidden = false
+            self.goToSearchBtn.isHidden = true
+            self.noDataLabel.isHidden = true
             
         }
     }
