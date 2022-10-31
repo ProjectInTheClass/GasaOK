@@ -145,55 +145,6 @@ class SearchViewController: UIViewController {
     @IBAction func scopeBarDidChange(_ sender: Any) {
         self.searchTableView.reloadData()
     }
-    
-    /// 노래 추가 버튼을 눌렀을 때 노래를 보관함에 저장합니다.
-    /// - Parameter sender: UIButton of SearchTableViewCell
-    @IBAction func didTapSongAddButton(_ sender: UIButton) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "Song", in: context)
-        
-        if let entity = entity {
-            let mySongList = NSManagedObject(entity: entity, insertInto: context)
-            let contentView = sender.superview
-            let cell = contentView?.superview?.superview as! UITableViewCell    // 스토리보드 구조가 바뀌어서 superview 하나 더 붙임
-            let index = searchTableView.indexPath(for: cell)
-
-            // FIXME: 아래의 반복되는 코드를 어떻게 합칠 수 있을까... 
-//            let searchType = searchController.searchBar.selectedScopeButtonIndex
-            let searchType = searchFilterSegmentedControl.selectedSegmentIndex
-            switch searchType {
-            case 0:
-                mySongList.setValue(filteredSongs[index!.row].title, forKey: "songTitle")
-                mySongList.setValue(filteredSongs[index!.row].singer, forKey: "singer")
-                mySongList.setValue(filteredSongs[index!.row].no, forKey: "number")
-               //예원
-                mySongList.setValue(filteredSongs[index!.row].brand?.rawValue, forKey: "brand")
-            case 1:
-                mySongList.setValue(filteredSongsOfTJ[index!.row].title, forKey: "songTitle")
-                mySongList.setValue(filteredSongsOfTJ[index!.row].singer, forKey: "singer")
-                mySongList.setValue(filteredSongsOfTJ[index!.row].no, forKey: "number")
-                mySongList.setValue(filteredSongsOfTJ[index!.row].brand?.rawValue, forKey: "brand")
-            case 2:
-                mySongList.setValue(filteredSongsOfKY[index!.row].title, forKey: "songTitle")
-                mySongList.setValue(filteredSongsOfKY[index!.row].singer, forKey: "singer")
-                mySongList.setValue(filteredSongsOfKY[index!.row].no, forKey: "number")
-                mySongList.setValue(filteredSongsOfKY[index!.row].brand?.rawValue, forKey: "brand")
-            default:
-                print("didTapSongAddButton: 검색 타입이 정확하지 않습니다.")
-            }
-                
-            do {
-                try context.save()
-                AlertManager.shared.songAddAlert(vc: self)
-            } catch {
-                Swift.print(error.localizedDescription)
-            }
-        }
-    }
-    
-    
 }
 
 
@@ -222,6 +173,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     /// 선택된 scope에 따라 필터링된 노래 데이터를 cell에 넘겨 줍니다.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SearchTableViewCell = self.searchTableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
+        cell.cellDelegate = self
+        
         let searchType = searchFilterSegmentedControl.selectedSegmentIndex
         switch searchType {
         case 0:
@@ -252,7 +205,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         var songTitle = ""
         var singer = ""
-//        let searchType = searchController.searchBar.selectedScopeButtonIndex
         let searchType = searchFilterSegmentedControl.selectedSegmentIndex
         switch searchType {
         case 0:
@@ -313,5 +265,83 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         // false로 해줘야 cancel 버튼이 활성화된다.
         return false
+    }
+}
+
+
+// MARK: - menuActionDelegate
+/// 더보기 메뉴 Action delegate 함수 구현
+extension SearchViewController: menuActionDelegate {
+    
+    /// 노래 추가 버튼을 눌렀을 때 노래를 보관함에 저장합니다.
+    /// - Parameter sender: UIButton of SearchTableViewCell
+    func addSongButton(sender: UIButton) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Song", in: context)
+        
+        if let entity = entity {
+            let mySongList = NSManagedObject(entity: entity, insertInto: context)
+            let contentView = sender.superview
+            let cell = contentView?.superview?.superview as! UITableViewCell    // 스토리보드 구조가 바뀌어서 superview 하나 더 붙임
+            let index = searchTableView.indexPath(for: cell)
+
+            // FIXME: 아래의 반복되는 코드를 어떻게 합칠 수 있을까...
+//            let searchType = searchController.searchBar.selectedScopeButtonIndex
+            let searchType = searchFilterSegmentedControl.selectedSegmentIndex
+            switch searchType {
+            case 0:
+                mySongList.setValue(filteredSongs[index!.row].title, forKey: "songTitle")
+                mySongList.setValue(filteredSongs[index!.row].singer, forKey: "singer")
+                mySongList.setValue(filteredSongs[index!.row].no, forKey: "number")
+               //예원
+                mySongList.setValue(filteredSongs[index!.row].brand?.rawValue, forKey: "brand")
+            case 1:
+                mySongList.setValue(filteredSongsOfTJ[index!.row].title, forKey: "songTitle")
+                mySongList.setValue(filteredSongsOfTJ[index!.row].singer, forKey: "singer")
+                mySongList.setValue(filteredSongsOfTJ[index!.row].no, forKey: "number")
+                mySongList.setValue(filteredSongsOfTJ[index!.row].brand?.rawValue, forKey: "brand")
+            case 2:
+                mySongList.setValue(filteredSongsOfKY[index!.row].title, forKey: "songTitle")
+                mySongList.setValue(filteredSongsOfKY[index!.row].singer, forKey: "singer")
+                mySongList.setValue(filteredSongsOfKY[index!.row].no, forKey: "number")
+                mySongList.setValue(filteredSongsOfKY[index!.row].brand?.rawValue, forKey: "brand")
+            default:
+                print("didTapSongAddButton: 검색 타입이 정확하지 않습니다.")
+            }
+                
+            do {
+                try context.save()
+                AlertManager.shared.songAddAlert(vc: self)
+            } catch {
+                Swift.print(error.localizedDescription)
+            }
+        }
+    }
+    
+    /// 노래 가사 보기 버튼을 눌렀을 때
+    /// - Parameter sender: UIButton of SearchTableViewCell
+    func showLyricsButton(sender: UIButton) {
+        let contentView = sender.superview
+        let cell = contentView?.superview?.superview as! UITableViewCell    // 스토리보드 구조가 바뀌어서 superview 하나 더 붙임
+        let index = searchTableView.indexPath(for: cell)
+        var songTitle = ""
+        var singer = ""
+        let searchType = searchFilterSegmentedControl.selectedSegmentIndex
+        switch searchType {
+        case 0:
+            songTitle = filteredSongs[index!.row].title
+            singer = filteredSongs[index!.row].singer
+        case 1:
+            songTitle = filteredSongsOfTJ[index!.row].title
+            singer = filteredSongsOfTJ[index!.row].singer
+        case 2:
+            songTitle = filteredSongsOfKY[index!.row].title
+            singer = filteredSongsOfKY[index!.row].singer
+        default:
+            print("table view didSelectRowAt: 검색 타입이 명확하지 않습니다.")
+        }
+        AlertManager.shared.lyricsAlert(vc: self, title: songTitle, singer: singer)
     }
 }
