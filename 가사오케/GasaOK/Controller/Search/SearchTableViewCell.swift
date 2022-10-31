@@ -15,6 +15,8 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var karaokeNumber: UILabel!
     @IBOutlet weak var moreMenuButton: UIButton!
     
+    var cellDelegate: menuActionDelegate?
+    
     func setSongData(model: SongInfoElement) {
         self.songNameLabel.text = model.title
         self.singerNameLabel.text = model.singer
@@ -43,10 +45,12 @@ class SearchTableViewCell: UITableViewCell {
     func menuItems() -> [UIMenuElement] {
         let addSongAction = UIAction(title: "보관함에 추가하기", image: UIImage(systemName: "plus")) {_ in
             print("추가 버튼 누름")
+            self.cellDelegate?.addSongButton(sender: self.moreMenuButton)
         }
         
         let showLyricsAction = UIAction(title: "가사 보기", image: UIImage(systemName: "text.justify.leading")) {_ in
             print("가사 보기 버튼 누름")
+            self.cellDelegate?.showLyricsButton(sender: self.moreMenuButton)
         }
         
         return [addSongAction, showLyricsAction]
@@ -57,5 +61,6 @@ class SearchTableViewCell: UITableViewCell {
 
 protocol menuActionDelegate: AnyObject {
     // 위임해줄 기능
-    func addSongButton()
+    func addSongButton(sender: UIButton)
+    func showLyricsButton(sender: UIButton)
 }

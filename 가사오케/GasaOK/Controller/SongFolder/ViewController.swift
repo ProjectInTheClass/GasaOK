@@ -142,8 +142,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         /// 노래제목과 가수를 파라미터로 함수 호출
         AlertManager.shared.lyricsAlert(vc: self, title: songTitle, singer: singer)
-        
-
     }
     
 // MARK: - 보관함에 저장된 노래가 있는지 없는지 확인
