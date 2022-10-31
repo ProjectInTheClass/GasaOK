@@ -91,7 +91,12 @@ class SearchViewController: UIViewController {
              if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                  do {
                      let songResult = try JSONDecoder().decode(SongInfo.self, from: data)
-                     self.filteredSongs = songResult
+                     // 전체 검색이면 filteredSongs에 검색 결과를 '합친다'
+                     if self.searchFilterType == 0 {
+                         self.filteredSongs += songResult
+                     } else {
+                         self.filteredSongs = songResult
+                     }
                      DispatchQueue.main.async {
                          self.songFilterByBrand()
                          self.searchTableView.reloadData()
@@ -118,7 +123,12 @@ class SearchViewController: UIViewController {
              if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                  do {
                      let songResult = try JSONDecoder().decode(SongInfo.self, from: data)
-                     self.filteredSongs = songResult
+                     // 전체 검색이면 filteredSongs에 검색 결과를 '합친다'
+                     if self.searchFilterType == 0 {
+                         self.filteredSongs += songResult
+                     } else {
+                         self.filteredSongs = songResult
+                     }
                      DispatchQueue.main.async {
                          self.songFilterByBrand()
                          self.searchTableView.reloadData()
@@ -283,7 +293,9 @@ extension SearchViewController: UISearchBarDelegate {
         case 2:
             requestSongsFilterByTitle(title: searchBar.text!.lowercased())
         default:
-            print("아직 전체 검색 안되영~")
+            print("전체 검색 시작")
+            requestSongsFilterBySinger(artistName: searchBar.text!.lowercased())
+            requestSongsFilterByTitle(title: searchBar.text!.lowercased())
         }
     }
     
