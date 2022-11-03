@@ -35,6 +35,7 @@ class AlertManager {
             config.entersReaderIfAvailable = true
             
             let safariView = SFSafariViewController(url: searchURL!, configuration: config)
+            safariView.modalPresentationStyle = .pageSheet
             vc.present(safariView, animated: true)
         }))
         vc.present(alert, animated: false)

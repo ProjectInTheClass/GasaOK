@@ -74,6 +74,7 @@ class SearchViewController: UIViewController {
             return song.brand!.rawValue == "kumyoung"
         })
 //        filteredSongs = filteredSongsOfTJ + filteredSongsOfKY
+
         filteredSongs.sort(by: {$0.title < $1.title} )
     }
 
@@ -246,6 +247,7 @@ extension SearchViewController: UISearchBarDelegate {
             requestSongsFilterByTitle(title: searchBar.text!.lowercased())
         default:
             print("전체 검색 시작")
+            self.filteredSongs = []
             requestSongsFilterBySinger(artistName: searchBar.text!.lowercased())
             requestSongsFilterByTitle(title: searchBar.text!.lowercased())
         }
