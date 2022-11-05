@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
+	<true/>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>UIApplicationSceneManifest</key>

@@ -30,7 +30,6 @@ class SearchViewController: UIViewController {
         setSearchFilterButton()
     }
     
-
     // MARK: - View
     func setSearchFilterButton() {
         searchFilterButton.showsMenuAsPrimaryAction = true
