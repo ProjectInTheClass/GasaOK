@@ -240,6 +240,13 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchBar.setValue("취소", forKey: "cancelButtonText")
         searchBar.setShowsCancelButton(true, animated: true)
+        // searchBar의 keyboard를 내리기 위해 resignFristResponder를 호출하면 cancelbutton이 처음에 disable 된다.
+        // searchBar가 first responder가 아니면 cancel button이 disable 되는 것이다.
+        // 그래서 강제로 cancel button을 enable 해준다.
+        if let searchBarCancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+            searchBarCancelButton.isEnabled = true
+        }
+
         switch searchFilterType {
         case 1:
             requestSongsFilterBySinger(artistName: searchBar.text!.lowercased())
@@ -255,6 +262,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     /// 검색창의 취소 버튼이 눌리면 검색 내용을 초기화한다.
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.searchTextField.text = nil    // 커서도 안보이게 clear 할 수는 없을까
         filteredSongs = []
@@ -263,11 +271,7 @@ extension SearchViewController: UISearchBarDelegate {
         searchTableView.reloadData()
     }
 
-    // Asks the delegate if editing should stop in the specified search bar.
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        // false로 해줘야 cancel 버튼이 활성화된다.
-        return false
-    }
+
 }
 
 

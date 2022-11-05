@@ -193,18 +193,15 @@
                                                     <rect key="frame" x="20" y="5" width="202" height="55"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOq-s7-F6e">
-                                                            <rect key="frame" x="0.0" y="0.0" width="202" height="22"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="22" id="mbh-1O-d0U"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="0.0" y="0.0" width="202" height="26"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SingerName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhg-F8-VL9">
-                                                            <rect key="frame" x="0.0" y="26" width="202" height="29"/>
+                                                            <rect key="frame" x="0.0" y="30" width="202" height="25"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="22" id="3lO-Sh-C0O"/>
+                                                                <constraint firstAttribute="height" constant="25" id="9Ah-AR-tN8"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" systemColor="systemGray2Color"/>
@@ -394,7 +391,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zeX-wc-Qob" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="slI-LR-9ql"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="qhi-7a-Atu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NOE-6n-3uS">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
