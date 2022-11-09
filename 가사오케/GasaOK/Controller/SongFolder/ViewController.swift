@@ -34,6 +34,9 @@ class ViewController: UIViewController, UITabBarControllerDelegate {
 //        barButtonItemTextRemove()
         darkModeCheck()
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     // MARK: - 곡 추가 시 보관함 테이블뷰 reload
     override func viewWillAppear(_ animated: Bool) {
