@@ -30,13 +30,13 @@ class AlertManager {
             print(realTitle)
             let url = baseURL + realTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + "+" + singer.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)! + "+" + "가사".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             let searchURL = URL(string: url)
-//            UIApplication.shared.open(searchURL!, options: [:])
-            let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = true
-            
-            let safariView = SFSafariViewController(url: searchURL!, configuration: config)
-            safariView.modalPresentationStyle = .pageSheet
-            vc.present(safariView, animated: true)
+            UIApplication.shared.open(searchURL!, options: [:])
+//            let config = SFSafariViewController.Configuration()
+//            config.entersReaderIfAvailable = true
+//
+//            let safariView = SFSafariViewController(url: searchURL!, configuration: config)
+//            safariView.modalPresentationStyle = .pageSheet
+//            vc.present(safariView, animated: true)
         }))
         vc.present(alert, animated: false)
     }
